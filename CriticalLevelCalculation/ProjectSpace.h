@@ -2,6 +2,8 @@
 #define PROJECT_SPACE_H_
 
 #include <vector>
+#include <sstream>
+
 #include "Point.h"
 #include "ControlPoint.h"
 
@@ -12,7 +14,9 @@ public:
 	~ProjectSpace(void);
 	long getTime() const { return mTime; }
 	void setTime(long val) { mTime = val; }
-	void addFlightPoint(int flight, int x, int y);
+	void addFlightPoint(int flight, Point point);
+
+	std::stringstream dump();
 private:
 	Point mSpaceSize;
 	Point mCellSize;

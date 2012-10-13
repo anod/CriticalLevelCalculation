@@ -64,6 +64,7 @@
     <ClCompile Include="FlightDataReader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ProjectSpace.cpp" />
+    <ClCompile Include="ProjectSpaceBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ControlPoint.h" />
@@ -71,6 +72,7 @@
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="ProjectSpace.h" />
+    <ClInclude Include="ProjectSpaceBuilder.h" />
     <ClInclude Include="RuntimeException.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

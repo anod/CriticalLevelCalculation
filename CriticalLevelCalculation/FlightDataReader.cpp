@@ -1,12 +1,11 @@
 #include "FlightDataReader.h"
 #include "RuntimeException.h"
 
-FlightDataReader::FlightDataReader(std::string fileName)
-	: mCurrentFlightNumber(0), mNumberOfControlPoints(0)
-{
-	mFileName = fileName;
-}
 
+FlightDataReader::FlightDataReader(std::ifstream& stream, std::string fileName)
+	: mCurrentFlightNumber(0), mNumberOfControlPoints(0), mInputStream(stream), mFileName(fileName)
+{
+}
 
 FlightDataReader::~FlightDataReader(void)
 {
@@ -78,4 +77,11 @@ int FlightDataReader::timeStringToSeconds(std::string timeStr)
 	}
 	
 	return seconds + (minute * 60) + (hour * 3600);
+}
+
+void FlightDataReader::rewind()
+{
+	mNumberOfControlPoints = 0;
+	mInputStream.clear();
+	mInputStream.seekg(0, std::ios::beg);
 }

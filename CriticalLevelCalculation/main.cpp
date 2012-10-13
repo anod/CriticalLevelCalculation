@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fstream>
+#include <iostream>
 
 #include "OpenMP.h"
 #include "FlightDataReader.h"
-#include <iostream>
-#include "ProjectSpace.h"
+#include "ProjectSpaceBuilder.h"
+#include "Point.h"
 
 #define SPACE_SIZE_A 500
 #define SPACE_SIZE_B 500
@@ -13,17 +15,15 @@
 
 void run() 
 {
-	ProjectSpace projectSpace(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n));
+	std::ifstream fileStream;
+	FlightDataReader reader(fileStream, "data.txt");
+	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), reader);
 
-	FlightDataReader reader("data.txt");
-	reader.open();
-	while (reader.readNextControlPoint()) {
-		Point p = reader.getCurrentControlPoint();
-		int time = reader.getCurrentTime();
-
-		std::cout << reader.getCurrentFlightNumber() << ": [" << p.x << "," << p.y << "] at " << time << std::endl;
-
+	while(builder.nextTime()) {
+		ProjectSpace projectSpace = builder.build();
+		std::cout << projectSpace.dump().str() << std::endl;
 	}
+
 }
 
 
