@@ -71,6 +71,7 @@
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="ProjectSpace.h" />
+    <ClInclude Include="RuntimeException.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

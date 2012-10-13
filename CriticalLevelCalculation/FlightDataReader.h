@@ -14,8 +14,8 @@ public:
 	void open();
 	bool readNextControlPoint();
 	int getCurrentFlightNumber() const { return mCurrentFlightNumber; }
-	Point getCurrentContorlPoint() const { return mCurrentControlPoint; }
-	long getCurrentTime() const { return mCurrentTime; }
+	Point getCurrentControlPoint() const { return mCurrentControlPoint; }
+	int getCurrentTime() const { return mCurrentTime; }
 private:
 	std::string mFileName;
 	std::ifstream mInputStream;
@@ -23,7 +23,7 @@ private:
 	int mNumberOfControlPoints;
 	int mCurrentFlightNumber;
 	Point mCurrentControlPoint;
-	long mCurrentTime;
+	int mCurrentTime;
 
 	//
 	std::istream& getLine();

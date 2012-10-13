@@ -1,4 +1,5 @@
 #include "FlightDataReader.h"
+#include "RuntimeException.h"
 
 FlightDataReader::FlightDataReader(std::string fileName)
 	: mCurrentFlightNumber(0), mNumberOfControlPoints(0)
@@ -9,7 +10,14 @@ FlightDataReader::FlightDataReader(std::string fileName)
 
 FlightDataReader::~FlightDataReader(void)
 {
+}
+
+void FlightDataReader::open()
+{
 	mInputStream.open(mFileName);
+	if (!mInputStream.is_open()) {
+		throw RuntimeException("Cannot open file: " + mFileName);
+	}
 }
 
 std::istream& FlightDataReader::getLine()
@@ -25,25 +33,26 @@ bool FlightDataReader::readNextControlPoint()
 		}
 		mCurrentFlightNumber = 0;
 		if (!(std::stringstream(mCurrentLine) >> mCurrentFlightNumber)) {
-			throw "Cannot read current flight number";
+			throw RuntimeException("Cannot read current flight number");
 		}
 		if (!getLine()) {
-			throw "Number of control points is missing";
+			throw RuntimeException("Number of control points is missing");
 		}
 		if (!(std::stringstream(mCurrentLine) >> mNumberOfControlPoints)) {
-			throw "Cannot read number of control points";
+			throw RuntimeException("Cannot read number of control points");
 		}
 		if (mNumberOfControlPoints == 0) {
 			return readNextControlPoint();
 		}
 	}
 	if (!getLine()) {
-		throw "Cannot read next control point";
+		throw RuntimeException("Cannot read next control point");
 	}
 	int x,y = 0;
 	std::string timeStr;
 	std::stringstream ss(mCurrentLine);
 	ss >> x >> y >> timeStr;
+	mCurrentControlPoint = Point(x,y);
 	mCurrentTime = timeStringToSeconds(timeStr);
 	mNumberOfControlPoints--;
 	return true;
@@ -57,15 +66,15 @@ int FlightDataReader::timeStringToSeconds(std::string timeStr)
 	// extract data
 	std::getline(ss,current,':');
 	if (!(std::stringstream(current) >> hour)) {
-		throw "Cannot convert hour";
+		throw RuntimeException("Cannot convert hour");
 	}
 	std::getline(ss,current,':');
 	if (!(std::stringstream(current) >> minute)) {
-		throw "Cannot convert minute";
+		throw RuntimeException("Cannot convert minute");
 	}
 	std::getline(ss,current,':');
 	if (!(std::stringstream(current) >> seconds)) {
-		throw "Cannot convert seconds";
+		throw RuntimeException("Cannot convert seconds");
 	}
 	
 	return seconds + (minute * 60) + (hour * 3600);

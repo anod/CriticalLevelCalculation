@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CriticalLevelCalculation", "CriticalLevelCalculation\CriticalLevelCalculation.vcxproj", "{CED9669C-7F98-47E9-B67A-221E64C89890}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{055E5F30-347A-4F62-8C80-2D66891425C7}"
+	ProjectSection(SolutionItems) = preProject
+		CriticalLevelCalculation.vsmdi = CriticalLevelCalculation.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CriticalLevelCalculation.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
