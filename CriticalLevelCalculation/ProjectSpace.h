@@ -1,16 +1,15 @@
-#ifndef SPACE_H_
-#define SPACE_H_
+#ifndef PROJECT_SPACE_H_
+#define PROJECT_SPACE_H_
 
 #include <vector>
 #include "Point.h"
 #include "ControlPoint.h"
-using namespace std;
 
-class Space
+class ProjectSpace
 {
 public:
-	Space(const Point &spaceSize,const Point &cellSize);
-	~Space(void);
+	ProjectSpace(const Point &spaceSize,const Point &cellSize);
+	~ProjectSpace(void);
 	long getTime() const { return mTime; }
 	void setTime(long val) { mTime = val; }
 	void addFlightPoint(int flight, int x, int y);
@@ -18,7 +17,7 @@ private:
 	Point mSpaceSize;
 	Point mCellSize;
 	long mTime;
-	vector<ControlPoint> mControlPoints;
+	std::vector<ControlPoint> mControlPoints;
 };
 
-#endif // SPACE_H_
+#endif // PROJECT_SPACE_H_

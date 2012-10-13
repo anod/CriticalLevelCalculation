@@ -1,8 +1,7 @@
 #ifndef CONTROL_POINT_H_
 #define CONTROL_POINT_H_
 
-struct ControlPoint
-{
+struct ControlPoint {
 	int x;
 	int y;
 	int flight;
