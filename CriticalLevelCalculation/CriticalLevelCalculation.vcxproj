@@ -62,6 +62,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FlightDataReader.cpp" />
+    <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ProjectSpace.cpp" />
     <ClCompile Include="ProjectSpaceBuilder.cpp" />
@@ -69,6 +70,7 @@
   <ItemGroup>
     <ClInclude Include="ControlPoint.h" />
     <ClInclude Include="FlightDataReader.h" />
+    <ClInclude Include="InvolvedCellsSeeker.h" />
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="ProjectSpace.h" />
