@@ -12,9 +12,12 @@ class ProjectSpace
 public:
 	ProjectSpace(const Point &spaceSize,const Point &cellSize);
 	~ProjectSpace(void);
+	Point getSpaceSize() const { return mSpaceSize; };
+	Point getCellSize() const { return mCellSize; };
 	long getTime() const { return mTime; }
 	void setTime(long val) { mTime = val; }
-	void addFlightPoint(int flight, Point point);
+	void addControlPoint(int flight, Point point);
+	std::vector<ControlPoint> const getControlPoints() { return mControlPoints; };
 
 	std::stringstream dump();
 private:

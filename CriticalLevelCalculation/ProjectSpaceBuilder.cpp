@@ -54,7 +54,7 @@ ProjectSpace ProjectSpaceBuilder::build()
 		if (time == currentTime) {
 			Point p = mFlightDataReader.getCurrentControlPoint();
 			int flight = mFlightDataReader.getCurrentFlightNumber();
-			space.addFlightPoint(flight, p);
+			space.addControlPoint(flight, p);
 		}
 	}
 

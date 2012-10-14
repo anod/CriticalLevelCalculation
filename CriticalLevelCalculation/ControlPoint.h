@@ -2,8 +2,7 @@
 #define CONTROL_POINT_H_
 
 struct ControlPoint {
-	int x;
-	int y;
+	Point coord;
 	int flight;
 };
 

@@ -14,6 +14,8 @@ public:
 private:
 	Point mCellSize;
 	Point mHalfCellSize;
+	void seekOnLine(int start, int end, int startMinor, double slope, bool horizontal, std::vector<Point>& result);
+	void addResult(int major, int minor, bool horizontal, std::vector<Point>& result);
 };
 
 #endif //INVOLVED_CELLS_SEEKER_H_

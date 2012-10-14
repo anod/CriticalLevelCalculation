@@ -9,9 +9,9 @@ ProjectSpace::~ProjectSpace(void)
 {
 }
 
-void ProjectSpace::addFlightPoint( int flight, Point point )
+void ProjectSpace::addControlPoint( int flight, Point point )
 {
-	ControlPoint p = { /*.x=*/ point.x, /*.y=*/ point.y, /*.flight=*/ flight };
+	ControlPoint p = { /*.coord=*/ point, /*.flight=*/ flight };
 	mControlPoints.push_back(p);
 }
 
@@ -28,7 +28,7 @@ std::stringstream ProjectSpace::dump()
 		if (!first) {
 			ss << ", ";
 		}
-		ss << "[" << p.flight << " (" << p.x << "," << p.y << ")]";
+		ss << "[" << p.flight << " (" << p.coord.x << "," << p.coord.y << ")]";
 		first = false;
 	}
 	ss << "\n";

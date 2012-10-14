@@ -61,6 +61,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CriticalLevelDetector.cpp" />
     <ClCompile Include="FlightDataReader.cpp" />
     <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
@@ -69,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ControlPoint.h" />
+    <ClInclude Include="CriticalLevelDetector.h" />
     <ClInclude Include="FlightDataReader.h" />
     <ClInclude Include="InvolvedCellsSeeker.h" />
     <ClInclude Include="OpenMP.h" />

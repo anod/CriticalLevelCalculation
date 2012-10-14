@@ -30,6 +30,9 @@
     <ClCompile Include="InvolvedCellsSeeker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CriticalLevelDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ControlPoint.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InvolvedCellsSeeker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalLevelDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
