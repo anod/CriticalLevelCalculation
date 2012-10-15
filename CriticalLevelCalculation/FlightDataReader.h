@@ -24,7 +24,6 @@ public:
 	// Get last read time
 	int getCurrentTime() const { return mCurrentTime; }
 private:
-	std::string mCurrentLine;
 	int mNumberOfControlPoints;
 	int mCurrentFlightNumber;
 	Point mCurrentControlPoint;
@@ -32,10 +31,8 @@ private:
 
 	std::string mFileName;
 	std::ifstream& mInputStream;
-
-	//
-	std::istream& getLine();
-	int timeStringToSeconds(std::string timeStr);
+	std::string mTmpStr;
+	int timeStringToSeconds();
 };
 
 #endif // FLIGHT_DATA_READER_H_

@@ -7,6 +7,8 @@
 #include "FlightDataReader.h"
 #include "ProjectSpaceBuilder.h"
 #include "Point.h"
+#include "CriticalLevelDetector.h"
+#include <time.h>
 
 #define SPACE_SIZE_A 500
 #define SPACE_SIZE_B 500
@@ -20,8 +22,18 @@ void run()
 	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), reader);
 
 	while(builder.nextTime()) {
+		clock_t begin = clock();
+
 		ProjectSpace projectSpace = builder.build();
-		std::cout << projectSpace.dump().str() << std::endl;
+
+		clock_t end = clock();
+		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+		std::cout << elapsed_secs << std::endl;
+		//std::cout << projectSpace.dump().str() << std::endl;
+		std::cout.flush();
+
+		//CriticalLevelDetector detector(projectSpace);
+		//detector.detect();
 	}
 
 }
