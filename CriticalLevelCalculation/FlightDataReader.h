@@ -2,6 +2,7 @@
 #define FLIGHT_DATA_READER_H_
 
 #include <string>
+#include <vector>
 #include <fstream>
 #include <sstream>
 #include "Point.h"
@@ -33,6 +34,9 @@ private:
 	std::ifstream& mInputStream;
 	std::string mTmpStr;
 	int timeStringToSeconds();
+	bool readNextControlPointUncached();
+
+
 };
 
 #endif // FLIGHT_DATA_READER_H_

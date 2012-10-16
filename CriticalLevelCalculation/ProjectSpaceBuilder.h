@@ -2,7 +2,7 @@
 #define PROJECT_SPACE_BUILDER_H_
 #include "ProjectSpace.h"
 #include "FlightDataReader.h"
-#include <set>
+#include <unordered_map>
 
 class ProjectSpaceBuilder
 {
@@ -19,7 +19,7 @@ private:
 	Point mCellSize;
 
 	std::size_t mCurrentTimeIndex;
-	std::set<int> mTimesCache;
+	std::unordered_map<int,bool> mTimesCache;
 	FlightDataReader mFlightDataReader;
 
 };

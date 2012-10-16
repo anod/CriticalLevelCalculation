@@ -37,15 +37,15 @@ ProjectSpace ProjectSpaceBuilder::build()
 	} else {
 		mFlightDataReader.rewind();
 		buildTimeCache = false;
-		std::set<int>::iterator it = mTimesCache.begin();
+		std::unordered_map<int,bool>::iterator it = mTimesCache.begin();
 		std::advance(it, mCurrentTimeIndex); // now it is advanced by mCurrentTimeIndex
-		currentTime = *it;
+		currentTime = (*it).second;
 	}
 
 	while (mFlightDataReader.readNextControlPoint()) {
 		int time = mFlightDataReader.getCurrentTime();
 		if (buildTimeCache) {
-			mTimesCache.insert(time);
+			mTimesCache[time] = true;
 		}
 		if (currentTime == -1) {
 			currentTime = time;

@@ -63,6 +63,7 @@
   <ItemGroup>
     <ClCompile Include="CriticalLevelDetector.cpp" />
     <ClCompile Include="FlightDataReader.cpp" />
+    <ClCompile Include="FlightDataReaderMemCache.cpp" />
     <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ProjectSpace.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="ControlPoint.h" />
     <ClInclude Include="CriticalLevelDetector.h" />
     <ClInclude Include="FlightDataReader.h" />
+    <ClInclude Include="FlightDataReaderMemCache.h" />
     <ClInclude Include="InvolvedCellsSeeker.h" />
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Point.h" />

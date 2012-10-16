@@ -33,6 +33,9 @@
     <ClCompile Include="CriticalLevelDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FlightDataReaderMemCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ControlPoint.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CriticalLevelDetector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlightDataReaderMemCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
