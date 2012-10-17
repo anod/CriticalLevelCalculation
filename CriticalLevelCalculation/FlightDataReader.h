@@ -6,11 +6,13 @@
 #include <fstream>
 #include <sstream>
 #include "Point.h"
+#include "IFlightDataReader.h"
 
-class FlightDataReader
+class FlightDataReader : public IFlightDataReader
 {
 public:
-	FlightDataReader(std::ifstream& stream, std::string fileName);
+	FlightDataReader(void);
+	FlightDataReader(std::ifstream* stream, std::string fileName);
 	~FlightDataReader(void);
 	// Open file
 	void open();
@@ -31,7 +33,7 @@ private:
 	int mCurrentTime;
 
 	std::string mFileName;
-	std::ifstream& mInputStream;
+	std::ifstream* mInputStream;
 	std::string mTmpStr;
 	int timeStringToSeconds();
 	bool readNextControlPointUncached();

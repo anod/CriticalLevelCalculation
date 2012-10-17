@@ -1,7 +1,7 @@
 #include "ProjectSpaceBuilder.h"
 
 
-ProjectSpaceBuilder::ProjectSpaceBuilder(const Point &spaceSize,const Point &cellSize, const FlightDataReader& reader)
+ProjectSpaceBuilder::ProjectSpaceBuilder(const Point &spaceSize,const Point &cellSize, IFlightDataReader* reader)
 	: mSpaceSize(spaceSize), mCellSize(cellSize), mCurrentTimeIndex(WRONG_TIME_INDEX), mFlightDataReader(reader)
 {
 
@@ -17,7 +17,7 @@ bool ProjectSpaceBuilder::nextTime() {
 	}
 
 	mCurrentTimeIndex++;
-	if (mCurrentTimeIndex >= mTimesCache.size()) {
+	if (mCurrentTimeIndex >= mTimesMap.size()) {
 		return false;
 	}
 	return true;
@@ -31,29 +31,30 @@ ProjectSpace ProjectSpaceBuilder::build()
 	ProjectSpace space(mSpaceSize, mCellSize);
 
 	if (mCurrentTimeIndex == WRONG_TIME_INDEX) {
-		mFlightDataReader.open();
+		mFlightDataReader->open();
 		buildTimeCache = true;
 		currentTime = -1;
 	} else {
-		mFlightDataReader.rewind();
+		mFlightDataReader->rewind();
 		buildTimeCache = false;
-		std::unordered_map<int,bool>::iterator it = mTimesCache.begin();
+		std::vector<int>::iterator it = mTimesCache.begin();
 		std::advance(it, mCurrentTimeIndex); // now it is advanced by mCurrentTimeIndex
-		currentTime = (*it).second;
+		currentTime = *it;
 	}
 
-	while (mFlightDataReader.readNextControlPoint()) {
-		int time = mFlightDataReader.getCurrentTime();
-		if (buildTimeCache) {
-			mTimesCache[time] = true;
+	while (mFlightDataReader->readNextControlPoint()) {
+		int time = mFlightDataReader->getCurrentTime();
+		if (buildTimeCache && !mTimesMap[time]) {
+			mTimesMap[time] = true;
+			mTimesCache.push_back(time);
 		}
 		if (currentTime == -1) {
 			currentTime = time;
 			mCurrentTimeIndex = 0;
 		}
 		if (time == currentTime) {
-			Point p = mFlightDataReader.getCurrentControlPoint();
-			int flight = mFlightDataReader.getCurrentFlightNumber();
+			Point p = mFlightDataReader->getCurrentControlPoint();
+			int flight = mFlightDataReader->getCurrentFlightNumber();
 			space.addControlPoint(flight, p);
 		}
 	}

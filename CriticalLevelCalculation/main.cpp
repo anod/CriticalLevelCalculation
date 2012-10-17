@@ -19,11 +19,10 @@
 void run() 
 {
 	std::ifstream fileStream;
-	FlightDataReader reader(fileStream, "data.txt");
-	FlightDataReaderMemCache readerCached(reader);
-	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), readerCached);
+	FlightDataReader reader(&fileStream, "data.txt");
+	FlightDataReaderMemCache readerCached(&reader);
+	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
 
-	int i = 0;
 	while(builder.nextTime()) {
 		clock_t begin = clock();
 
@@ -31,10 +30,9 @@ void run()
 
 		clock_t end = clock();
 		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-		std::cout << i << ": " << elapsed_secs << std::endl;
+		std::cout << projectSpace.getTime() << ": " << elapsed_secs << std::endl;
 		//std::cout << projectSpace.dump().str() << std::endl;
 		std::cout.flush();
-		i++;
 		//CriticalLevelDetector detector(projectSpace);
 		//detector.detect();
 	}

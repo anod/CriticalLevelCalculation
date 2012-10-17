@@ -2,7 +2,7 @@
 #include "RuntimeException.h"
 
 
-FlightDataReader::FlightDataReader(std::ifstream& stream, std::string fileName)
+FlightDataReader::FlightDataReader(std::ifstream* stream, std::string fileName)
 	: mCurrentFlightNumber(0), mNumberOfControlPoints(0), mInputStream(stream), mFileName(fileName)
 {
 }
@@ -13,8 +13,8 @@ FlightDataReader::~FlightDataReader(void)
 
 void FlightDataReader::open()
 {
-	mInputStream.open(mFileName);
-	if (!mInputStream.is_open()) {
+	mInputStream->open(mFileName);
+	if (!mInputStream->is_open()) {
 		throw RuntimeException("Cannot open file: " + mFileName);
 	}
 }
@@ -23,10 +23,10 @@ bool FlightDataReader::readNextControlPoint()
 {
 	if (mNumberOfControlPoints == 0) { //New flight
 		mCurrentFlightNumber = 0;
-		if (!(mInputStream >> mCurrentFlightNumber)) {
+		if (!(*mInputStream >> mCurrentFlightNumber)) {
 			return false;
 		}
-		if (!(mInputStream >> mNumberOfControlPoints)) {
+		if (!(*mInputStream >> mNumberOfControlPoints)) {
 			throw RuntimeException("Cannot read number of control points");
 		}
 		if (mNumberOfControlPoints == 0) {
@@ -34,8 +34,8 @@ bool FlightDataReader::readNextControlPoint()
 		}
 	}
 	int x,y = 0;
-	mInputStream >> x;
-	mInputStream >> y;
+	*mInputStream >> x;
+	*mInputStream >> y;
 	mCurrentControlPoint = Point(x,y);
 	mCurrentTime = timeStringToSeconds();
 	mNumberOfControlPoints--;
@@ -47,15 +47,15 @@ int FlightDataReader::timeStringToSeconds()
 	int hour,minute,seconds = 0;
 	std::string current;
 	// extract data
-	std::getline(mInputStream,current,':');
+	std::getline(*mInputStream,current,':');
 	if (!(std::stringstream(current) >> hour)) {
 		throw RuntimeException("Cannot convert hour: " + current);
 	}
-	std::getline(mInputStream,current,':');
+	std::getline(*mInputStream,current,':');
 	if (!(std::stringstream(current) >> minute)) {
 		throw RuntimeException("Cannot convert minute: "+minute);
 	}
-	if (!(mInputStream >> seconds)) {
+	if (!(*mInputStream >> seconds)) {
 		throw RuntimeException("Cannot convert seconds: "+seconds);
 	}
 
@@ -65,6 +65,6 @@ int FlightDataReader::timeStringToSeconds()
 void FlightDataReader::rewind()
 {
 	mNumberOfControlPoints = 0;
-	mInputStream.clear();
-	mInputStream.seekg(0, std::ios::beg);
+	mInputStream->clear();
+	mInputStream->seekg(0, std::ios::beg);
 }

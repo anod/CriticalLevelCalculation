@@ -74,6 +74,7 @@
     <ClInclude Include="CriticalLevelDetector.h" />
     <ClInclude Include="FlightDataReader.h" />
     <ClInclude Include="FlightDataReaderMemCache.h" />
+    <ClInclude Include="IFlightDataReader.h" />
     <ClInclude Include="InvolvedCellsSeeker.h" />
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Point.h" />

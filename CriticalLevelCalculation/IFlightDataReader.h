@@ -1,8 +1,8 @@
 #ifndef I_FLIGHT_DATA_READER_H_
 #define I_FLIGHT_DATA_READER_H_
-
+	
 #include "Point.h"
-
+	
 class IFlightDataReader
 {
 public:
@@ -13,13 +13,12 @@ public:
 	// Reads next control point for the file
 	virtual bool readNextControlPoint() = 0;
 	// Get last read flight number
-	virtual int getCurrentFlightNumber() = 0;
+	virtual int getCurrentFlightNumber() const = 0;
 	// Get last read control point coordinates
-	virtual Point getCurrentControlPoint() = 0;
+	virtual Point getCurrentControlPoint() const = 0;
 	// Get last read time
-	virtual int getCurrentTime() = 0;
+	virtual int getCurrentTime() const = 0;
 	virtual ~IFlightDataReader() {}
 };
-
+		
 #endif //I_FLIGHT_DATA_READER_H_
-

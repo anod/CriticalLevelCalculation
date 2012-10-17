@@ -1,27 +1,31 @@
 #ifndef FLIGHT_DATA_READER_MEM_CACHE_H_
 #define FLIGHT_DATA_READER_MEM_CACHE_H_
 
-#include "FlightDataReader.h"
+#include <vector>
+#include "IFlightDataReader.h"
 
-class FlightDataReaderMemCache : public FlightDataReader
+class FlightDataReaderMemCache : public IFlightDataReader
 {
 public:
-	FlightDataReaderMemCache(const FlightDataReader& reader);
+	FlightDataReaderMemCache(IFlightDataReader* reader);
 	~FlightDataReaderMemCache(void);
 
+	void open();
 	// Go to beginning of the file
 	void rewind();
 	// Reads next control point for the file
 	bool readNextControlPoint();
 	// Get last read flight number
-	int getCurrentFlightNumber() const { return mMemoryCache.at(mMemoryCacheIndex); }
+	int getCurrentFlightNumber() const;
 	// Get last read control point coordinates
-	Point getCurrentControlPoint() const { return Point(mMemoryCache.at(mMemoryCacheIndex+1),mMemoryCache.at(mMemoryCacheIndex+2)); }
+	Point getCurrentControlPoint() const;
 	// Get last read time
-	int getCurrentTime() const { return mMemoryCache.at(mMemoryCacheIndex+3); }
+	int getCurrentTime() const;
 
 private:
-	FlightDataReader mReader;
+	static const size_t INIT_INDEX = -4;
+
+	IFlightDataReader* mReader;
 	bool mDataCached;
 	std::vector<int> mMemoryCache;
 	size_t mMemoryCacheIndex;
