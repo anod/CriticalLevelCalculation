@@ -7,6 +7,7 @@
 #include "ProjectSpaceBuilder.h"
 #include "CriticalLevelDetector.h"
 #include "FlightDataReaderMemCache.h"
+#include "tests.h"
 
 #define SPACE_SIZE_A 500
 #define SPACE_SIZE_B 500
@@ -37,13 +38,6 @@ void run()
 
 }
 
-void test() {
-	std::cout << "1. Running InvolvedCellsSeeker Test" << std::endl;
-	InvolvedCellsSeeker seeker(Point(10,10));
-	std::vector<Point> result = seeker.seek(Point(3,4), Point(6,7));
-
-
-}
 
 int main(int argc, char *argv[])
 {
@@ -61,7 +55,7 @@ int main(int argc, char *argv[])
 ///////////
 	try {
 		//run();
-		test();
+		runTests();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
 	}

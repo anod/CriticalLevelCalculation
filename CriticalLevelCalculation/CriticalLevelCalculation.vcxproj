@@ -82,6 +82,7 @@
     <ClInclude Include="ProjectSpace.h" />
     <ClInclude Include="ProjectSpaceBuilder.h" />
     <ClInclude Include="RuntimeException.h" />
+    <ClInclude Include="tests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

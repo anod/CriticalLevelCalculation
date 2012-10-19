@@ -11,4 +11,4 @@
 #include "OpenMP.h"
 #include "ControlPoint.h"
 
-#endif INCLUDE_H_
+#endif //INCLUDE_H_
