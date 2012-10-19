@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <math.h>
 
 #include "Point.h"
 #include "OpenMP.h"

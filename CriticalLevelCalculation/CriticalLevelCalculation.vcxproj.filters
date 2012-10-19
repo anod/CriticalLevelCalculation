@@ -36,6 +36,9 @@
     <ClCompile Include="FlightDataReaderMemCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestRunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ControlPoint.h">
@@ -74,7 +77,7 @@
     <ClInclude Include="Include.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tests.h">
+    <ClInclude Include="TestRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

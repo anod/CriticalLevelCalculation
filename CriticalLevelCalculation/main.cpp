@@ -7,7 +7,7 @@
 #include "ProjectSpaceBuilder.h"
 #include "CriticalLevelDetector.h"
 #include "FlightDataReaderMemCache.h"
-#include "tests.h"
+#include "TestRunner.h"
 
 #define SPACE_SIZE_A 500
 #define SPACE_SIZE_B 500
@@ -38,6 +38,10 @@ void run()
 
 }
 
+void tests() {
+	TestRunner tests;
+	tests.run();
+}
 
 int main(int argc, char *argv[])
 {
@@ -55,7 +59,7 @@ int main(int argc, char *argv[])
 ///////////
 	try {
 		//run();
-		runTests();
+		tests();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
 	}
