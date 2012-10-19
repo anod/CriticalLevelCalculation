@@ -1,11 +1,7 @@
 #ifndef FLIGHT_DATA_READER_H_
 #define FLIGHT_DATA_READER_H_
 
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include "Point.h"
+#include "Include.h"
 #include "IFlightDataReader.h"
 
 class FlightDataReader : public IFlightDataReader

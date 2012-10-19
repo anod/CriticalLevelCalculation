@@ -1,7 +1,9 @@
 #ifndef CRITICAL_LEVEL_DETECTOR_H_
 #define CRITICAL_LEVEL_DETECTOR_H_
 
+#include "Include.h"
 #include "ProjectSpace.h"
+#include "InvolvedCellsSeeker.h"
 
 class CriticalLevelDetector
 {

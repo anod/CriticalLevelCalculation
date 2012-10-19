@@ -1,9 +1,7 @@
 #ifndef INVOLVED_CELLS_SEEKER_H_
 #define INVOLVED_CELLS_SEEKER_H_
 
-#include <vector>
-
-#include "Point.h"
+#include "Include.h"
 
 class InvolvedCellsSeeker
 {

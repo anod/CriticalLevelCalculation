@@ -1,10 +1,10 @@
 #ifndef PROJECT_SPACE_BUILDER_H_
 #define PROJECT_SPACE_BUILDER_H_
 
+#include "Include.h"
 #include "ProjectSpace.h"
 #include "IFlightDataReader.h"
 #include <unordered_map>
-#include <vector>
 
 class ProjectSpaceBuilder
 {

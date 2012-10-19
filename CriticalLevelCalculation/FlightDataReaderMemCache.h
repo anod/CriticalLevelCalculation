@@ -1,7 +1,7 @@
 #ifndef FLIGHT_DATA_READER_MEM_CACHE_H_
 #define FLIGHT_DATA_READER_MEM_CACHE_H_
 
-#include <vector>
+#include "Include.h"
 #include "IFlightDataReader.h"
 
 class FlightDataReaderMemCache : public IFlightDataReader

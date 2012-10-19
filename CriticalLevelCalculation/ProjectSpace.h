@@ -1,11 +1,7 @@
 #ifndef PROJECT_SPACE_H_
 #define PROJECT_SPACE_H_
 
-#include <vector>
-#include <sstream>
-
-#include "Point.h"
-#include "ControlPoint.h"
+#include "Include.h"
 
 class ProjectSpace
 {

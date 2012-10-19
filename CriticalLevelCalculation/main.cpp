@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <fstream>
-#include <iostream>
+#include <time.h>
 
-#include "OpenMP.h"
+#include "Include.h"
 #include "FlightDataReader.h"
 #include "ProjectSpaceBuilder.h"
-#include "Point.h"
 #include "CriticalLevelDetector.h"
-#include <time.h>
 #include "FlightDataReaderMemCache.h"
 
 #define SPACE_SIZE_A 500
@@ -24,21 +21,29 @@ void run()
 	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
 
 	while(builder.nextTime()) {
-		clock_t begin = clock();
+		//clock_t begin = clock();
 
 		ProjectSpace projectSpace = builder.build();
 
-		clock_t end = clock();
-		double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-		std::cout << projectSpace.getTime() << ": " << elapsed_secs << std::endl;
+		//clock_t end = clock();
+		//double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+		//std::cout << projectSpace.getTime() << ": " << elapsed_secs << std::endl;
 		//std::cout << projectSpace.dump().str() << std::endl;
 		std::cout.flush();
-		//CriticalLevelDetector detector(projectSpace);
-		//detector.detect();
+		CriticalLevelDetector detector(projectSpace);
+		detector.detect();
+		return;
 	}
 
 }
 
+void test() {
+	std::cout << "1. Running InvolvedCellsSeeker Test" << std::endl;
+	InvolvedCellsSeeker seeker(Point(10,10));
+	std::vector<Point> result = seeker.seek(Point(3,4), Point(6,7));
+
+
+}
 
 int main(int argc, char *argv[])
 {
@@ -55,7 +60,8 @@ int main(int argc, char *argv[])
 
 ///////////
 	try {
-		run();
+		//run();
+		test();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
 	}
