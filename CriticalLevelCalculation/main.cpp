@@ -37,6 +37,8 @@ void run()
 		ProjectSpace projectSpace = builder.build();
 		Profiler::getInstance().finish();
 
+		std::cout << "Processing space " << projectSpace.getTime() << std::endl;
+
 		CriticalLevelDetector detector(projectSpace);
 
 		Profiler::getInstance().start("Detect critical level");
@@ -49,8 +51,9 @@ void run()
 	}
 
 	int maxDegreeFlight = degree.getMaxCriticalLevelFlight();
-	std::cout << std::endl << "Max Critical Degree fro flight #" << maxDegreeFlight << " : " << std::endl;
+	std::cout << std::endl << "Max Critical Degree flight #" << maxDegreeFlight << std::endl;
 	FlightList critList = degree.getFlightList(maxDegreeFlight);
+	std::cout << "Objects that did not see it - " << critList.size() << " : " << std::endl;
 	FlightList::const_iterator it;
 	for( it = critList.begin(); it != critList.end(); it++) {
 		if (it != critList.begin()) {

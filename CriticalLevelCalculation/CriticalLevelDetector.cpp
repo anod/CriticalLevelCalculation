@@ -25,6 +25,7 @@ CriticalLevel CriticalLevelDetector::detect()
 			Cell b = (*it2).first;
 			std::vector<Cell> list = seeker.seek(a, b);
 			int result = checkCriticalSituation(list);
+
 			if (result) {
 				addCriticalLevel((*it1).second, (*it2).second, level);
 				addCriticalLevel((*it2).second, (*it1).second, level);
