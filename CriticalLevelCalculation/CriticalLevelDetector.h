@@ -11,10 +11,11 @@ public:
 	CriticalLevelDetector(const ProjectSpace& projectSpace);
 	~CriticalLevelDetector(void);
 
-	void detect();
+	CriticalLevel detect();
 private:
 	ProjectSpace mProjectSpace;
-	std::vector<ControlPoint> checkCriticalSituation(Cell check);
+	bool checkCriticalSituation(std::vector<Cell> list);
+	void addCriticalLevel(FlightList source, FlightList invisible, CriticalLevel& level);
 };
 
 #endif //CRITICAL_LEVEL_DETECTOR_H_

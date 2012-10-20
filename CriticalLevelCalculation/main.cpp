@@ -16,6 +16,7 @@
 
 void run() 
 {
+	CriticalLevel level;
 	Profiler::getInstance().setEnabled(true);
 
 	std::ifstream fileStream;
@@ -37,7 +38,7 @@ void run()
 		CriticalLevelDetector detector(projectSpace);
 
 		Profiler::getInstance().start("Detect critical level");
-		detector.detect();
+		level = detector.detect();
 		Profiler::getInstance().finish();
 		break;
 	}

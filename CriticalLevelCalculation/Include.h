@@ -16,6 +16,7 @@
 
 typedef std::vector<int> FlightList;
 typedef std::unordered_map<Cell, FlightList> ControlPointsMap;
+typedef std::unordered_map<int, FlightList> CriticalLevel;
 
 #include "ControlPoint.h"
 
