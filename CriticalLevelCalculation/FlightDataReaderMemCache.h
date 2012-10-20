@@ -22,6 +22,7 @@ public:
 	// Get last read time
 	int getCurrentTime() const;
 
+	void preloadCache();
 private:
 	static const size_t INIT_INDEX = -4;
 
@@ -29,6 +30,7 @@ private:
 	bool mDataCached;
 	std::vector<int> mMemoryCache;
 	size_t mMemoryCacheIndex;
+
 };
 
 #endif //FLIGHT_DATA_READER_MEM_CACHE_H_

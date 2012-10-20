@@ -16,24 +16,25 @@ FlightDataReaderMemCache::~FlightDataReaderMemCache( void )
 bool FlightDataReaderMemCache::readNextControlPoint()
 {
 	mMemoryCacheIndex+=4;
-	if (mDataCached) {
-		if (mMemoryCacheIndex < mMemoryCache.size()) {
-			return true;
-		} else {
-			return false;
-		}
+	if (!mDataCached) {
+		preloadCache();
 	}
-	bool result = mReader->readNextControlPoint();
-	if (result != false) {
+	if (mMemoryCacheIndex < mMemoryCache.size()) {
+		return true;
+	}
+	return false;
+}
+
+void FlightDataReaderMemCache::preloadCache() {
+	open();
+	while(mReader->readNextControlPoint()) {
 		mMemoryCache.push_back(mReader->getCurrentFlightNumber());
 		Point p = mReader->getCurrentControlPoint();
 		mMemoryCache.push_back(p.x);
 		mMemoryCache.push_back(p.y);
 		mMemoryCache.push_back(mReader->getCurrentTime());
-	} else {
-		mDataCached = true;
 	}
-	return result;
+	mDataCached = true;
 }
 
 void FlightDataReaderMemCache::rewind()
@@ -47,7 +48,9 @@ void FlightDataReaderMemCache::rewind()
 
 void FlightDataReaderMemCache::open()
 {
-	mReader->open();
+	if (!mDataCached) {
+		mReader->open();
+	}
 }
 
 int FlightDataReaderMemCache::getCurrentTime() const

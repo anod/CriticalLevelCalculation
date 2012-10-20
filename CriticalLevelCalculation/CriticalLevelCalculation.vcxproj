@@ -66,6 +66,7 @@
     <ClCompile Include="FlightDataReaderMemCache.cpp" />
     <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Profiler.cpp" />
     <ClCompile Include="ProjectSpace.cpp" />
     <ClCompile Include="ProjectSpaceBuilder.cpp" />
     <ClCompile Include="TestRunner.cpp" />
@@ -80,6 +81,7 @@
     <ClInclude Include="InvolvedCellsSeeker.h" />
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Profiler.h" />
     <ClInclude Include="ProjectSpace.h" />
     <ClInclude Include="ProjectSpaceBuilder.h" />
     <ClInclude Include="RuntimeException.h" />

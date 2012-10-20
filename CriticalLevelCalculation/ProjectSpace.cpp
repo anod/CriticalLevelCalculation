@@ -15,6 +15,11 @@ void ProjectSpace::addControlPoint( int flight, Point point )
 	mControlPoints.push_back(p);
 }
 
+void ProjectSpace::sortControlPoints()
+{
+	std::sort(mControlPoints.begin(),mControlPoints.end());
+}
+
 std::stringstream ProjectSpace::dump()
 {
 	std::stringstream ss;
@@ -34,3 +39,5 @@ std::stringstream ProjectSpace::dump()
 	ss << "\n";
 	return ss;
 }
+
+

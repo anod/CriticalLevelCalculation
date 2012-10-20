@@ -20,13 +20,27 @@ void CriticalLevelDetector::detect()
 	for (size_t i = 0; i < cp.size() - 1; i++) {
 		for(size_t j = i+1; j < cp.size(); j++) {
 			std::vector<Point> result = seeker.seek(cp.at(i).coord, cp.at(j).coord);
-			std::cout << "[" << cp.at(i).coord.x << "," << cp.at(i).coord.y << "] --> ";
+/*			std::cout << "[" << cp.at(i).coord.x << "," << cp.at(i).coord.y << "] --> ";
 			for( it = result.begin(); it != result.end(); it++) {
 				std::cout << " [" << (*it).x << "," << (*it).y << "] ";
 			}
 			std::cout << " --> [" << cp.at(j).coord.x << "," << cp.at(j).coord.y << "]\n";
 			std::cout.flush();
 			return;
+			*/
+
 		}
 	}
+}
+
+std::vector<ControlPoint> CriticalLevelDetector::checkCriticalSituation(Point check) {
+	std::vector<ControlPoint> result;
+
+	std::vector<ControlPoint> const cp = mProjectSpace.getControlPoints();
+	std::vector<ControlPoint>::const_iterator it;
+
+	for( it = cp.begin(); it != cp.end(); it++) {
+		
+	}
+	return result;
 }

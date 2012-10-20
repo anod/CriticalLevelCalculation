@@ -16,6 +16,7 @@ public:
 	std::vector<ControlPoint> const getControlPoints() { return mControlPoints; };
 
 	std::stringstream dump();
+	void sortControlPoints();
 private:
 	Point mSpaceSize;
 	Point mCellSize;

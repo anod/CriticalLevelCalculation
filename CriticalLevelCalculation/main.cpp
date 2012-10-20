@@ -16,25 +16,37 @@
 
 void run() 
 {
+	Profiler::getInstance().setEnabled(true);
+
 	std::ifstream fileStream;
 	FlightDataReader reader(&fileStream, "data.txt");
 	FlightDataReaderMemCache readerCached(&reader);
+
+	Profiler::getInstance().start("Read file");
+	readerCached.preloadCache();
+	Profiler::getInstance().finish();
+
 	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
 
+
 	while(builder.nextTime()) {
-		//clock_t begin = clock();
-
+		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
+		Profiler::getInstance().finish();
 
-		//clock_t end = clock();
-		//double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-		//std::cout << projectSpace.getTime() << ": " << elapsed_secs << std::endl;
-		//std::cout << projectSpace.dump().str() << std::endl;
-		std::cout.flush();
+		Profiler::getInstance().start("Sort control points");
+		projectSpace.sortControlPoints();
+		Profiler::getInstance().finish();
+
 		CriticalLevelDetector detector(projectSpace);
+
+		Profiler::getInstance().start("Detect critical level");
 		detector.detect();
-		return;
+		Profiler::getInstance().finish();
+		break;
 	}
+
+	std::cout << Profiler::getInstance().dump().str();
 
 }
 
@@ -58,8 +70,8 @@ int main(int argc, char *argv[])
 
 ///////////
 	try {
-		//run();
-		tests();
+		run();
+		//tests();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
 	}
