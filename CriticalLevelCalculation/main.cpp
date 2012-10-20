@@ -7,6 +7,8 @@
 #include "ProjectSpaceBuilder.h"
 #include "CriticalLevelDetector.h"
 #include "FlightDataReaderMemCache.h"
+#include "CriticalDegree.h"
+
 #include "TestRunner.h"
 
 #define SPACE_SIZE_A 500
@@ -28,7 +30,7 @@ void run()
 	Profiler::getInstance().finish();
 
 	ProjectSpaceBuilder builder(Cell(SPACE_SIZE_A,SPACE_SIZE_B),Cell(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
-
+	CriticalDegree degree;
 
 	while(builder.nextTime()) {
 		Profiler::getInstance().start("Build project space");
@@ -40,8 +42,23 @@ void run()
 		Profiler::getInstance().start("Detect critical level");
 		level = detector.detect();
 		Profiler::getInstance().finish();
-		break;
+
+		Profiler::getInstance().start("Add level to degree");
+		degree.addCriticalLevel(level);
+		Profiler::getInstance().finish();
 	}
+
+	int maxDegreeFlight = degree.getMaxCriticalLevelFlight();
+	std::cout << std::endl << "Max Critical Degree fro flight #" << maxDegreeFlight << " : " << std::endl;
+	FlightList critList = degree.getFlightList(maxDegreeFlight);
+	FlightList::const_iterator it;
+	for( it = critList.begin(); it != critList.end(); it++) {
+		if (it != critList.begin()) {
+			std::cout << ", ";
+		}
+		std::cout << (*it);
+	}
+	std::cout << std::endl;
 
 	std::cout << Profiler::getInstance().dump().str();
 
