@@ -6,22 +6,22 @@
 class ProjectSpace
 {
 public:
-	ProjectSpace(const Point &spaceSize,const Point &cellSize);
+	ProjectSpace(const Cell &spaceSize,const Cell &cellSize);
 	~ProjectSpace(void);
-	Point getSpaceSize() const { return mSpaceSize; };
-	Point getCellSize() const { return mCellSize; };
+	Cell getSpaceSize() const { return mSpaceSize; };
+	Cell getCellSize() const { return mCellSize; };
 	long getTime() const { return mTime; }
 	void setTime(long val) { mTime = val; }
-	void addControlPoint(int flight, Point point);
-	std::vector<ControlPoint> const getControlPoints() { return mControlPoints; };
+	void addControlPoint(int flight, Cell point);
+	ControlPointsMap const getControlPoints() { return mControlPoints; };
 
 	std::stringstream dump();
 	void sortControlPoints();
 private:
-	Point mSpaceSize;
-	Point mCellSize;
+	Cell mSpaceSize;
+	Cell mCellSize;
 	long mTime;
-	std::vector<ControlPoint> mControlPoints;
+	ControlPointsMap mControlPoints;
 };
 
 #endif // PROJECT_SPACE_H_

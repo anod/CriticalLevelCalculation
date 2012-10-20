@@ -2,7 +2,7 @@
 #define CONTROL_POINT_H_
 
 struct ControlPoint {
-	Point coord;
+	Cell coord;
 	int flight;
 	inline bool operator< (const ControlPoint& other){ 
 		return coord < other.coord;

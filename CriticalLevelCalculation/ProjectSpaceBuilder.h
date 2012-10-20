@@ -4,12 +4,11 @@
 #include "Include.h"
 #include "ProjectSpace.h"
 #include "IFlightDataReader.h"
-#include <unordered_map>
 
 class ProjectSpaceBuilder
 {
 public:
-	ProjectSpaceBuilder(const Point &spaceSize,const Point &cellSize, IFlightDataReader* reader);
+	ProjectSpaceBuilder(const Cell &spaceSize,const Cell &cellSize, IFlightDataReader* reader);
 	~ProjectSpaceBuilder(void);
 
 	ProjectSpace build();
@@ -17,8 +16,8 @@ public:
 private:
 	static const int WRONG_TIME_INDEX = -1;
 
-	Point mSpaceSize;
-	Point mCellSize;
+	Cell mSpaceSize;
+	Cell mCellSize;
 
 	std::size_t mCurrentTimeIndex;
 	std::unordered_map<int,bool> mTimesMap;

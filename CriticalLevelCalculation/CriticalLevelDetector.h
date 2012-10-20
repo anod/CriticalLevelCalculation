@@ -14,7 +14,7 @@ public:
 	void detect();
 private:
 	ProjectSpace mProjectSpace;
-	std::vector<ControlPoint> checkCriticalSituation(Point check);
+	std::vector<ControlPoint> checkCriticalSituation(Cell check);
 };
 
 #endif //CRITICAL_LEVEL_DETECTOR_H_

@@ -13,6 +13,7 @@ public:
 	void run();
 private:
 	void testInvolvedCellsSeeker();
+	void testCellHash();
 	template <class T> int assertVectorsSame(std::vector<T> actual, std::vector<T> expected);
 };
 

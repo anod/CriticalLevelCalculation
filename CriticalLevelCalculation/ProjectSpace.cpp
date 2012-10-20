@@ -1,6 +1,6 @@
 #include "ProjectSpace.h"
 
-ProjectSpace::ProjectSpace(const Point &spaceSize,const Point &cellSize)
+ProjectSpace::ProjectSpace(const Cell &spaceSize,const Cell &cellSize)
 	: mSpaceSize(spaceSize), mCellSize(cellSize), mTime(0)
 {
 }
@@ -9,31 +9,31 @@ ProjectSpace::~ProjectSpace(void)
 {
 }
 
-void ProjectSpace::addControlPoint( int flight, Point point )
+void ProjectSpace::addControlPoint( int flight, Cell point )
 {
-	ControlPoint p = { /*.coord=*/ point, /*.flight=*/ flight };
-	mControlPoints.push_back(p);
-}
-
-void ProjectSpace::sortControlPoints()
-{
-	std::sort(mControlPoints.begin(),mControlPoints.end());
+	mControlPoints[point].push_back(flight);
 }
 
 std::stringstream ProjectSpace::dump()
 {
+	FlightList::iterator it1;
 	std::stringstream ss;
 	ss << "Time: " << mTime << "\n";
 	ss << "Control Points: ";
 	
-	std::vector<ControlPoint>::iterator it;
+	std::unordered_map<Cell, std::vector<int>>::iterator it;
 	bool first = true;
-	for ( it=mControlPoints.begin() ; it < mControlPoints.end(); it++ ) {
-		ControlPoint p = *it;
+	for ( it=mControlPoints.begin() ; it != mControlPoints.end(); it++ ) {
+		Cell p = (*it).first;
+		FlightList flights((*it).second);
 		if (!first) {
 			ss << ", ";
 		}
-		ss << "[" << p.flight << " (" << p.coord.x << "," << p.coord.y << ")]";
+		ss << "[";
+		for (it1 = flights.begin(); it1 != flights.end(); it1++) {
+			ss << (*it1) << " ";
+		}
+		ss << "(" << p.x << "," << p.y << ")]";
 		first = false;
 	}
 	ss << "\n";

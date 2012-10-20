@@ -26,16 +26,12 @@ void run()
 	readerCached.preloadCache();
 	Profiler::getInstance().finish();
 
-	ProjectSpaceBuilder builder(Point(SPACE_SIZE_A,SPACE_SIZE_B),Point(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
+	ProjectSpaceBuilder builder(Cell(SPACE_SIZE_A,SPACE_SIZE_B),Cell(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
 
 
 	while(builder.nextTime()) {
 		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
-		Profiler::getInstance().finish();
-
-		Profiler::getInstance().start("Sort control points");
-		projectSpace.sortControlPoints();
 		Profiler::getInstance().finish();
 
 		CriticalLevelDetector detector(projectSpace);

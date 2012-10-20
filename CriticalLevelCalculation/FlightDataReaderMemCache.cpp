@@ -29,7 +29,7 @@ void FlightDataReaderMemCache::preloadCache() {
 	open();
 	while(mReader->readNextControlPoint()) {
 		mMemoryCache.push_back(mReader->getCurrentFlightNumber());
-		Point p = mReader->getCurrentControlPoint();
+		Cell p = mReader->getCurrentControlPoint();
 		mMemoryCache.push_back(p.x);
 		mMemoryCache.push_back(p.y);
 		mMemoryCache.push_back(mReader->getCurrentTime());
@@ -58,9 +58,9 @@ int FlightDataReaderMemCache::getCurrentTime() const
 	return mMemoryCache.at(mMemoryCacheIndex+3);
 }
 
-Point FlightDataReaderMemCache::getCurrentControlPoint() const
+Cell FlightDataReaderMemCache::getCurrentControlPoint() const
 {
-	return Point(mMemoryCache.at(mMemoryCacheIndex+1),mMemoryCache.at(mMemoryCacheIndex+2));
+	return Cell(mMemoryCache.at(mMemoryCacheIndex+1),mMemoryCache.at(mMemoryCacheIndex+2));
 }
 
 int FlightDataReaderMemCache::getCurrentFlightNumber() const

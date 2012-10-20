@@ -15,7 +15,7 @@ public:
 	// Get last read flight number
 	virtual int getCurrentFlightNumber() const = 0;
 	// Get last read control point coordinates
-	virtual Point getCurrentControlPoint() const = 0;
+	virtual Cell getCurrentControlPoint() const = 0;
 	// Get last read time
 	virtual int getCurrentTime() const = 0;
 	virtual ~IFlightDataReader() {}

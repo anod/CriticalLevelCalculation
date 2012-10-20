@@ -18,7 +18,7 @@ public:
 	// Get last read flight number
 	int getCurrentFlightNumber() const;
 	// Get last read control point coordinates
-	Point getCurrentControlPoint() const;
+	Cell getCurrentControlPoint() const;
 	// Get last read time
 	int getCurrentTime() const;
 

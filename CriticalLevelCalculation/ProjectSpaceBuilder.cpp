@@ -1,7 +1,7 @@
 #include "ProjectSpaceBuilder.h"
 
 
-ProjectSpaceBuilder::ProjectSpaceBuilder(const Point &spaceSize,const Point &cellSize, IFlightDataReader* reader)
+ProjectSpaceBuilder::ProjectSpaceBuilder(const Cell &spaceSize,const Cell &cellSize, IFlightDataReader* reader)
 	: mSpaceSize(spaceSize), mCellSize(cellSize), mCurrentTimeIndex(WRONG_TIME_INDEX), mFlightDataReader(reader)
 {
 
@@ -53,7 +53,7 @@ ProjectSpace ProjectSpaceBuilder::build()
 			mCurrentTimeIndex = 0;
 		}
 		if (time == currentTime) {
-			Point p = mFlightDataReader->getCurrentControlPoint();
+			Cell p = mFlightDataReader->getCurrentControlPoint();
 			int flight = mFlightDataReader->getCurrentFlightNumber();
 			space.addControlPoint(flight, p);
 		}

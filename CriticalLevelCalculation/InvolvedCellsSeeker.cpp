@@ -1,9 +1,9 @@
 #include "InvolvedCellsSeeker.h"
 
-InvolvedCellsSeeker::InvolvedCellsSeeker( Point cellSize )
+InvolvedCellsSeeker::InvolvedCellsSeeker( Cell cellSize )
 	: mCellSize(cellSize)
 {
-	mHalfCellSize = Point( (int)(cellSize.x / 2), (int)(cellSize.y / 2) );
+	mHalfCellSize = Cell( (int)(cellSize.x / 2), (int)(cellSize.y / 2) );
 }
 
 
@@ -11,10 +11,10 @@ InvolvedCellsSeeker::~InvolvedCellsSeeker(void)
 {
 }
 
-std::vector<Point> InvolvedCellsSeeker::seek( Point a, Point b )
+std::vector<Cell> InvolvedCellsSeeker::seek( Cell a, Cell b )
 {
 	int x1,y1,x2,y2 = 0;
-	std::vector<Point> result;
+	std::vector<Cell> result;
 
 	if (a == b) {
 		return result;
@@ -33,7 +33,7 @@ int InvolvedCellsSeeker::coordToCell(int coord, int size) {
 	return (int)ceil(((double)coord / (double)size));
 }
 
-void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Point>& result) {
+void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& result) {
 	int newCellX,newCellY = 0;
 
 	bool steep = abs(y2 - y1) > abs(x2 - x1);
@@ -46,11 +46,11 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Point>& 
 		std::swap(y1, y2);
 	}
 	if (steep) {
-		mLastCell = Point(coordToCell(y1,mCellSize.x),  coordToCell(x1,mCellSize.y));
-		mStopCell = Point(coordToCell(y2,mCellSize.x),  coordToCell(x2,mCellSize.y)); 
+		mLastCell = Cell(coordToCell(y1,mCellSize.x),  coordToCell(x1,mCellSize.y));
+		mStopCell = Cell(coordToCell(y2,mCellSize.x),  coordToCell(x2,mCellSize.y)); 
 	} else {
-		mLastCell = Point(coordToCell(x1,mCellSize.x),  coordToCell(y1,mCellSize.y));
-		mStopCell = Point(coordToCell(x2,mCellSize.x),  coordToCell(y2,mCellSize.y)); 
+		mLastCell = Cell(coordToCell(x1,mCellSize.x),  coordToCell(y1,mCellSize.y));
+		mStopCell = Cell(coordToCell(x2,mCellSize.x),  coordToCell(y2,mCellSize.y)); 
 	}
 
 	int deltax = x2 - x1;
@@ -80,9 +80,9 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Point>& 
 	}
 }
 
-void InvolvedCellsSeeker::addResult(int cellX, int cellY, std::vector<Point>& result) {
+void InvolvedCellsSeeker::addResult(int cellX, int cellY, std::vector<Cell>& result) {
 	if (mLastCell.x == -1 || cellX != mLastCell.x || cellY != mLastCell.y) {
-		Point p = Point(cellX, cellY);
+		Cell p = Cell(cellX, cellY);
 		mLastCell = p;
 		result.push_back(p);
 	}

@@ -36,7 +36,7 @@ bool FlightDataReader::readNextControlPoint()
 	int x,y = 0;
 	*mInputStream >> x;
 	*mInputStream >> y;
-	mCurrentControlPoint = Point(x,y);
+	mCurrentControlPoint = Cell(x,y);
 	mCurrentTime = timeStringToSeconds();
 	mNumberOfControlPoints--;
 	return true;

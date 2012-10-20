@@ -6,17 +6,17 @@
 class InvolvedCellsSeeker
 {
 public:
-	InvolvedCellsSeeker(Point cellSize);
+	InvolvedCellsSeeker(Cell cellSize);
 	~InvolvedCellsSeeker(void);
-	std::vector<Point> seek(Point a, Point b);
+	std::vector<Cell> seek(Cell a, Cell b);
 private:
-	Point mCellSize;
-	Point mHalfCellSize;
-	Point mLastCell;
-	Point mStopCell;
-	void addResult(int major, int minor, std::vector<Point>& result);
+	Cell mCellSize;
+	Cell mHalfCellSize;
+	Cell mLastCell;
+	Cell mStopCell;
+	void addResult(int major, int minor, std::vector<Cell>& result);
 	int coordToCell(int coord, int size);
-	void line(int x1,int y1,int x2,int y2, std::vector<Point>& result);
+	void line(int x1,int y1,int x2,int y2, std::vector<Cell>& result);
 };
 
 #endif //INVOLVED_CELLS_SEEKER_H_
