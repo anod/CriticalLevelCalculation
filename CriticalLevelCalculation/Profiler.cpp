@@ -47,8 +47,11 @@ std::stringstream Profiler::dump()
 	}
 	ss << std::endl << "Profiler Output: " << std::endl;
 	ss << "---------------" << std::endl;
+	double totalTime = 0;
 	for( size_t i = 0; i < mNames.size(); i++) {
 		ss << mNames.at(i) << ": " << mTimes.at(i) << " sec" << std::endl;
+		totalTime += mTimes.at(i);
 	}
+	ss << "Total time: " << totalTime << " sec" << std::endl;
 	return ss;
 }
