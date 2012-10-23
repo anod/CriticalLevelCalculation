@@ -12,6 +12,9 @@ ProjectSpace::~ProjectSpace(void)
 void ProjectSpace::addControlPoint( int flight, Cell point )
 {
 	mControlPoints[point].push_back(flight);
+	if (mControlPoints[point].size() == 1) {
+		mPointsArray.push_back(point);
+	}
 }
 
 std::stringstream ProjectSpace::dump()

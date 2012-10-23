@@ -12,28 +12,52 @@ CriticalLevelDetector::~CriticalLevelDetector(void)
 
 CriticalLevel CriticalLevelDetector::detect()
 {
+	CriticalLevel level;
+	Cell cellSize;
+	ControlPointsMap cpoints;
+	std::vector<Cell> pointsArray;
 	InvolvedCellsSeeker seeker(mProjectSpace.getCellSize());
 
-	ControlPointsMap::const_iterator it1,it2;
-	ControlPointsMap cpoints = mProjectSpace.getControlPoints();
+	cpoints = mProjectSpace.getControlPoints();
 
-	CriticalLevel level;
+Profiler::getInstance().start("Detect critical level - parallel");
+#pragma omp parallel
+{
+	pointsArray = mProjectSpace.getPointsArray();
+	compareCells(cpoints, pointsArray, seeker, level);
+}
+Profiler::getInstance().finish();
 
-	for( it1 = cpoints.begin(); it1 != cpoints.end(); it1++) {
-		for(it2 = it1, it2++; it2 != cpoints.end(); it2++) {
-			Cell a = (*it1).first;
-			Cell b = (*it2).first;
-			std::vector<Cell> list = seeker.seek(a, b);
+Profiler::getInstance().start("Detect critical level - serial");
+	pointsArray = mProjectSpace.getPointsArray();
+	compareCells(cpoints, pointsArray, seeker, level);
+Profiler::getInstance().finish();
+	return level;
+}
+
+void CriticalLevelDetector::compareCells(ControlPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level)
+{
+	Cell a,b;
+	std::vector<Cell> list;
+
+	int total = pointsArray.size();
+
+	#pragma omp for
+	for(int i=0; i<total; i++) {
+		a = pointsArray[i];
+		for(int j=i+1; j<total; j++) {
+			b =  pointsArray[j];
+			list = seeker.seek(a, b);
 			int result = checkCriticalSituation(list);
 
 			if (result) {
-				addCriticalLevel((*it1).second, (*it2).second, level);
-				addCriticalLevel((*it2).second, (*it1).second, level);
+				addCriticalLevel(cpoints[a], cpoints[b], level);
+				addCriticalLevel(cpoints[b], cpoints[a], level);
 			}
 		}
 	}
-	return level;
 }
+
 
 void CriticalLevelDetector::addCriticalLevel(FlightList source, FlightList invisible, CriticalLevel& level) {
 	FlightList::const_iterator it1,it2;
@@ -41,6 +65,7 @@ void CriticalLevelDetector::addCriticalLevel(FlightList source, FlightList invis
 		int flight = (*it1);
 		for( it2 = invisible.begin(); it2 != invisible.end(); it2++) {
 			int invFlight = (*it2);
+			#pragma omp critical
 			level[flight].push_back(invFlight);
 		}
 	}

@@ -23,6 +23,9 @@ public:
 	// Get last read time
 	int getCurrentTime() const { return mCurrentTime; }
 private:
+	static const int BUFFER_SIZE = 16184;
+	char mBuffer[BUFFER_SIZE];
+
 	int mNumberOfControlPoints;
 	int mCurrentFlightNumber;
 	Cell mCurrentControlPoint;

@@ -17,6 +17,7 @@ void FlightDataReader::open()
 	if (!mInputStream->is_open()) {
 		throw RuntimeException("Cannot open file: " + mFileName);
 	}
+//	mInputStream->rdbuf()->pubsetbuf(mBuffer, BUFFER_SIZE);
 }
 
 bool FlightDataReader::readNextControlPoint()

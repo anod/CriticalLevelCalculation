@@ -25,6 +25,7 @@ void run()
 	FlightDataReader reader(&fileStream, "data.txt");
 	FlightDataReaderMemCache readerCached(&reader);
 
+	std::cout << "Preload data..." << std::endl;
 	Profiler::getInstance().start("Read file");
 	readerCached.preloadCache();
 	Profiler::getInstance().finish();
@@ -32,6 +33,7 @@ void run()
 	ProjectSpaceBuilder builder(Cell(SPACE_SIZE_A,SPACE_SIZE_B),Cell(SPACE_SIZE_m,SPACE_SIZE_n), &readerCached);
 	CriticalDegree degree;
 
+	std::cout << "Processing..." << std::endl;
 	while(builder.nextTime()) {
 		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
@@ -41,13 +43,13 @@ void run()
 
 		CriticalLevelDetector detector(projectSpace);
 
-		Profiler::getInstance().start("Detect critical level");
 		level = detector.detect();
-		Profiler::getInstance().finish();
 
 		Profiler::getInstance().start("Add level to degree");
 		degree.addCriticalLevel(level);
 		Profiler::getInstance().finish();
+
+		break;
 	}
 
 	int maxDegreeFlight = degree.getMaxCriticalLevelFlight();
@@ -75,18 +77,8 @@ void tests() {
 int main(int argc, char *argv[])
 {
 
-   int TID = omp_get_thread_num();
-   printf("Thread ID of the master thread is %d\n",TID);
 
-#pragma omp parallel
-{
-   int TID = omp_get_thread_num();
-
-   printf("In parallel region - Thread ID is %d\n",TID);
-}
-
-///////////
-	try {
+   try {
 		run();
 		//tests();
 	} catch(std::exception& caught){

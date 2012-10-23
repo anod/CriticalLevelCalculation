@@ -14,6 +14,7 @@ public:
 	void setTime(long val) { mTime = val; }
 	void addControlPoint(int flight, Cell point);
 	ControlPointsMap const getControlPoints() { return mControlPoints; };
+	std::vector<Cell> const getPointsArray() { return mPointsArray; };
 
 	std::stringstream dump();
 	void sortControlPoints();
@@ -22,6 +23,7 @@ private:
 	Cell mCellSize;
 	long mTime;
 	ControlPointsMap mControlPoints;
+	std::vector<Cell> mPointsArray;
 };
 
 #endif // PROJECT_SPACE_H_
