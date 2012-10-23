@@ -10,13 +10,15 @@
 #include "CriticalDegree.h"
 
 #include "TestRunner.h"
+#include "MPIManager.h"
+
 
 #define SPACE_SIZE_A 500
 #define SPACE_SIZE_B 500
 #define SPACE_SIZE_m 10
 #define SPACE_SIZE_n 10
 
-void run() 
+void run(MPIManager& mpimanager) 
 {
 	CriticalLevel level;
 	Profiler::getInstance().setEnabled(true);
@@ -76,10 +78,11 @@ void tests() {
 
 int main(int argc, char *argv[])
 {
-
+	MPIManager mpimanager;
+//	mpimanager.init(argc,argv);
 
    try {
-		run();
+		run(mpimanager);
 		//tests();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
