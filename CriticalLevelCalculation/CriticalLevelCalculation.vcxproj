@@ -71,7 +71,10 @@
     <ClCompile Include="FlightDataReaderMemCache.cpp" />
     <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MPIWorker.cpp" />
+    <ClCompile Include="MPIWorkerMaster.cpp" />
     <ClCompile Include="MPIManager.cpp" />
+    <ClCompile Include="MPIWorkerSlave.cpp" />
     <ClCompile Include="Profiler.cpp" />
     <ClCompile Include="ProjectSpace.cpp" />
     <ClCompile Include="ProjectSpaceBuilder.cpp" />
@@ -84,9 +87,12 @@
     <ClInclude Include="FlightDataReader.h" />
     <ClInclude Include="FlightDataReaderMemCache.h" />
     <ClInclude Include="IFlightDataReader.h" />
+    <ClInclude Include="MPIWorker.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="InvolvedCellsSeeker.h" />
+    <ClInclude Include="MPIWorkerMaster.h" />
     <ClInclude Include="MPIManager.h" />
+    <ClInclude Include="MPIWorkerSlave.h" />
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Profiler.h" />

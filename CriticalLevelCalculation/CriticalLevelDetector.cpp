@@ -15,7 +15,7 @@ CriticalLevel CriticalLevelDetector::detect()
 	CriticalLevel level;
 	Cell cellSize;
 	ControlPointsMap cpoints;
-	std::vector<Cell> pointsArray;
+	std::vector<Cell> pointsArray = mProjectSpace.getPointsArray();
 	InvolvedCellsSeeker seeker(mProjectSpace.getCellSize());
 
 	cpoints = mProjectSpace.getControlPoints();
@@ -23,13 +23,11 @@ CriticalLevel CriticalLevelDetector::detect()
 Profiler::getInstance().start("Detect critical level - parallel");
 #pragma omp parallel
 {
-	pointsArray = mProjectSpace.getPointsArray();
 	compareCells(cpoints, pointsArray, seeker, level);
 }
 Profiler::getInstance().finish();
 
 Profiler::getInstance().start("Detect critical level - serial");
-	pointsArray = mProjectSpace.getPointsArray();
 	compareCells(cpoints, pointsArray, seeker, level);
 Profiler::getInstance().finish();
 	return level;

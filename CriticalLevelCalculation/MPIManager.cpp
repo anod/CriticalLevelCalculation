@@ -2,6 +2,7 @@
 
 
 MPIManager::MPIManager(void)
+	: mCommRank(MASTER_RANK), mCommSize(1)
 {
 }
 
@@ -12,14 +13,27 @@ MPIManager::~MPIManager(void)
 
 void MPIManager::init(int argc,char *argv[])
 {
-	int  namelen, numtasks, myrank;
-	char processor_name[MPI_MAX_PROCESSOR_NAME];
 	MPI_Init(&argc,&argv);
 
-	MPI_Comm_rank(MPI_COMM_WORLD,&myrank);
+	MPI_Comm_rank(MPI_COMM_WORLD,&mCommRank);
 
-	MPI_Comm_size(MPI_COMM_WORLD,&numtasks);	
+	MPI_Comm_size(MPI_COMM_WORLD,&mCommSize);	
 
-	MPI_Get_processor_name(processor_name,&namelen);
+	int namelen;
+	MPI_Get_processor_name(mProcessorName,&namelen);
 
+}
+
+void MPIManager::finalize()
+{
+	MPI_Finalize();
+}
+
+MPIWorker* MPIManager::createWorker(const Cell &spaceSize,const Cell &cellSize)
+{
+	if (mCommRank == MASTER_RANK) {
+		return new MPIWorkerMaster(spaceSize,cellSize);
+	} else {
+		return new MPIWorkerSlave(spaceSize,cellSize);
+	}
 }

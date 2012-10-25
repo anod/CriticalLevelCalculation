@@ -10,6 +10,9 @@
 #include <math.h>
 #include <unordered_map>
 #include <iterator>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Cell.h"
 #include "OpenMP.h"
