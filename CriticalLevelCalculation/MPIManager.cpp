@@ -32,8 +32,8 @@ void MPIManager::finalize()
 MPIWorker* MPIManager::createWorker(const Cell &spaceSize,const Cell &cellSize)
 {
 	if (mCommRank == MASTER_RANK) {
-		return new MPIWorkerMaster(spaceSize,cellSize);
+		return new MPIWorkerMaster(this,spaceSize,cellSize);
 	} else {
-		return new MPIWorkerSlave(spaceSize,cellSize);
+		return new MPIWorkerSlave(this,spaceSize,cellSize);
 	}
 }

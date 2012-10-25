@@ -1,7 +1,7 @@
 #include "MPIWorker.h"
 
-MPIWorker::MPIWorker( const Cell &spaceSize,const Cell &cellSize )
-	: mSpaceSize(spaceSize) , mCellSize(cellSize)
+MPIWorker::MPIWorker(MPIManager* mpi, const Cell &spaceSize,const Cell &cellSize )
+	: mMpi(mpi), mSpaceSize(spaceSize) , mCellSize(cellSize)
 {
 
 }

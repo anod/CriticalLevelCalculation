@@ -15,6 +15,8 @@ public:
 	void init(int argc,char *argv[]);
 	MPIWorker* createWorker(const Cell &spaceSize,const Cell &cellSize);
 	void finalize();
+	int getCommSize() const { return mCommSize; }
+	int getCommRank() const { return mCommRank; }
 private:
 	static const int MASTER_RANK = 0;
 

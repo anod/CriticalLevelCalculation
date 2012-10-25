@@ -14,7 +14,7 @@
 class MPIWorkerMaster : public MPIWorker
 {
 public:
-	MPIWorkerMaster(const Cell &spaceSize,const Cell &cellSize);
+	MPIWorkerMaster(MPIManager* mpi,const Cell &spaceSize,const Cell &cellSize);
 	~MPIWorkerMaster(void);
 
 	void run();

@@ -1,8 +1,8 @@
 #include "MPIWorkerMaster.h"
 
 
-MPIWorkerMaster::MPIWorkerMaster(const Cell &spaceSize,const Cell &cellSize)
-	: MPIWorker(spaceSize,cellSize)
+MPIWorkerMaster::MPIWorkerMaster(MPIManager* mpi, const Cell &spaceSize,const Cell &cellSize)
+	: MPIWorker(mpi,spaceSize,cellSize)
 {
 }
 

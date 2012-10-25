@@ -1,8 +1,7 @@
 #include "MPIWorkerSlave.h"
 
-
-MPIWorkerSlave::MPIWorkerSlave(const Cell &spaceSize,const Cell &cellSize)
-	: MPIWorker(spaceSize,cellSize)
+MPIWorkerSlave::MPIWorkerSlave(MPIManager* mpi,const Cell &spaceSize,const Cell &cellSize)
+	: MPIWorker(mpi,spaceSize,cellSize)
 {
 }
 
