@@ -29,11 +29,9 @@ void MPIManager::finalize()
 	MPI_Finalize();
 }
 
-MPIWorker* MPIManager::createWorker(const Cell &spaceSize,const Cell &cellSize)
+void MPIManager::sendIntArray( int dest, std::vector<int> arr )
 {
-	if (mCommRank == MASTER_RANK) {
-		return new MPIWorkerMaster(this,spaceSize,cellSize);
-	} else {
-		return new MPIWorkerSlave(this,spaceSize,cellSize);
-	}
+	int size = arr.size();
+	int* a = &arr[0];
+	// TODO
 }

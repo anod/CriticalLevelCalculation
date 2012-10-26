@@ -2,8 +2,7 @@
 #define I_MPI_WORKER_H_
 
 #include "Include.h"
-
-class MPIManager;
+#include "MPIManager.h"
 
 class MPIWorker
 {

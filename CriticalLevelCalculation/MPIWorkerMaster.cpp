@@ -13,7 +13,6 @@ MPIWorkerMaster::~MPIWorkerMaster(void)
 
 void MPIWorkerMaster::run()
 {
-	CriticalLevel level;
 	Profiler::getInstance().setEnabled(true);
 
 	std::ifstream fileStream;
@@ -35,27 +34,21 @@ void MPIWorkerMaster::run()
 		Profiler::getInstance().finish();
 		std::cout << "Processing space " << projectSpace.getTime() << std::endl;
 
-		Profiler::getInstance().start("Serialize project space");		
-		std::vector<int> serialized = projectSpace.serialize();
-		Profiler::getInstance().finish();
+		if (mSlaveQueue.size() > 0) {
+			sendTask(projectSpace);
+		} else {
+			executeTask(projectSpace,degree);
+		}
 
-		ProjectSpace newSpace(mSpaceSize, mCellSize);
-		int size = serialized.size();
-		int* a = &serialized[0];
-		Profiler::getInstance().start("Deserialize project space");
-		newSpace.deserialize(size,a);
-		Profiler::getInstance().finish();
-
-		CriticalLevelDetector detector(projectSpace);
-		level = detector.detect();
-
-		Profiler::getInstance().start("Add level to degree");
-		degree.addCriticalLevel(level);
-		Profiler::getInstance().finish();
+		checkQueues();
 
 		break;
 	}
 
+	printResult(degree);
+}
+
+void MPIWorkerMaster::printResult(CriticalDegree& degree) {
 	int maxDegreeFlight = degree.getMaxCriticalLevelFlight();
 	std::cout << std::endl << "Max Critical Degree flight #" << maxDegreeFlight << std::endl;
 	FlightList critList = degree.getFlightList(maxDegreeFlight);
@@ -70,4 +63,37 @@ void MPIWorkerMaster::run()
 	std::cout << std::endl;
 
 	std::cout << Profiler::getInstance().dump().str();
+
+}
+
+void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
+{
+	Profiler::getInstance().start("Serialize project space");
+	std::vector<int> serialized = projectSpace.serialize();
+	Profiler::getInstance().finish();
+
+	int slaveId = mSlaveQueue.front();
+	mSlaveQueue.pop();
+	mMpi->sendIntArray(slaveId, serialized);
+
+/*	ProjectSpace newSpace(mSpaceSize, mCellSize);
+	Profiler::getInstance().start("Deserialize project space");
+	newSpace.deserialize(size,a);
+	Profiler::getInstance().finish();
+*/
+}
+
+void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& degree )
+{
+	CriticalLevelDetector detector(projectSpace);
+	CriticalLevel level = detector.detect();
+
+	Profiler::getInstance().start("Add level to degree");
+	degree.addCriticalLevel(level);
+	Profiler::getInstance().finish();
+}
+
+void MPIWorkerMaster::checkQueues()
+{
+	throw std::exception("The method or operation is not implemented.");
 }

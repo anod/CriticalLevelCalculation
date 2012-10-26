@@ -116,5 +116,8 @@
     <ClInclude Include="MPIWorker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MPIWorkerFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

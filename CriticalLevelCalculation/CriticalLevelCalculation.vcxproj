@@ -93,6 +93,7 @@
     <ClInclude Include="MPIWorker.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="InvolvedCellsSeeker.h" />
+    <ClInclude Include="MPIWorkerFactory.h" />
     <ClInclude Include="MPIWorkerMaster.h" />
     <ClInclude Include="MPIManager.h" />
     <ClInclude Include="MPIWorkerSlave.h" />
