@@ -33,5 +33,18 @@ void MPIManager::sendIntArray( int dest, std::vector<int> arr )
 {
 	int size = arr.size();
 	int* a = &arr[0];
-	// TODO
+
+	MPI_Send(a,size,MPI_INT,dest,0, MPI_COMM_WORLD);
+}
+
+std::vector<int> MPIManager::recvIntArray()
+{
+	int size;
+	int flag;
+	MPI_Request req;
+	MPI_Irecv(&size, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &req);
+
+	MPI_Status status;
+	MPI_Test(&req, &flag, &status);
+
 }

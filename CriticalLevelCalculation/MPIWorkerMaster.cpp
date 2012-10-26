@@ -95,5 +95,5 @@ void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& de
 
 void MPIWorkerMaster::checkQueues()
 {
-	throw std::exception("The method or operation is not implemented.");
+
 }

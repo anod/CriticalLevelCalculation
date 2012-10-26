@@ -16,6 +16,7 @@ public:
 	int getCommSize() const { return mCommSize; }
 	int getCommRank() const { return mCommRank; }
 	void sendIntArray(int dest, std::vector<int> arr);
+	std::vector<int> recvIntArray();
 private:
 	int mCommRank;
 	int mCommSize;
