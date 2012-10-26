@@ -33,11 +33,20 @@ void MPIWorkerMaster::run()
 		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
 		Profiler::getInstance().finish();
-
 		std::cout << "Processing space " << projectSpace.getTime() << std::endl;
 
-		CriticalLevelDetector detector(projectSpace);
+		Profiler::getInstance().start("Serialize project space");		
+		std::vector<int> serialized = projectSpace.serialize();
+		Profiler::getInstance().finish();
 
+		ProjectSpace newSpace(mSpaceSize, mCellSize);
+		int size = serialized.size();
+		int* a = &serialized[0];
+		Profiler::getInstance().start("Deserialize project space");
+		newSpace.deserialize(size,a);
+		Profiler::getInstance().finish();
+
+		CriticalLevelDetector detector(projectSpace);
 		level = detector.detect();
 
 		Profiler::getInstance().start("Add level to degree");

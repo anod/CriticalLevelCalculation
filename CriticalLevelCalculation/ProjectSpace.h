@@ -10,7 +10,7 @@ public:
 	~ProjectSpace(void);
 	Cell getSpaceSize() const { return mSpaceSize; };
 	Cell getCellSize() const { return mCellSize; };
-	long getTime() const { return mTime; }
+	int getTime() const { return mTime; }
 	void setTime(long val) { mTime = val; }
 	void addControlPoint(int flight, Cell point);
 	ControlPointsMap const getControlPoints() { return mControlPoints; };
@@ -18,10 +18,12 @@ public:
 
 	std::stringstream dump();
 	void sortControlPoints();
+	std::vector<int> serialize();
+	void deserialize(int size, int data[]);
 private:
 	Cell mSpaceSize;
 	Cell mCellSize;
-	long mTime;
+	int mTime;
 	ControlPointsMap mControlPoints;
 	std::vector<Cell> mPointsArray;
 };
