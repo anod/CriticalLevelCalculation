@@ -7,7 +7,7 @@
 class MPIWorkerSlave : public MPIWorker
 {
 public:
-	MPIWorkerSlave(MPIManager* mpi,const Cell &spaceSize,const Cell &cellSize);
+	MPIWorkerSlave(MPIManager* mpi);
 	~MPIWorkerSlave(void);
 
 	virtual void run();

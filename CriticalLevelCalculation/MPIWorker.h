@@ -7,12 +7,10 @@
 class MPIWorker
 {
 public:
-	MPIWorker(MPIManager* mpi, const Cell &spaceSize,const Cell &cellSize);
+	MPIWorker(MPIManager* mpi);
 	virtual void run() = 0;
 	virtual ~MPIWorker(void) {}
 protected:
-	Cell mSpaceSize;
-	Cell mCellSize;
 	MPIManager* mMpi; 
 };
 

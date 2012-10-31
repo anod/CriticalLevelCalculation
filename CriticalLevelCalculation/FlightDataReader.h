@@ -14,6 +14,8 @@ public:
 	void open();
 	// Go to beginning of the file
 	void rewind();
+	// Read header data
+	void readHeader();
 	// Reads next control point for the file
 	bool readNextControlPoint();
 	// Get last read flight number
@@ -22,10 +24,16 @@ public:
 	Cell getCurrentControlPoint() const { return mCurrentControlPoint; }
 	// Get last read time
 	int getCurrentTime() const { return mCurrentTime; }
+	//
+	Cell getSpaceSize() const { return mSpaceSize; }
+	//
+	Cell getCellSize() const { return mCellSize; }
 private:
 	static const int BUFFER_SIZE = 16184;
 	char mBuffer[BUFFER_SIZE];
 
+	Cell mSpaceSize;
+	Cell mCellSize;
 	int mNumberOfControlPoints;
 	int mCurrentFlightNumber;
 	Cell mCurrentControlPoint;

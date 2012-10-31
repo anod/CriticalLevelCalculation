@@ -7,16 +7,16 @@
 
 class MPIWorkerFactory {
 public:
-	static MPIWorker* create(MPIManager* mpi, const Cell &spaceSize,const Cell &cellSize);
+	static MPIWorker* create(MPIManager* mpi);
 
 };
 
-MPIWorker* MPIWorkerFactory::create( MPIManager* mpi, const Cell &spaceSize,const Cell &cellSize )
+MPIWorker* MPIWorkerFactory::create(MPIManager* mpi)
 {
 	if (mpi->getCommRank() == MPIManager::MASTER_RANK) {
-		return new MPIWorkerMaster(mpi,spaceSize,cellSize);
+		return new MPIWorkerMaster(mpi);
 	} else {
-		return new MPIWorkerSlave(mpi,spaceSize,cellSize);
+		return new MPIWorkerSlave(mpi);
 	}
 }
 

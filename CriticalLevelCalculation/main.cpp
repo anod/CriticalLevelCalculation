@@ -4,11 +4,6 @@
 #include "MPIManager.h"
 #include "MPIWorkerFactory.h"
 
-#define SPACE_SIZE_A 500
-#define SPACE_SIZE_B 500
-#define SPACE_SIZE_m 10
-#define SPACE_SIZE_n 10
-
 void tests() {
 	TestRunner tests;
 	tests.run();
@@ -18,7 +13,7 @@ int main(int argc, char *argv[])
 {
 	MPIManager mpimanager;
 	mpimanager.init(argc,argv);
-	MPIWorker* worker = MPIWorkerFactory::create(&mpimanager, Cell(SPACE_SIZE_A,SPACE_SIZE_B), Cell(SPACE_SIZE_m,SPACE_SIZE_n));
+	MPIWorker* worker = MPIWorkerFactory::create(&mpimanager);
    try {
 	   worker->run();
 		//tests();

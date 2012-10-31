@@ -47,4 +47,6 @@ std::vector<int> MPIManager::recvIntArray()
 	MPI_Status status;
 	MPI_Test(&req, &flag, &status);
 
+	std::vector<int> result;
+	return result;
 }

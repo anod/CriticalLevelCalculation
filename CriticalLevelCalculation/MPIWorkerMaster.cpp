@@ -1,8 +1,8 @@
 #include "MPIWorkerMaster.h"
 
 
-MPIWorkerMaster::MPIWorkerMaster(MPIManager* mpi, const Cell &spaceSize,const Cell &cellSize)
-	: MPIWorker(mpi,spaceSize,cellSize)
+MPIWorkerMaster::MPIWorkerMaster(MPIManager* mpi)
+	: MPIWorker(mpi)
 {
 }
 
@@ -20,11 +20,11 @@ void MPIWorkerMaster::run()
 	FlightDataReaderMemCache readerCached(&reader);
 
 	std::cout << "Preload data..." << std::endl;
-	Profiler::getInstance().start("Read file");
+	Profiler::getInstance().start("Read data");
 	readerCached.preloadCache();
 	Profiler::getInstance().finish();
 
-	ProjectSpaceBuilder builder(mSpaceSize, mCellSize, &readerCached);
+	ProjectSpaceBuilder builder(readerCached.getSpaceSize(), readerCached.getCellSize(), &readerCached);
 	CriticalDegree degree;
 
 	std::cout << "Processing..." << std::endl;

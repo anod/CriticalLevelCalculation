@@ -10,6 +10,8 @@ public:
 	virtual void open() = 0;
 	// Go to beginning of the file
 	virtual void rewind() = 0;
+	// Read file header
+	virtual void readHeader() = 0;
 	// Reads next control point for the file
 	virtual bool readNextControlPoint() = 0;
 	// Get last read flight number
@@ -18,6 +20,11 @@ public:
 	virtual Cell getCurrentControlPoint() const = 0;
 	// Get last read time
 	virtual int getCurrentTime() const = 0;
+	//
+	virtual Cell getSpaceSize() const = 0;
+	//
+	virtual Cell getCellSize() const = 0;
+
 	virtual ~IFlightDataReader() {}
 };
 		

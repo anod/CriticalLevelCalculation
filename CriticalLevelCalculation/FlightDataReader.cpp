@@ -69,3 +69,28 @@ void FlightDataReader::rewind()
 	mInputStream->clear();
 	mInputStream->seekg(0, std::ios::beg);
 }
+
+void FlightDataReader::readHeader()
+{
+	int tmp, spaceA, spaceB, cellM, cellN, i = 0;
+
+	while ( i < 5 ) {
+		*mInputStream >> tmp;
+		if (!tmp) {
+			continue;
+		}
+		if ( i == 0 ) {
+			spaceA = tmp;
+		} else if ( i == 1 ) {
+			spaceB = tmp;
+		} else if ( i == 2 ) {
+			cellM = tmp;
+		} else if ( i == 3 ) {
+			cellN = tmp;
+		}
+		// Skip one
+		i++;
+	}
+	mSpaceSize = Cell(spaceA,spaceB);
+	mCellSize = Cell(cellM, cellN);
+}

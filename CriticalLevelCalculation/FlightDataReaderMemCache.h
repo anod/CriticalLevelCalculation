@@ -23,6 +23,13 @@ public:
 	int getCurrentTime() const;
 
 	void preloadCache();
+
+	void readHeader();
+
+	Cell getSpaceSize() const;
+
+	Cell getCellSize() const;
+
 private:
 	static const size_t INIT_INDEX = -4;
 
