@@ -58,8 +58,10 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 	int error = deltax / 2;
 	int y = y1;
 	int ystep = (y1 < y2) ? 1 : -1;
+	int xstep = (steep) ?  mCellSize.y :  mCellSize.x;
+	ystep = (steep) ?  ystep * mCellSize.x : ystep * mCellSize.y;
 
-	for (int x = x1; x <= x2; x++) {
+	for (int x = x1; x <= x2; x=x+xstep) {
 		if (steep) {
 			newCellX = coordToCell(y,mCellSize.x);
 			newCellY = coordToCell(x,mCellSize.y);

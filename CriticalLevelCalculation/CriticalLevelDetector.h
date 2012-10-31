@@ -11,7 +11,8 @@ public:
 	CriticalLevelDetector(const ProjectSpace& projectSpace);
 	~CriticalLevelDetector(void);
 
-	CriticalLevel detect();
+	CriticalLevel detectParallel();
+	CriticalLevel detectSerial();
 private:
 	ProjectSpace mProjectSpace;
 	bool checkCriticalSituation(std::vector<Cell> list);

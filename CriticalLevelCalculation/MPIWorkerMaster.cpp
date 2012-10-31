@@ -16,7 +16,7 @@ void MPIWorkerMaster::run()
 	Profiler::getInstance().setEnabled(true);
 
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "c:\\data.txt");
+	FlightDataReader reader(&fileStream, "data\\basic1.txt");
 	FlightDataReaderMemCache readerCached(&reader);
 
 	std::cout << "Preload data..." << std::endl;
@@ -85,11 +85,18 @@ void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
 
 void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& degree )
 {
+	CriticalLevel level1, level2;
 	CriticalLevelDetector detector(projectSpace);
-	CriticalLevel level = detector.detect();
+	Profiler::getInstance().start("Detect critical level - parallel");
+	level1 = detector.detectParallel();
+	Profiler::getInstance().finish();
+
+	Profiler::getInstance().start("Detect critical level - serial");
+	level2 = detector.detectSerial();
+	Profiler::getInstance().finish();
 
 	Profiler::getInstance().start("Add level to degree");
-	degree.addCriticalLevel(level);
+	degree.addCriticalLevel(level1);
 	Profiler::getInstance().finish();
 }
 
