@@ -18,7 +18,7 @@ void Profiler::start( const char* name )
 	}
 	if (mRunning) {
 		std::string message = "Profiling already running: '" + std::string(mNames.back()) + "', '" + std::string(name) + "' cannot be started";
-		throw std::exception(message.c_str());
+		throw RuntimeException(message.c_str());
 	}
 	mNames.push_back(name);
 	mRunning = true;
@@ -32,7 +32,7 @@ void Profiler::finish()
 		return;
 	}
 	if (!mRunning) {
-		throw std::exception("Profiling is not running");
+		throw RuntimeException("Profiling is not running");
 	}
 	double elapsed_secs = double(end - mClockBegin) / CLOCKS_PER_SEC;
 	mTimes.push_back(elapsed_secs);

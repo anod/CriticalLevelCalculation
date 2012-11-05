@@ -17,4 +17,4 @@ private:
 	int mMaxCriticalLevel;
 };
 
-#endif CRITICAL_DEGREE_H_
+#endif //CRITICAL_DEGREE_H_

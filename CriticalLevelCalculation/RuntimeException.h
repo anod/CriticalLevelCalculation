@@ -1,6 +1,8 @@
 #ifndef RUNTIME_EXCEPTION_H_
 #define RUNTIME_EXCEPTION_H_
 
+#include <string>
+
 struct RuntimeException : public std::exception
 {
 	std::string s;

@@ -31,7 +31,7 @@ void MPIManager::finalize()
 
 void MPIManager::sendIntArray( int dest, std::vector<int> arr )
 {
-	int size = arr.size();
+	int size = (int)arr.size();
 	int* a = &arr[0];
 
 	MPI_Send(a,size,MPI_INT,dest,0, MPI_COMM_WORLD);

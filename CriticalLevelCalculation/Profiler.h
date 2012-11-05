@@ -4,6 +4,7 @@
 #include <vector>
 #include <time.h>
 #include <sstream>
+#include "RuntimeException.h"
 
 class Profiler
 {

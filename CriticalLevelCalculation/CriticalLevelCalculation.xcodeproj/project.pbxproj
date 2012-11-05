@@ -20,10 +20,7 @@
 		FAC752F11646D0EA000D1729 /* Profiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752D91646D0EA000D1729 /* Profiler.cpp */; };
 		FAC752F21646D0EA000D1729 /* ProjectSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752DB1646D0EA000D1729 /* ProjectSpace.cpp */; };
 		FAC752F31646D0EA000D1729 /* ProjectSpaceBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752DD1646D0EA000D1729 /* ProjectSpaceBuilder.cpp */; };
-		FAC752F41646D0EA000D1729 /* RuntimeException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752DF1646D0EA000D1729 /* RuntimeException.cpp */; };
-		FAC752F51646D0EA000D1729 /* strptime.c in Sources */ = {isa = PBXBuildFile; fileRef = FAC752E11646D0EA000D1729 /* strptime.c */; };
 		FAC752F61646D0EA000D1729 /* TestRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752E21646D0EA000D1729 /* TestRunner.cpp */; };
-		FAC752F71646D0EA000D1729 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752E41646D0EA000D1729 /* tests.cpp */; };
 		FAC752F81646D0EA000D1729 /* CriticalDegree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752E51646D0EA000D1729 /* CriticalDegree.cpp */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +73,9 @@
 		FAC752DC1646D0EA000D1729 /* ProjectSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSpace.h; sourceTree = SOURCE_ROOT; };
 		FAC752DD1646D0EA000D1729 /* ProjectSpaceBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProjectSpaceBuilder.cpp; sourceTree = SOURCE_ROOT; };
 		FAC752DE1646D0EA000D1729 /* ProjectSpaceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectSpaceBuilder.h; sourceTree = SOURCE_ROOT; };
-		FAC752DF1646D0EA000D1729 /* RuntimeException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RuntimeException.cpp; sourceTree = SOURCE_ROOT; };
 		FAC752E01646D0EA000D1729 /* RuntimeException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeException.h; sourceTree = SOURCE_ROOT; };
-		FAC752E11646D0EA000D1729 /* strptime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strptime.c; sourceTree = SOURCE_ROOT; };
 		FAC752E21646D0EA000D1729 /* TestRunner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestRunner.cpp; sourceTree = SOURCE_ROOT; };
 		FAC752E31646D0EA000D1729 /* TestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRunner.h; sourceTree = SOURCE_ROOT; };
-		FAC752E41646D0EA000D1729 /* tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = SOURCE_ROOT; };
 		FAC752E51646D0EA000D1729 /* CriticalDegree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CriticalDegree.cpp; sourceTree = SOURCE_ROOT; };
 		FAC752E61646D0EA000D1729 /* ControlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPoint.h; sourceTree = SOURCE_ROOT; };
 		FAC752E71646D0EA000D1729 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = SOURCE_ROOT; };
@@ -146,12 +140,9 @@
 				FAC752DC1646D0EA000D1729 /* ProjectSpace.h */,
 				FAC752DD1646D0EA000D1729 /* ProjectSpaceBuilder.cpp */,
 				FAC752DE1646D0EA000D1729 /* ProjectSpaceBuilder.h */,
-				FAC752DF1646D0EA000D1729 /* RuntimeException.cpp */,
 				FAC752E01646D0EA000D1729 /* RuntimeException.h */,
-				FAC752E11646D0EA000D1729 /* strptime.c */,
 				FAC752E21646D0EA000D1729 /* TestRunner.cpp */,
 				FAC752E31646D0EA000D1729 /* TestRunner.h */,
-				FAC752E41646D0EA000D1729 /* tests.cpp */,
 				FAC752E51646D0EA000D1729 /* CriticalDegree.cpp */,
 				FAC752E61646D0EA000D1729 /* ControlPoint.h */,
 				FAC752E71646D0EA000D1729 /* Cell.h */,
@@ -234,10 +225,7 @@
 				FAC752F11646D0EA000D1729 /* Profiler.cpp in Sources */,
 				FAC752F21646D0EA000D1729 /* ProjectSpace.cpp in Sources */,
 				FAC752F31646D0EA000D1729 /* ProjectSpaceBuilder.cpp in Sources */,
-				FAC752F41646D0EA000D1729 /* RuntimeException.cpp in Sources */,
-				FAC752F51646D0EA000D1729 /* strptime.c in Sources */,
 				FAC752F61646D0EA000D1729 /* TestRunner.cpp in Sources */,
-				FAC752F71646D0EA000D1729 /* tests.cpp in Sources */,
 				FAC752F81646D0EA000D1729 /* CriticalDegree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +269,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/mpich2/1.4.1p1/include/;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -306,6 +295,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/mpich2/1.4.1p1/include/;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -331,6 +321,7 @@
 				FAC752BC1646CFE2000D1729 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
