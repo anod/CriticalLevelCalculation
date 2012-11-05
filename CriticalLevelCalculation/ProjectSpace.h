@@ -11,7 +11,7 @@ public:
 	Cell getSpaceSize() const { return mSpaceSize; };
 	Cell getCellSize() const { return mCellSize; };
 	int getTime() const { return mTime; }
-	void setTime(long val) { mTime = val; }
+	void setTime(int val) { mTime = val; }
 	void addControlPoint(int flight, Cell point);
 	ControlPointsMap const getControlPoints() { return mControlPoints; };
 	std::vector<Cell> const getPointsArray() { return mPointsArray; };

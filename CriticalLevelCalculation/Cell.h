@@ -9,13 +9,13 @@ public:
 	unsigned int x, y;
 	Cell() : x(0), y(0) {};
 	Cell(unsigned int x,unsigned int y) : x(x), y(y) {};
-	bool Cell::operator==(const Cell &other) const {
+	bool operator==(const Cell &other) const {
 		return (x == other.x) && (y == other.y);
 	};
-	bool Cell::operator!=(const Cell &other) const {
+	bool operator!=(const Cell &other) const {
 		return (x != other.x) || (y != other.y);
 	};
-	bool Cell::operator< (const Cell& other){ 
+	bool operator< (const Cell& other){ 
 		return x < other.x && y < other.y;
 	};
 	std::stringstream dump() {
