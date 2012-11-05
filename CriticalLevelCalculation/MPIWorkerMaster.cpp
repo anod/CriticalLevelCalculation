@@ -100,7 +100,12 @@ void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& de
 	Profiler::getInstance().finish();
 }
 
-void MPIWorkerMaster::checkQueues()
+void MPIWorkerMaster::checkQueues(CriticalDegree& degree)
 {
-
+	if (mMpi->hasIntArrayResult()) {
+		std::vector<int> data = mMpi->getIntArray();
+		CriticalLevel level;
+		level.deserialize(data);
+		degree.addCriticalLevel(level);
+	}
 }

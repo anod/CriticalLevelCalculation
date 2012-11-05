@@ -23,7 +23,7 @@ private:
 	void printResult(CriticalDegree& degree);
 	void sendTask( ProjectSpace projectSpace );
 	void executeTask( ProjectSpace projectSpace, CriticalDegree& degree );
-	void checkQueues();
+	void checkQueues(CriticalDegree& degree);
 };
 
 #endif //MPI_WORKER_MASTER_H_

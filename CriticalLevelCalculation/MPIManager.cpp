@@ -2,7 +2,7 @@
 
 
 MPIManager::MPIManager(void)
-	: mCommRank(MASTER_RANK), mCommSize(1)
+	: mCommRank(MASTER_RANK), mCommSize(1), mRequestSent(false)
 {
 }
 
@@ -37,16 +37,23 @@ void MPIManager::sendIntArray( int dest, std::vector<int> arr )
 	MPI_Send(a,size,MPI_INT,dest,0, MPI_COMM_WORLD);
 }
 
-std::vector<int> MPIManager::recvIntArray()
+bool MPIManager::hasIntArrayResult() {
+	int flag = 0;
+
+	if (mRequestSent) {
+		MPI_Status status;
+		MPI_Test(&mRequest, &flag, &status);
+		return flag;
+	}
+
+	MPI_Irecv(&mIntArr, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &mRequest);
+	mRequestSent = true;
+	
+	return flag;
+}
+
+std::vector<int> MPIManager::getIntArray()
 {
-	int size;
-	int flag;
-	MPI_Request req;
-	MPI_Irecv(&size, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &req);
-
-	MPI_Status status;
-	MPI_Test(&req, &flag, &status);
-
-	std::vector<int> result;
+	std::vector<int> result(mIntArr);
 	return result;
 }

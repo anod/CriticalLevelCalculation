@@ -16,10 +16,14 @@ public:
 	int getCommSize() const { return mCommSize; }
 	int getCommRank() const { return mCommRank; }
 	void sendIntArray(int dest, std::vector<int> arr);
-	std::vector<int> recvIntArray();
+	bool hasIntArrayResult();
+	std::vector<int> getIntArray();
 private:
 	int mCommRank;
 	int mCommSize;
+	bool mRequestSent;
+	MPI_Request mRequest;
+	int mIntArr;
 	char mProcessorName[MPI_MAX_PROCESSOR_NAME];
 };
 
