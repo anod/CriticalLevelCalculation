@@ -23,7 +23,7 @@ void CriticalDegree::addCriticalLevel( CriticalLevel level )
 			int invFlight = (*it1);
 			mTotalLevel[currentFlight].push_back(invFlight);
 		}
-		int newSize = mTotalLevel[currentFlight].size();
+		int newSize = (int)mTotalLevel[currentFlight].size();
 		if (newSize > mMaxCriticalLevel) {
 			mMaxCriticalLevel = newSize;
 			mMaxCriticalLevelFlight = currentFlight;

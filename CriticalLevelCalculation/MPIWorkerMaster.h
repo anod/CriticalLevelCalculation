@@ -8,6 +8,7 @@
 #include "CriticalLevelDetector.h"
 #include "FlightDataReaderMemCache.h"
 #include "CriticalDegree.h"
+#include "CriticalLevelSerializer.h"
 
 #include "MPIWorker.h"
 

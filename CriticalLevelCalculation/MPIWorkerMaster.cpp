@@ -34,13 +34,14 @@ void MPIWorkerMaster::run()
 		Profiler::getInstance().finish();
 		std::cout << "Processing space " << projectSpace.getTime() << std::endl;
 
+		// Have free workers - LoadBalancing
 		if (mSlaveQueue.size() > 0) {
 			sendTask(projectSpace);
 		} else {
 			executeTask(projectSpace,degree);
 		}
 
-		checkQueues();
+		checkQueues(degree);
 
 		break;
 	}
@@ -102,10 +103,10 @@ void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& de
 
 void MPIWorkerMaster::checkQueues(CriticalDegree& degree)
 {
-	if (mMpi->hasIntArrayResult()) {
+	while (mMpi->hasIntArrayResult()) {
 		std::vector<int> data = mMpi->getIntArray();
-		CriticalLevel level;
-		level.deserialize(data);
+		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
 		degree.addCriticalLevel(level);
 	}
+	//TODO add to Queue
 }

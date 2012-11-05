@@ -55,5 +55,6 @@ bool MPIManager::hasIntArrayResult() {
 std::vector<int> MPIManager::getIntArray()
 {
 	std::vector<int> result(mIntArr);
+	mRequestSent = false;
 	return result;
 }

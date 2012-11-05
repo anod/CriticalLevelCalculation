@@ -18,8 +18,11 @@
 #include "Cell.h"
 #include "OpenMP.h"
 
+// List of Flight Numbers
 typedef std::vector<int> FlightList;
+// List of flights in specific cell on ProjectSpace
 typedef std::unordered_map<Cell, FlightList> ControlPointsMap;
+//
 typedef std::unordered_map<int, FlightList> CriticalLevel;
 
 #include "ControlPoint.h"

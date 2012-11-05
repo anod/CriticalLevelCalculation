@@ -22,6 +22,7 @@
 		FAC752F31646D0EA000D1729 /* ProjectSpaceBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752DD1646D0EA000D1729 /* ProjectSpaceBuilder.cpp */; };
 		FAC752F61646D0EA000D1729 /* TestRunner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752E21646D0EA000D1729 /* TestRunner.cpp */; };
 		FAC752F81646D0EA000D1729 /* CriticalDegree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAC752E51646D0EA000D1729 /* CriticalDegree.cpp */; };
+		FADBFCBA16485D0800BBF262 /* CriticalLevelSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FADBFCB816485D0800BBF262 /* CriticalLevelSerializer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +80,8 @@
 		FAC752E51646D0EA000D1729 /* CriticalDegree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CriticalDegree.cpp; sourceTree = SOURCE_ROOT; };
 		FAC752E61646D0EA000D1729 /* ControlPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPoint.h; sourceTree = SOURCE_ROOT; };
 		FAC752E71646D0EA000D1729 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = SOURCE_ROOT; };
+		FADBFCB816485D0800BBF262 /* CriticalLevelSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CriticalLevelSerializer.cpp; sourceTree = "<group>"; };
+		FADBFCB916485D0800BBF262 /* CriticalLevelSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CriticalLevelSerializer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,8 @@
 				FAC752E61646D0EA000D1729 /* ControlPoint.h */,
 				FAC752E71646D0EA000D1729 /* Cell.h */,
 				FAC752B81646CFE2000D1729 /* CriticalLevelCalculation.1 */,
+				FADBFCB816485D0800BBF262 /* CriticalLevelSerializer.cpp */,
+				FADBFCB916485D0800BBF262 /* CriticalLevelSerializer.h */,
 			);
 			path = CriticalLevelCalculation;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				FAC752F31646D0EA000D1729 /* ProjectSpaceBuilder.cpp in Sources */,
 				FAC752F61646D0EA000D1729 /* TestRunner.cpp in Sources */,
 				FAC752F81646D0EA000D1729 /* CriticalDegree.cpp in Sources */,
+				FADBFCBA16485D0800BBF262 /* CriticalLevelSerializer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

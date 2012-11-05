@@ -59,7 +59,7 @@ std::vector<int> ProjectSpace::serialize()
 		arr.push_back(p.x);
 		arr.push_back(p.y);
 		FlightList flights((*it).second);
-		arr.push_back(flights.size());
+		arr.push_back((int)flights.size());
 		for (it1 = flights.begin(); it1 != flights.end(); it1++) {
 			arr.push_back((*it1));
 		}
