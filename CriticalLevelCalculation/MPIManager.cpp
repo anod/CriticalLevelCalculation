@@ -2,7 +2,7 @@
 
 
 MPIManager::MPIManager(void)
-	: mCommRank(MASTER_RANK), mCommSize(1), mRequestSent(false), mResponseSource(0)
+	: mCommRank(MASTER_RANK), mCommSize(1), mRequestSent(false), mResponseSource(0), mResponseArrSize(0)
 {
 }
 
@@ -64,13 +64,8 @@ bool MPIManager::hasIntArrayResult() {
 		return flag;
 	}
 
-	//TODO
-	
-	MPI_Irecv(&mIntArr, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &mRequest);
+	MPI_Irecv(&mResponseArrSize, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &mRequest);
 	mRequestSent = true;
-
-	
-	std::vector<int> result(mIntArr);
 
 	mResponseSource = status.MPI_SOURCE;
 	MPI_Test(&mRequest, &flag, &status);
@@ -84,7 +79,11 @@ int MPIManager::getLastResponseSource()
 
 std::vector<int> MPIManager::getIntArray()
 {
+	int arr[MAX_ARR_SIZE];
+	MPI_Status status;
+	MPI_Recv(&arr, mResponseArrSize, MPI_INT, mResponseSource, 0, MPI_COMM_WORLD, &status);
+	std::vector<int> result(mResponseArrSize);
+	result.assign(arr, arr + mResponseArrSize);
 	mRequestSent = false;
-
 	return result;
 }

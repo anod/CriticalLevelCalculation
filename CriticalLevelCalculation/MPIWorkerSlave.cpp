@@ -12,7 +12,11 @@ MPIWorkerSlave::~MPIWorkerSlave(void)
 
 void MPIWorkerSlave::run()
 {
-	mMpi->hasIntArrayResult()
+	
+	std::vector<int> data=mMpi->recvIntArray();
+	ProjectSpace space;
+	
+	//mMpi->hasIntArrayResult();
 	
 	//receiveTask();
 	//executeTask();

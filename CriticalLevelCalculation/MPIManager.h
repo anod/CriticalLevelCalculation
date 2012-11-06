@@ -26,7 +26,7 @@ private:
 	int mCommSize;
 	bool mRequestSent;
 	MPI_Request mRequest;
-	int mIntArr;
+	int mResponseArrSize;
 	int mResponseSource;
 	char mProcessorName[MPI_MAX_PROCESSOR_NAME];
 };
