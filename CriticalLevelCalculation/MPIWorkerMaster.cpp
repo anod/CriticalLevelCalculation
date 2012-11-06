@@ -28,6 +28,7 @@ void MPIWorkerMaster::run()
 	CriticalDegree degree;
 
 	std::cout << "Processing..." << std::endl;
+	//TODO init mSlaveQueue
 	while(builder.nextTime()) {
 		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
@@ -45,7 +46,8 @@ void MPIWorkerMaster::run()
 
 		break;
 	}
-
+	// sendFinishSignal
+	
 	printResult(degree);
 }
 
@@ -107,6 +109,6 @@ void MPIWorkerMaster::checkQueues(CriticalDegree& degree)
 		std::vector<int> data = mMpi->getIntArray();
 		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
 		degree.addCriticalLevel(level);
+		mSlaveQueue.push(mMpi->getLastResponseSource());
 	}
-	//TODO add to Queue
 }

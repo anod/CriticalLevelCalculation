@@ -12,5 +12,9 @@ MPIWorkerSlave::~MPIWorkerSlave(void)
 
 void MPIWorkerSlave::run()
 {
-
+	mMpi->hasIntArrayResult()
+	
+	//receiveTask();
+	//executeTask();
+	//sendResult();
 }
