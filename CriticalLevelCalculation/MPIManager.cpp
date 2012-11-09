@@ -59,17 +59,17 @@ bool MPIManager::hasIntArrayResult() {
 	int flag = 0;
 
 	if (mRequestSent) {
-		mResponseSource = status.MPI_SOURCE;
 		MPI_Test(&mRequest, &flag, &status);
-		return flag;
+		mResponseSource = status.MPI_SOURCE;
+		return (flag == 1);
 	}
 
 	MPI_Irecv(&mResponseArrSize, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &mRequest);
-	mRequestSent = true;
-
-	mResponseSource = status.MPI_SOURCE;
 	MPI_Test(&mRequest, &flag, &status);
-	return flag;
+	mRequestSent = true;
+	mResponseSource = status.MPI_SOURCE;
+
+	return (flag == 1);
 }
 
 int MPIManager::getLastResponseSource()

@@ -57,6 +57,9 @@
     <ClCompile Include="MPIWorker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CriticalLevelSerializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FlightDataReader.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MPIWorkerFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalLevelSerializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,7 +14,7 @@ void MPIWorkerSlave::run()
 {
 	
 	std::vector<int> data=mMpi->recvIntArray();
-	ProjectSpace space;
+	//ProjectSpace space;
 	
 	//mMpi->hasIntArrayResult();
 	

@@ -27,13 +27,13 @@ std::vector<int> CriticalLevelSerializer::serialize(CriticalLevel& level) {
 	return serialized;
 }
 
-CriticalLevel deserialize(std::vector<int> data) {
+CriticalLevel CriticalLevelSerializer::deserialize(std::vector<int> data) {
 	CriticalLevel level;
 	std::vector<int>::const_iterator it;
 	int size = 0;
 	int currentFlight = 0;
 	// Format: [size,currentFlight,invFlights...]
-	for(int i=0; i<data.size(); i++) {
+	for(size_t i=0; i<data.size(); i++) {
 		if (size == 0) {
 			currentFlight = 0;
 			size = data[i];

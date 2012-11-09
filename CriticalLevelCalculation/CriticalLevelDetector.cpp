@@ -44,7 +44,7 @@ void CriticalLevelDetector::compareCells(ControlPointsMap& cpoints,std::vector<C
 	Cell a,b;
 	std::vector<Cell> list;
 
-	size_t total = pointsArray.size();
+	int total = pointsArray.size();
 
 	#pragma omp for
 	for(int i=0; i<total; i++) {

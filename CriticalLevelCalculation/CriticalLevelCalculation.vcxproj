@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClCompile Include="CriticalDegree.cpp" />
     <ClCompile Include="CriticalLevelDetector.cpp" />
+    <ClCompile Include="CriticalLevelSerializer.cpp" />
     <ClCompile Include="FlightDataReader.cpp" />
     <ClCompile Include="FlightDataReaderMemCache.cpp" />
     <ClCompile Include="InvolvedCellsSeeker.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="ControlPoint.h" />
     <ClInclude Include="CriticalDegree.h" />
     <ClInclude Include="CriticalLevelDetector.h" />
+    <ClInclude Include="CriticalLevelSerializer.h" />
     <ClInclude Include="FlightDataReader.h" />
     <ClInclude Include="FlightDataReaderMemCache.h" />
     <ClInclude Include="IFlightDataReader.h" />
