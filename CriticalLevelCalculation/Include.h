@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "MakeString.h"
 #include "Cell.h"
 #include "OpenMP.h"
 

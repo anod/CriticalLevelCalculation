@@ -92,6 +92,7 @@
     <ClInclude Include="FlightDataReader.h" />
     <ClInclude Include="FlightDataReaderMemCache.h" />
     <ClInclude Include="IFlightDataReader.h" />
+    <ClInclude Include="MakeString.h" />
     <ClInclude Include="MPIWorker.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="InvolvedCellsSeeker.h" />

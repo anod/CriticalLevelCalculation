@@ -125,5 +125,8 @@
     <ClInclude Include="CriticalLevelSerializer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MakeString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,3 +5,9 @@ MPIWorker::MPIWorker(MPIManager* mpi)
 {
 
 }
+
+void MPIWorker::echo( std::string message )
+{
+	std::cout << "[" << mMpi->getCommRank() << "] " << message << std::endl;
+	std::cout.flush();
+}

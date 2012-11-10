@@ -46,12 +46,14 @@ std::vector<int> MPIManager::recvIntArray() {
 void MPIManager::sendIntArray( int dest, std::vector<int> arr )
 {
 	int size = (int)arr.size();
-	int* a = &arr[0];
 
 	//Send array size
 	MPI_Send(&size,1,MPI_INT,dest,0, MPI_COMM_WORLD);
-	//Send array data
-	MPI_Send(a,size,MPI_INT,dest,0, MPI_COMM_WORLD);
+	if (size > 0) {
+		int* a = &arr[0];
+		//Send array data
+		MPI_Send(a,size,MPI_INT,dest,0, MPI_COMM_WORLD);
+	}
 }
 
 bool MPIManager::hasIntArrayResult() {
@@ -61,14 +63,16 @@ bool MPIManager::hasIntArrayResult() {
 	if (mRequestSent) {
 		MPI_Test(&mRequest, &flag, &status);
 		mResponseSource = status.MPI_SOURCE;
+		std::cout << "[Request sent] MPI_Test flag: " << flag << ", source: " << mResponseSource << ", Array size: " << mResponseArrSize << std::endl;
 		return (flag == 1);
 	}
+	std::cout << "MPI_Irecv" << std::endl;
 
 	MPI_Irecv(&mResponseArrSize, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &mRequest);
 	MPI_Test(&mRequest, &flag, &status);
 	mRequestSent = true;
 	mResponseSource = status.MPI_SOURCE;
-
+	std::cout << "[Initial request] MPI_Test flag: " << flag << ", source: " << mResponseSource << ", Array size: " << mResponseArrSize << std::endl;
 	return (flag == 1);
 }
 
@@ -81,9 +85,15 @@ std::vector<int> MPIManager::getIntArray()
 {
 	int arr[MAX_ARR_SIZE];
 	MPI_Status status;
-	MPI_Recv(&arr, mResponseArrSize, MPI_INT, mResponseSource, 0, MPI_COMM_WORLD, &status);
 	std::vector<int> result(mResponseArrSize);
-	result.assign(arr, arr + mResponseArrSize);
+	result.reserve(mResponseArrSize);
+
 	mRequestSent = false;
+	if (mResponseArrSize == 0) {
+		return result;
+	}
+
+	MPI_Recv(&arr, mResponseArrSize, MPI_INT, mResponseSource, 0, MPI_COMM_WORLD, &status);
+	result.assign(arr, arr + mResponseArrSize);
 	return result;
 }

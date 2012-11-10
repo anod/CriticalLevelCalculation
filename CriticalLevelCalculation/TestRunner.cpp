@@ -90,14 +90,14 @@ void TestRunner::testCellHash()
 void TestRunner::testCriticalLevelDetector()
 {
 	std::cout << "Running CriticalLevelDetector Test" << std::endl;
-
+	
 	int dataArr[27] = { 3600, 2, 2, 1, 1000, 4, 3, 1, 1001, 8, 4, 2, 1002, 1003, 5, 6, 1, 1004, 10, 11, 2, 1005, 1006, 12, 6, 1, 1007 };
 	std::vector<int> spaceData1;
 	spaceData1.assign(dataArr, dataArr + 27);
 	ProjectSpace projectSpace(Cell(100000,100000),Cell(1000,1000));
 	projectSpace.deserialize(spaceData1);
 
-	CriticalLevel level1, level2, expected1;
+	CriticalLevel expected1;
 
 	expected1[1000].push_back(1002);
 	expected1[1000].push_back(1003);
@@ -114,13 +114,34 @@ void TestRunner::testCriticalLevelDetector()
 	CriticalLevelDetector detector(projectSpace);
 
 	std::cout << " -- 1: Detect Serial ";
-	level1 = detector.detectSerial();
+	CriticalLevel level1 = detector.detectSerial();
 	assertCriticalLevelSame(level1, expected1);
 	std::cout << "Ok" << std::endl;
 
 	std::cout << " -- 2: Detect Parallel ";
-	level2 = detector.detectParallel();
+	CriticalLevel level2 = detector.detectParallel();
 	assertCriticalLevelSame(level2, expected1);
+	std::cout << "Ok" << std::endl;
+	
+
+	int dataArr2[17] = { 200000, 90050, 50, 1, 101, 90550, 50, 1, 102, 90050, 550, 1, 103, 50, 310, 1, 104 };
+	std::vector<int> spaceData2;
+	spaceData2.assign(dataArr2, dataArr2 + 17);
+	ProjectSpace projectSpace2(Cell(100000,100000),Cell(1000,1000));
+	projectSpace2.deserialize(spaceData2);
+	
+	CriticalLevelDetector detector2(projectSpace2);
+
+	CriticalLevel expected2;
+	std::cout << " -- 3: Basic1 Serial ";
+	CriticalLevel level3 = detector2.detectSerial();
+	assertCriticalLevelSame(level3, expected2);
+	std::cout << "Ok" << std::endl;
+
+	std::cout << " -- 4: Basic1 Parallel ";
+	std::cout << std::endl;
+	CriticalLevel level4 = detector2.detectParallel();
+	assertCriticalLevelSame(level4, expected2);
 	std::cout << "Ok" << std::endl;
 
 }

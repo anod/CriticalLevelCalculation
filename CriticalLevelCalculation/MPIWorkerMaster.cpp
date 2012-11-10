@@ -2,7 +2,7 @@
 
 
 MPIWorkerMaster::MPIWorkerMaster(MPIManager* mpi)
-	: MPIWorker(mpi)
+	: MPIWorker(mpi), mSlaveRunningTasks(0)
 {
 }
 
@@ -19,7 +19,7 @@ void MPIWorkerMaster::run()
 	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
 	FlightDataReaderMemCache readerCached(&reader);
 
-	std::cout << "Preload data..." << std::endl;
+	echo("Preload data...");
 	Profiler::getInstance().start("Read data");
 	readerCached.preloadCache();
 	Profiler::getInstance().finish();
@@ -30,13 +30,12 @@ void MPIWorkerMaster::run()
 	ProjectSpaceBuilder builder(readerCached.getSpaceSize(), readerCached.getCellSize(), &readerCached);
 	CriticalDegree degree;
 
-	std::cout << "Processing..." << std::endl;
+	echo("Processing...");
 	//TODO init mSlaveQueue
 	while(builder.nextTime()) {
 		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
 		Profiler::getInstance().finish();
-		std::cout << "Processing space " << projectSpace.getTime() << std::endl;
 
 		// Have free workers - LoadBalancing
 		if (mSlaveQueue.size() > 0) {
@@ -45,31 +44,38 @@ void MPIWorkerMaster::run()
 			executeTask(projectSpace,degree);
 		}
 
-		checkQueues(degree);
+		echo("Collect results");
+		collectSlaveResults(degree);
 
 	//	break;
 	}
-	// sendFinishSignal
+
+	echo("Collect results from still running slaves");
+	while(mSlaveRunningTasks > 0) {
+		collectSlaveResults(degree);
+	}
+	sendSlavesFinishSignal();
 	
 	printResult(degree);
 }
 
 void MPIWorkerMaster::printResult(CriticalDegree& degree) {
 	int maxDegreeFlight = degree.getMaxCriticalLevelFlight();
-	std::cout << std::endl << "Max Critical Degree flight #" << maxDegreeFlight << std::endl;
+	std::stringstream result;
+	result << "Max Critical Degree flight #" << maxDegreeFlight << std::endl;
 	FlightList critList = degree.getFlightList(maxDegreeFlight);
-	std::cout << "Objects that did not see it - " << critList.size() << " : " << std::endl;
+	result << "Objects that did not see it - " << critList.size() << " : " << std::endl;
 	FlightList::const_iterator it;
 	for( it = critList.begin(); it != critList.end(); it++) {
 		if (it != critList.begin()) {
-			std::cout << ", ";
+			result << ", ";
 		}
-		std::cout << (*it);
+		result << (*it);
 	}
-	std::cout << std::endl;
+	result << std::endl;
 
-	std::cout << Profiler::getInstance().dump().str();
-
+	result << Profiler::getInstance().dump().str();
+	echo(result.str());
 }
 
 void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
@@ -80,19 +86,23 @@ void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
 
 	int slaveId = mSlaveQueue.front();
 	mSlaveQueue.pop();
-	mMpi->sendIntArray(slaveId, serialized);
 
-/*	ProjectSpace newSpace(mSpaceSize, mCellSize);
-	Profiler::getInstance().start("Deserialize project space");
-	newSpace.deserialize(size,a);
+	echo(MakeString() << "Send task to #" << slaveId);
+	Profiler::getInstance().start("Send task to slave");
+	mMpi->sendIntArray(slaveId, serialized);
 	Profiler::getInstance().finish();
-*/
+
+	mSlaveRunningTasks++;
+
 }
 
 void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& degree )
 {
+	echo(MakeString() << "Execute task " << projectSpace.getTime());
+
 	CriticalLevel level1, level2;
 	CriticalLevelDetector detector(projectSpace);
+
 	Profiler::getInstance().start("Detect critical level - parallel");
 	level1 = detector.detectParallel();
 	Profiler::getInstance().finish();
@@ -104,22 +114,28 @@ void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& de
 	Profiler::getInstance().start("Add level to degree");
 	degree.addCriticalLevel(level1);
 	Profiler::getInstance().finish();
+
 }
 
-void MPIWorkerMaster::checkQueues(CriticalDegree& degree)
+void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
 {
+	if (mMpi->getCommSize() == 1) {
+		return;
+	}
 	while (mMpi->hasIntArrayResult()) {
 		std::vector<int> data = mMpi->getIntArray();
+		echo(MakeString() << "Data received, size: " << data.size());
 		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
 		degree.addCriticalLevel(level);
 		mSlaveQueue.push(mMpi->getLastResponseSource());
+		mSlaveRunningTasks--;
 	}
 }
 
 void MPIWorkerMaster::initSlaves(const Cell &spaceSize,const Cell &cellSize)
 {
 	int numtasks = mMpi->getCommSize();
-	std::cout << "Number of slaves: " << (numtasks - 1) << std::endl;
+	echo(MakeString() << "Number of slaves: " << (numtasks - 1));
 	if (numtasks > 1) {
 
 		std::vector<int> initData;
@@ -132,5 +148,15 @@ void MPIWorkerMaster::initSlaves(const Cell &spaceSize,const Cell &cellSize)
 			mMpi->sendIntArray(id, initData);
 			mSlaveQueue.push(id);
 		}
+	}
+}
+
+void MPIWorkerMaster::sendSlavesFinishSignal()
+{
+	int numtasks = mMpi->getCommSize();
+	std::vector<int> exitData(1);
+	exitData.push_back(EXIT_CODE);
+	for (int id=1; id<numtasks; id++) {
+		mMpi->sendIntArray(id, exitData);
 	}
 }
