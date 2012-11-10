@@ -16,13 +16,16 @@ void MPIWorkerMaster::run()
 	Profiler::getInstance().setEnabled(true);
 
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "data\\basic1.txt");
+	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
 	FlightDataReaderMemCache readerCached(&reader);
 
 	std::cout << "Preload data..." << std::endl;
 	Profiler::getInstance().start("Read data");
 	readerCached.preloadCache();
 	Profiler::getInstance().finish();
+
+	//
+	initSlaves(readerCached.getSpaceSize(), readerCached.getCellSize());
 
 	ProjectSpaceBuilder builder(readerCached.getSpaceSize(), readerCached.getCellSize(), &readerCached);
 	CriticalDegree degree;
@@ -44,7 +47,7 @@ void MPIWorkerMaster::run()
 
 		checkQueues(degree);
 
-		break;
+	//	break;
 	}
 	// sendFinishSignal
 	
@@ -110,5 +113,24 @@ void MPIWorkerMaster::checkQueues(CriticalDegree& degree)
 		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
 		degree.addCriticalLevel(level);
 		mSlaveQueue.push(mMpi->getLastResponseSource());
+	}
+}
+
+void MPIWorkerMaster::initSlaves(const Cell &spaceSize,const Cell &cellSize)
+{
+	int numtasks = mMpi->getCommSize();
+	std::cout << "Number of slaves: " << (numtasks - 1) << std::endl;
+	if (numtasks > 1) {
+
+		std::vector<int> initData;
+		initData.push_back(spaceSize.x);
+		initData.push_back(spaceSize.y);
+		initData.push_back(cellSize.x);
+		initData.push_back(cellSize.y);
+
+		for (int id=1; id<numtasks; id++) {
+			mMpi->sendIntArray(id, initData);
+			mSlaveQueue.push(id);
+		}
 	}
 }

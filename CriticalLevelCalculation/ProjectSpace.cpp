@@ -68,8 +68,9 @@ std::vector<int> ProjectSpace::serialize()
 	return arr;
 }
 
-void ProjectSpace::deserialize( int size, int data[] )
+void ProjectSpace::deserialize( std::vector<int> data )
 {
+	int size = data.size();
 	mTime = data[0];
 	int i = 1;
 	mPointsArray.reserve(size);

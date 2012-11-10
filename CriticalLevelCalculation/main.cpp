@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 	mpimanager.init(argc,argv);
 	MPIWorker* worker = MPIWorkerFactory::create(&mpimanager);
    try {
-		//worker->run();
-		tests();
+		worker->run();
+		//tests();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
 	}

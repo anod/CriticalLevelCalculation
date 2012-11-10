@@ -91,9 +91,11 @@ void TestRunner::testCriticalLevelDetector()
 {
 	std::cout << "Running CriticalLevelDetector Test" << std::endl;
 
-	int spaceData1[27] = { 3600, 2, 2, 1, 1000, 4, 3, 1, 1001, 8, 4, 2, 1002, 1003, 5, 6, 1, 1004, 10, 11, 2, 1005, 1006, 12, 6, 1, 1007 };
+	int dataArr[27] = { 3600, 2, 2, 1, 1000, 4, 3, 1, 1001, 8, 4, 2, 1002, 1003, 5, 6, 1, 1004, 10, 11, 2, 1005, 1006, 12, 6, 1, 1007 };
+	std::vector<int> spaceData1;
+	spaceData1.assign(dataArr, dataArr + 27);
 	ProjectSpace projectSpace(Cell(100000,100000),Cell(1000,1000));
-	projectSpace.deserialize(27, spaceData1);
+	projectSpace.deserialize(spaceData1);
 
 	CriticalLevel level1, level2, expected1;
 

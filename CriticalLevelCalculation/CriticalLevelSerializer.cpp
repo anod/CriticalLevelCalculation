@@ -2,7 +2,7 @@
 //  CriticalLevelSerializer.cpp
 //  CriticalLevelCalculation
 //
-//  Created by Alex Gavrishev on 11/5/12.
+//  Created by Alex Gavrishev
 //
 //
 

@@ -25,6 +25,7 @@ private:
 	void sendTask( ProjectSpace projectSpace );
 	void executeTask( ProjectSpace projectSpace, CriticalDegree& degree );
 	void checkQueues(CriticalDegree& degree);
+	void initSlaves(const Cell &spaceSize,const Cell &cellSize);
 };
 
 #endif //MPI_WORKER_MASTER_H_

@@ -19,7 +19,7 @@ public:
 	std::stringstream dump();
 	void sortControlPoints();
 	std::vector<int> serialize();
-	void deserialize(int size, int data[]);
+	void deserialize(std::vector<int> data);
 private:
 	Cell mSpaceSize;
 	Cell mCellSize;
