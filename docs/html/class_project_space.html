@@ -36,6 +36,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -61,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -68,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -122,9 +124,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>sortControlPoints</b>
 <tr class="memitem:a77fb3a93160655903c04eef9ce5a5426"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77fb3a93160655903c04eef9ce5a5426"></a>
 std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>serialize</b> ()</td></tr>
 <tr class="separator:a77fb3a93160655903c04eef9ce5a5426"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3188f1199ffaabe4ec83f6c8c5c395fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3188f1199ffaabe4ec83f6c8c5c395fa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deserialize</b> (int size, int data[])</td></tr>
-<tr class="separator:a3188f1199ffaabe4ec83f6c8c5c395fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa668c3982105671ee3c794a4a7cbcdd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa668c3982105671ee3c794a4a7cbcdd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deserialize</b> (std::vector&lt; int &gt; data)</td></tr>
+<tr class="separator:aaa668c3982105671ee3c794a4a7cbcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_project_space_8h_source.html">ProjectSpace.h</a></li>
@@ -133,7 +135,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>deserialize</b> (int 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 10 2012 15:16:20 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 11 2012 21:01:37 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -1,6 +1,11 @@
 #ifndef MAKE_STRING_H_
 #define MAKE_STRING_H_
 
+/**
+ * Facility to create inline strings using stream format
+ * Usage:
+ *  std::string result = MakeString() << "A" << "B";
+ */
 class MakeString
 {
 public:

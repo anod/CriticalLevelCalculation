@@ -36,6 +36,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -61,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -68,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,26 +89,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Cell Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_cell_8h_source.html">Cell.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4ccfb0a9923271daba6000afa1a33ee9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ccfb0a9923271daba6000afa1a33ee9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Cell</b> (unsigned int x, unsigned int y)</td></tr>
 <tr class="separator:a4ccfb0a9923271daba6000afa1a33ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a511aaadeb784e932508d85370c49d084"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a511aaadeb784e932508d85370c49d084"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="class_cell.html">Cell</a> &amp;other) const </td></tr>
+<tr class="memitem:a511aaadeb784e932508d85370c49d084"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#a511aaadeb784e932508d85370c49d084">operator==</a> (const <a class="el" href="class_cell.html">Cell</a> &amp;other) const </td></tr>
 <tr class="separator:a511aaadeb784e932508d85370c49d084"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a080a53fed27a1a41594efeda5a157adb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a080a53fed27a1a41594efeda5a157adb"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="class_cell.html">Cell</a> &amp;other) const </td></tr>
+<tr class="memitem:a080a53fed27a1a41594efeda5a157adb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#a080a53fed27a1a41594efeda5a157adb">operator!=</a> (const <a class="el" href="class_cell.html">Cell</a> &amp;other) const </td></tr>
 <tr class="separator:a080a53fed27a1a41594efeda5a157adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb950724b9a3ea17d90a826191b67421"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb950724b9a3ea17d90a826191b67421"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="class_cell.html">Cell</a> &amp;other)</td></tr>
+<tr class="memitem:aeb950724b9a3ea17d90a826191b67421"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#aeb950724b9a3ea17d90a826191b67421">operator&lt;</a> (const <a class="el" href="class_cell.html">Cell</a> &amp;other)</td></tr>
 <tr class="separator:aeb950724b9a3ea17d90a826191b67421"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa83ef04b8b2b7cee947cf0d67ffb114b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa83ef04b8b2b7cee947cf0d67ffb114b"></a>
-std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><b>dump</b> ()</td></tr>
+<tr class="memitem:aa83ef04b8b2b7cee947cf0d67ffb114b"><td class="memItemLeft" align="right" valign="top">std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#aa83ef04b8b2b7cee947cf0d67ffb114b">dump</a> ()</td></tr>
 <tr class="separator:aa83ef04b8b2b7cee947cf0d67ffb114b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a944a8634c38e05b75f2327c10a1358f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a944a8634c38e05b75f2327c10a1358f9"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b> () const </td></tr>
+<tr class="memitem:a944a8634c38e05b75f2327c10a1358f9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#a944a8634c38e05b75f2327c10a1358f9">hash</a> () const </td></tr>
 <tr class="separator:a944a8634c38e05b75f2327c10a1358f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -118,13 +117,140 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></t
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 <tr class="separator:a9133b0b95550d27ece4eaff09d802835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class describes cell in Project Space </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa83ef04b8b2b7cee947cf0d67ffb114b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stringstream Cell::dump </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Dump current cell for debugging </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a944a8634c38e05b75f2327c10a1358f9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Cell::hash </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Hash function for using as a key for map </p>
+<dl class="section see"><dt>See Also</dt><dd>std::unordered_map </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a080a53fed27a1a41594efeda5a157adb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cell::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_cell.html">Cell</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override compare operator </p>
+
+</div>
+</div>
+<a class="anchor" id="aeb950724b9a3ea17d90a826191b67421"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cell::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_cell.html">Cell</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override compare operator </p>
+
+</div>
+</div>
+<a class="anchor" id="a511aaadeb784e932508d85370c49d084"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Cell::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_cell.html">Cell</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Override compare operator </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_cell_8h_source.html">Cell.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 10 2012 15:16:19 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -36,6 +36,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -61,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -68,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,6 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">FlightDataReader Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_flight_data_reader_8h_source.html">FlightDataReader.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FlightDataReader:</div>
 <div class="dyncontent">
@@ -101,34 +105,271 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad8868aed8719c0192758fa8d93614c66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8868aed8719c0192758fa8d93614c66"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>FlightDataReader</b> (std::ifstream *stream, std::string fileName)</td></tr>
 <tr class="separator:ad8868aed8719c0192758fa8d93614c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b8b117163057cdb3295f884b23d8f6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b8b117163057cdb3295f884b23d8f6e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>open</b> ()</td></tr>
+<tr class="memitem:a5b8b117163057cdb3295f884b23d8f6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#a5b8b117163057cdb3295f884b23d8f6e">open</a> ()</td></tr>
 <tr class="separator:a5b8b117163057cdb3295f884b23d8f6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a193490093ef09a557bf2b0eb393c1b72"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a193490093ef09a557bf2b0eb393c1b72"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rewind</b> ()</td></tr>
+<tr class="memitem:a193490093ef09a557bf2b0eb393c1b72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#a193490093ef09a557bf2b0eb393c1b72">rewind</a> ()</td></tr>
 <tr class="separator:a193490093ef09a557bf2b0eb393c1b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f3638e10f2631d35fcad30ccc606065"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f3638e10f2631d35fcad30ccc606065"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>readHeader</b> ()</td></tr>
+<tr class="memitem:a8f3638e10f2631d35fcad30ccc606065"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#a8f3638e10f2631d35fcad30ccc606065">readHeader</a> ()</td></tr>
 <tr class="separator:a8f3638e10f2631d35fcad30ccc606065"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76021f313f27224219dd98aaa5e3483f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76021f313f27224219dd98aaa5e3483f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>readNextControlPoint</b> ()</td></tr>
+<tr class="memitem:a76021f313f27224219dd98aaa5e3483f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#a76021f313f27224219dd98aaa5e3483f">readNextControlPoint</a> ()</td></tr>
 <tr class="separator:a76021f313f27224219dd98aaa5e3483f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac93b197d69bf5b6c75ecef5b02dd74e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac93b197d69bf5b6c75ecef5b02dd74e9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentFlightNumber</b> () const </td></tr>
+<tr class="memitem:ac93b197d69bf5b6c75ecef5b02dd74e9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#ac93b197d69bf5b6c75ecef5b02dd74e9">getCurrentFlightNumber</a> () const </td></tr>
 <tr class="separator:ac93b197d69bf5b6c75ecef5b02dd74e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa65e35cdecf995ae1d500c86bf742ab5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa65e35cdecf995ae1d500c86bf742ab5"></a>
-<a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentControlPoint</b> () const </td></tr>
+<tr class="memitem:aa65e35cdecf995ae1d500c86bf742ab5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#aa65e35cdecf995ae1d500c86bf742ab5">getCurrentControlPoint</a> () const </td></tr>
 <tr class="separator:aa65e35cdecf995ae1d500c86bf742ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a323ff020d3b02edf0ce53f0c8c23e2ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a323ff020d3b02edf0ce53f0c8c23e2ca"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentTime</b> () const </td></tr>
+<tr class="memitem:a323ff020d3b02edf0ce53f0c8c23e2ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#a323ff020d3b02edf0ce53f0c8c23e2ca">getCurrentTime</a> () const </td></tr>
 <tr class="separator:a323ff020d3b02edf0ce53f0c8c23e2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34e80e13398848953367e615e05cbf68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34e80e13398848953367e615e05cbf68"></a>
-<a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSpaceSize</b> () const </td></tr>
+<tr class="memitem:a34e80e13398848953367e615e05cbf68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#a34e80e13398848953367e615e05cbf68">getSpaceSize</a> () const </td></tr>
 <tr class="separator:a34e80e13398848953367e615e05cbf68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa52a9e8364269bc7b4b1622cd3a5de00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa52a9e8364269bc7b4b1622cd3a5de00"></a>
-<a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getCellSize</b> () const </td></tr>
+<tr class="memitem:aa52a9e8364269bc7b4b1622cd3a5de00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_flight_data_reader.html#aa52a9e8364269bc7b4b1622cd3a5de00">getCellSize</a> () const </td></tr>
 <tr class="separator:aa52a9e8364269bc7b4b1622cd3a5de00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility to read flights data in format provided by Project Definition: Format: </p>
+<pre class="fragment">&lt;A&gt; - dimensions of the Project Space in meters.
+&lt;B&gt;
+&lt;m&gt; - the number of Cells in each dimensions.
+&lt;n&gt;
+&lt;dT&gt; - time interval for hiding checks in seconds.
+&lt;Flight Code&gt;
+&lt;Number&gt; - The number of Control Points in the Path.
+&lt;x&gt; &lt;y&gt; &lt;hh:mm:ss&gt; - Two coordinates (in meters) of each Control Point and Timestamp (hh:mm:ss format).
+...</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa52a9e8364269bc7b4b1622cd3a5de00"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_cell.html">Cell</a> FlightDataReader::getCellSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Size of the cell </dd></dl>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#ae8b3739c2866b998f009f198550afe8a">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa65e35cdecf995ae1d500c86bf742ab5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_cell.html">Cell</a> FlightDataReader::getCurrentControlPoint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>last read control point coordinates </dd></dl>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#a87b5bcf431c9d7da231909d94aed2e37">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac93b197d69bf5b6c75ecef5b02dd74e9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FlightDataReader::getCurrentFlightNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>last read flight number </dd></dl>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#a78b91e3a2bac8fee5239f0aa1a580fd8">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a323ff020d3b02edf0ce53f0c8c23e2ca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int FlightDataReader::getCurrentTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>last read time </dd></dl>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#ad46da473dbabb9bdd19ecc96aa836bf7">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a34e80e13398848953367e615e05cbf68"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_cell.html">Cell</a> FlightDataReader::getSpaceSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Size of the space </dd></dl>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#aebe2018aa29a08606c24740996cc8005">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5b8b117163057cdb3295f884b23d8f6e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlightDataReader::open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Open a file </p>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#ab02e719fb9563c859c191fa81f40f464">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8f3638e10f2631d35fcad30ccc606065"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlightDataReader::readHeader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Read header data </p>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#ad8ba1935379d3e48ff4a762c85cf0f00">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a76021f313f27224219dd98aaa5e3483f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FlightDataReader::readNextControlPoint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reads next control point for the file </p>
+<dl class="section return"><dt>Returns</dt><dd>true if there is more point to read </dd></dl>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#a4c20a204ece0b276939bb59030dbefaf">IFlightDataReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a193490093ef09a557bf2b0eb393c1b72"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FlightDataReader::rewind </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Go to beginning of the file </p>
+
+<p>Implements <a class="el" href="class_i_flight_data_reader.html#a2094dcd3b74b7a29ce25a750b0e61ceb">IFlightDataReader</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_flight_data_reader_8h_source.html">FlightDataReader.h</a></li>
 <li>FlightDataReader.cpp</li>
@@ -136,7 +377,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentTime</b> () 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 10 2012 15:16:20 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

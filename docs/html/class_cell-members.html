@@ -36,6 +36,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -61,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -68,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,17 +90,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="directory">
   <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>Cell</b>() (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Cell</b>(unsigned int x, unsigned int y) (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>dump</b>() (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>hash</b>() const  (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>operator!=</b>(const Cell &amp;other) const  (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>operator&lt;</b>(const Cell &amp;other) (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>operator==</b>(const Cell &amp;other) const  (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#aa83ef04b8b2b7cee947cf0d67ffb114b">dump</a>()</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_cell.html#a944a8634c38e05b75f2327c10a1358f9">hash</a>() const </td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a080a53fed27a1a41594efeda5a157adb">operator!=</a>(const Cell &amp;other) const </td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_cell.html#aeb950724b9a3ea17d90a826191b67421">operator&lt;</a>(const Cell &amp;other)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_cell.html#a511aaadeb784e932508d85370c49d084">operator==</a>(const Cell &amp;other) const </td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>x</b> (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>y</b> (defined in <a class="el" href="class_cell.html">Cell</a>)</td><td class="entry"><a class="el" href="class_cell.html">Cell</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 10 2012 15:16:19 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

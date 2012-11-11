@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['makestring',['MakeString',['../class_make_string.html',1,'']]],
   ['mpimanager',['MPIManager',['../class_m_p_i_manager.html',1,'']]],
   ['mpiworker',['MPIWorker',['../class_m_p_i_worker.html',1,'']]],
   ['mpiworkerfactory',['MPIWorkerFactory',['../class_m_p_i_worker_factory.html',1,'']]],

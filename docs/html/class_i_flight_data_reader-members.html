@@ -36,6 +36,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -61,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -68,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,20 +88,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>getCellSize</b>() const =0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getCurrentControlPoint</b>() const =0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>getCurrentFlightNumber</b>() const =0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>getCurrentTime</b>() const =0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>getSpaceSize</b>() const =0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>open</b>()=0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>readHeader</b>()=0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>readNextControlPoint</b>()=0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>rewind</b>()=0 (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_i_flight_data_reader.html#ae8b3739c2866b998f009f198550afe8a">getCellSize</a>() const =0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_i_flight_data_reader.html#a87b5bcf431c9d7da231909d94aed2e37">getCurrentControlPoint</a>() const =0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_i_flight_data_reader.html#a78b91e3a2bac8fee5239f0aa1a580fd8">getCurrentFlightNumber</a>() const =0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_i_flight_data_reader.html#ad46da473dbabb9bdd19ecc96aa836bf7">getCurrentTime</a>() const =0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_i_flight_data_reader.html#aebe2018aa29a08606c24740996cc8005">getSpaceSize</a>() const =0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_i_flight_data_reader.html#ab02e719fb9563c859c191fa81f40f464">open</a>()=0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_i_flight_data_reader.html#ad8ba1935379d3e48ff4a762c85cf0f00">readHeader</a>()=0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_i_flight_data_reader.html#a4c20a204ece0b276939bb59030dbefaf">readNextControlPoint</a>()=0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_i_flight_data_reader.html#a2094dcd3b74b7a29ce25a750b0e61ceb">rewind</a>()=0</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~IFlightDataReader</b>() (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 10 2012 15:16:20 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

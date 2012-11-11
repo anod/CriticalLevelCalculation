@@ -3,18 +3,38 @@
 
 #include "Include.h"
 #include <mpi.h>
-
+/**
+ * Class provides an easy API over MPI functions
+ */
 class MPIManager
 {
 public:
+	/**
+	 * Rank of the master
+	 */
 	static const int MASTER_RANK = 0;
+	/**
+	 * Max size of array to be transfered
+	 */
 	static const int MAX_ARR_SIZE = 10000;
 
 	MPIManager(void);
 	~MPIManager(void);
+	/**
+	 * Init MPI
+	 */
 	void init(int argc,char *argv[]);
+	/**
+	 * Call to MPI_Finalize 
+	 */
 	void finalize();
+	/**
+	 * Get number of workers
+	 */
 	int getCommSize() const { return mCommSize; }
+	/**
+	 * Rank of the current worker
+	 */
 	int getCommRank() const { return mCommRank; }
 	void sendIntArray(int dest, std::vector<int> arr);
 	std::vector<int> recvIntArray();

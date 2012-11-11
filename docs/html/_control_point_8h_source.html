@@ -36,6 +36,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -67,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,19 +85,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CONTROL_POINT_H_</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define CONTROL_POINT_H_</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="code" href="struct_control_point.html">    4</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_control_point.html">ControlPoint</a> {</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <a class="code" href="class_cell.html">Cell</a> coord;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordtype">int</span> flight;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> operator&lt; (<span class="keyword">const</span> <a class="code" href="struct_control_point.html">ControlPoint</a>&amp; other){ </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordflow">return</span> coord &lt; other.coord;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    };</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;};</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif // CONTROL_POINT_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="struct_control_point.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_control_point.html">ControlPoint</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="struct_control_point.html#a35874082ca913309c233c3c356b3bf37">   13</a></span>&#160;    <a class="code" href="class_cell.html">Cell</a> <a class="code" href="struct_control_point.html#a35874082ca913309c233c3c356b3bf37">coord</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="struct_control_point.html#a90d4cb3e497491b004639bebb092c0b2">   17</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct_control_point.html#a90d4cb3e497491b004639bebb092c0b2">flight</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="struct_control_point.html#aa7602372f4416b423b11330e79f63b44">   21</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="struct_control_point.html#aa7602372f4416b423b11330e79f63b44">operator&lt; </a>(<span class="keyword">const</span> <a class="code" href="struct_control_point.html">ControlPoint</a>&amp; other){ </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="struct_control_point.html#a35874082ca913309c233c3c356b3bf37">coord</a> &lt; other.<a class="code" href="struct_control_point.html#a35874082ca913309c233c3c356b3bf37">coord</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif // CONTROL_POINT_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 10 2012 15:16:19 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
