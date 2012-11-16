@@ -29,6 +29,7 @@
  * Project classes/defenitions
  */
 #include "Cell.h"
+#include "Flight.h"
 /**
  * List of flights
  */

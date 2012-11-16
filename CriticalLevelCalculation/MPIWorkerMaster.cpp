@@ -17,17 +17,24 @@ void MPIWorkerMaster::run()
 
 	std::ifstream fileStream;
 	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
-	FlightDataReaderMemCache readerCached(&reader);
 
-	echo("Preload data...");
-	Profiler::getInstance().start("Read data");
-	readerCached.preloadCache();
+	echo("Load data...");
+	reader.readHeader();
+
+	// Init available s;aces with header data
+	initSlaves(reader.getSpaceSize(), reader.getCellSize());
+
+	// Read flights data
+	Profiler::getInstance().start("Read flights");
+	std::vector<Flight> flights = reader.readFlights();
 	Profiler::getInstance().finish();
 
-	//
-	initSlaves(readerCached.getSpaceSize(), readerCached.getCellSize());
+	// Build flight paths
 
-	ProjectSpaceBuilder builder(readerCached.getSpaceSize(), readerCached.getCellSize(), &readerCached);
+
+	// Calculate Critical Degree
+
+	ProjectSpaceBuilder builder(reader.getSpaceSize(), reader.getCellSize(), &flights);
 	CriticalDegree degree;
 
 	echo("Processing...");

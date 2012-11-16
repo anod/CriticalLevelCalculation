@@ -3,7 +3,7 @@
 
 
 FlightDataReader::FlightDataReader(std::ifstream* stream, std::string fileName)
-	: mCurrentFlightNumber(0), mNumberOfControlPoints(0), mInputStream(stream), mFileName(fileName)
+	: mInputStream(stream), mFileName(fileName)
 {
 }
 
@@ -17,30 +17,7 @@ void FlightDataReader::open()
 	if (!mInputStream->is_open()) {
 		throw RuntimeException("Cannot open file: " + mFileName);
 	}
-//	mInputStream->rdbuf()->pubsetbuf(mBuffer, BUFFER_SIZE);
-}
 
-bool FlightDataReader::readNextControlPoint()
-{
-	if (mNumberOfControlPoints == 0) { //New flight
-		mCurrentFlightNumber = 0;
-		if (!(*mInputStream >> mCurrentFlightNumber)) {
-			return false;
-		}
-		if (!(*mInputStream >> mNumberOfControlPoints)) {
-			throw RuntimeException("Cannot read number of control points");
-		}
-		if (mNumberOfControlPoints == 0) {
-			return readNextControlPoint();
-		}
-	}
-	int x,y = 0;
-	*mInputStream >> x;
-	*mInputStream >> y;
-	mCurrentControlPoint = Cell(x,y);
-	mCurrentTime = timeStringToSeconds();
-	mNumberOfControlPoints--;
-	return true;
 }
 
 int FlightDataReader::timeStringToSeconds()
@@ -65,32 +42,51 @@ int FlightDataReader::timeStringToSeconds()
 
 void FlightDataReader::rewind()
 {
-	mNumberOfControlPoints = 0;
 	mInputStream->clear();
 	mInputStream->seekg(0, std::ios::beg);
 }
 
 void FlightDataReader::readHeader()
 {
-	int tmp, spaceA, spaceB, cellM, cellN, i = 0;
+	int spaceA, spaceB, cellM, cellN;
 
-	while ( i < 5 ) {
-		*mInputStream >> tmp;
-		if (!tmp) {
-			continue;
-		}
-		if ( i == 0 ) {
-			spaceA = tmp;
-		} else if ( i == 1 ) {
-			spaceB = tmp;
-		} else if ( i == 2 ) {
-			cellM = tmp;
-		} else if ( i == 3 ) {
-			cellN = tmp;
-		}
-		// Skip one
-		i++;
-	}
+	*mInputStream >> spaceA;
+	*mInputStream >> spaceB;
+	*mInputStream >> cellM;
+	*mInputStream >> cellN;
+	*mInputStream >> mTimeStep;
+
 	mSpaceSize = Cell(spaceA,spaceB);
 	mCellSize = Cell(cellM, cellN);
+}
+
+std::vector<Flight> FlightDataReader::readFlights()
+{
+	std::vector<Flight> flights;
+
+	while(readNextFlight()) {
+		flights.push_back(mCurrentFlight);
+	}
+
+	return flights;
+}
+
+bool FlightDataReader::readNextFlight()
+{
+	int flightNum, numberOfControlPoints, x,y, time;
+	if (!(*mInputStream >> flightNum)) {
+		return false;
+	}
+	if (!(*mInputStream >> numberOfControlPoints)) {
+		throw RuntimeException("Cannot read number of control points");
+	}
+
+	mCurrentFlight = Flight(flightNum);
+	for (int i = 0; i< numberOfControlPoints; i++) {
+		*mInputStream >> x;
+		*mInputStream >> y;
+		time = timeStringToSeconds();
+		mCurrentFlight.addControlPoint(time, Cell(x,y));
+	}
+	return true;
 }
