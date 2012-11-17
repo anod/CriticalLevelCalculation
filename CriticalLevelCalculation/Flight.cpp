@@ -19,7 +19,6 @@ void Flight::addControlPoint( int time, Cell point )
 {
 	ControlPoint cp = { /*.time=*/time, /*.coord=*/point};
 	mControlPoints.push_back(cp);
-	mControlPointsTimes[time] = true;
 
 	//update start and finish time
 	if (mTimeStart == TIME_INCORRECT) {

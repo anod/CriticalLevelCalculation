@@ -28,7 +28,6 @@ private:
 	int mTimeFinish;
 	int mTimeStep;
 	std::vector<ControlPoint> mControlPoints;
-	std::unordered_map<int,bool> mControlPointsTimes;
 	std::vector<Cell> mFlightPath;
 };
 
