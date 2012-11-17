@@ -22,7 +22,7 @@ ProjectSpace ProjectSpaceBuilder::build()
 {
 	ProjectSpace space(mProjectInfo.spaceSize, mProjectInfo.spaceSize);
 
-	for(int i=0; i<mFlights.size(); i++) {
+	for(size_t i=0; i<mFlights.size(); i++) {
 		if (mFlights[i].getTimeStart() >= mCurrentTime && mFlights[i].getTimeFinish() <= mCurrentTime) {
 			int flight = mFlights[i].getFlightNum();
 			Cell p = mFlights[i].getPositionAtTime(mCurrentTime);

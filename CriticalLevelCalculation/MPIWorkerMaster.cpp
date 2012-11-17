@@ -31,6 +31,7 @@ void MPIWorkerMaster::run()
 	ProjectInfo projectInfo = reader.getProjectInfo();
 
 	// Init available s;aces with header data
+
 	initSlaves(projectInfo);
 
 	// Build flight paths

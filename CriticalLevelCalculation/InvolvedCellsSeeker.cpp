@@ -29,10 +29,6 @@ std::vector<Cell> InvolvedCellsSeeker::seek( Cell a, Cell b )
 	return result;
 }
 
-int InvolvedCellsSeeker::coordToCell(int coord, int size) {
-	return (int)ceil(((double)coord / (double)size));
-}
-
 void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& result) {
 	int newCellX,newCellY = 0;
 
@@ -46,11 +42,11 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 		std::swap(y1, y2);
 	}
 	if (steep) {
-		mLastCell = Cell(coordToCell(y1,mCellSize.x),  coordToCell(x1,mCellSize.y));
-		mStopCell = Cell(coordToCell(y2,mCellSize.x),  coordToCell(x2,mCellSize.y)); 
+		mLastCell = Utils::convertToCell(y1, x1, mCellSize);
+		mStopCell = Utils::convertToCell(y2, x2, mCellSize);
 	} else {
-		mLastCell = Cell(coordToCell(x1,mCellSize.x),  coordToCell(y1,mCellSize.y));
-		mStopCell = Cell(coordToCell(x2,mCellSize.x),  coordToCell(y2,mCellSize.y)); 
+		mLastCell = Utils::convertToCell(x1, y1, mCellSize);
+		mStopCell = Utils::convertToCell(x2, y2, mCellSize); 
 	}
 
 	int deltax = x2 - x1;
@@ -63,11 +59,11 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 
 	for (int x = x1; x <= x2; x=x+xstep) {
 		if (steep) {
-			newCellX = coordToCell(y,mCellSize.x);
-			newCellY = coordToCell(x,mCellSize.y);
+			newCellX = Utils::coordToCell(y,mCellSize.x);
+			newCellY = Utils::coordToCell(x,mCellSize.y);
 		} else {
-			newCellX = coordToCell(x,mCellSize.x);
-			newCellY = coordToCell(y,mCellSize.y);
+			newCellX = Utils::coordToCell(x,mCellSize.x);
+			newCellY = Utils::coordToCell(y,mCellSize.y);
 		}
 		if (mStopCell.x == newCellX && mStopCell.y == newCellY) {
 			return;

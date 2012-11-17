@@ -85,6 +85,7 @@
     <ClCompile Include="ProjectSpace.cpp" />
     <ClCompile Include="ProjectSpaceBuilder.cpp" />
     <ClCompile Include="TestRunner.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ControlPoint.h" />
@@ -110,6 +111,7 @@
     <ClInclude Include="ProjectSpaceBuilder.h" />
     <ClInclude Include="RuntimeException.h" />
     <ClInclude Include="TestRunner.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -29,10 +29,6 @@ private:
 	 */
 	void addResult(int major, int minor, std::vector<Cell>& result);
 	/**
-	 * Convert coordinate into cell
-	 */
-	int coordToCell(int coord, int size);
-	/**
 	 * Check cells on line between x1,y1 and x2,y2
 	 */
 	void line(int x1,int y1,int x2,int y2, std::vector<Cell>& result);

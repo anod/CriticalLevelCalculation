@@ -56,7 +56,8 @@ void FlightDataReader::readHeader()
 	*mInputStream >> cellN;
 	*mInputStream >> mTimeStep;
 
-	mSpaceSize = Cell((int)((int)spaceA / (int)cellM), (int)((int)spaceB / (int)cellN));
+
+	mSpaceSize = Cell(Utils::coordToCell(spaceA,cellM), Utils::coordToCell(spaceB,cellN));
 	mCellSize = Cell(cellM, cellN);
 }
 
@@ -99,7 +100,8 @@ bool FlightDataReader::readNextFlight()
 		*mInputStream >> x;
 		*mInputStream >> y;
 		time = timeStringToSeconds();
-		mCurrentFlight.addControlPoint(time, Cell(x,y));
+		Cell p =  Utils::convertToCell(x, y, mCellSize);
+		mCurrentFlight.addControlPoint(time, p);
 	}
 	return true;
 }

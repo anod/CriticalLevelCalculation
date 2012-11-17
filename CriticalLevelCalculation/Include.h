@@ -26,9 +26,10 @@
 #include "Profiler.h"
 
 /**
- * Project classes/defenitions
+ * Project classes/definitions
  */
 #include "Cell.h"
+#include "Utils.h"
 #include "Flight.h"
 #include "ProjectInfo.h"
 
