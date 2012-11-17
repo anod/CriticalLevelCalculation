@@ -24,10 +24,13 @@ public:
 	 * @return total list of other that in critical situation with the specific flight
 	 */
 	FlightList getFlightList(int flight) { return mTotalLevel[flight]; };
+
+	int getTotalCount(int flight) { return mTotalCounter[flight]; };
 private:
 	CriticalLevel mTotalLevel;
 	int mMaxCriticalLevelFlight;
 	int mMaxCriticalLevel;
+	std::unordered_map<int,int> mTotalCounter;
 };
 
 #endif //CRITICAL_DEGREE_H_

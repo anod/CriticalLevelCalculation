@@ -18,7 +18,7 @@ void MPIWorkerMaster::run()
 
 	CriticalDegree degree;
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
+	FlightDataReader reader(&fileStream, "c:\\big2.txt");
 
 	echo("Load data...");
 	reader.open();
@@ -86,13 +86,19 @@ void MPIWorkerMaster::printResult(CriticalDegree& degree) {
 	std::stringstream result;
 	result << "Max Critical Degree flight #" << maxDegreeFlight << std::endl;
 	FlightList critList = degree.getFlightList(maxDegreeFlight);
-	result << "Objects that did not see it - " << critList.size() << " : " << std::endl;
+	result << "Hidden " << degree.getTotalCount(maxDegreeFlight) << " times by " << critList.size() << " objects : " << std::endl;
 	FlightList::const_iterator it;
+
+	std::unordered_map<int, bool> alreadySeen;
 	for( it = critList.begin(); it != critList.end(); it++) {
-		if (it != critList.begin()) {
-			result << ", ";
+		int flightNum = (*it);
+		if (!alreadySeen[flightNum]) {
+			if (it != critList.begin()) {
+				result << ", ";
+			}
+			result << (*it);
+			alreadySeen[flightNum] = true;
 		}
-		result << (*it);
 	}
 	result << std::endl;
 
@@ -119,9 +125,9 @@ void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& de
 	CriticalLevel level1;
 	CriticalLevelDetector detector(projectSpace);
 
-//	level1 = detector.detectParallel();
+	level1 = detector.detectParallel();
 
-	level1 = detector.detectSerial();
+//	level1 = detector.detectSerial();
 
 	degree.addCriticalLevel(level1);
 }

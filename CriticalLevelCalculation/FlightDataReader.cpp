@@ -99,7 +99,7 @@ bool FlightDataReader::readNextFlight()
 		*mInputStream >> x;
 		*mInputStream >> y;
 		time = timeStringToSeconds();
-		Cell p =  Utils::convertToCell(x, y, mCellSize);
+		Cell p =  Cell(x,y);
 		mCurrentFlight.addControlPoint(time, p);
 	}
 	return true;

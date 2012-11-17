@@ -19,6 +19,7 @@ void CriticalDegree::addCriticalLevel( CriticalLevel level )
 	for(it=level.begin(); it!=level.end(); it++) {
 		int currentFlight = it->first;
 		FlightList list = it->second;
+		mTotalCounter[currentFlight]++;
 		for( it1 = list.begin(); it1 != list.end(); it1++) {
 			int invFlight = (*it1);
 			mTotalLevel[currentFlight].push_back(invFlight);

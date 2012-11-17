@@ -32,10 +32,11 @@ void FlightPathBuilder::build( Flight &flight )
 		for (int i = 0; i < timeDiff; i+=mProjectInfo.timeStep) {
 			int x = cp1.coord.x + (int)(speedX * i);
 			int y = cp1.coord.y + (int)(speedY * i);
-			Cell cell = Cell(x,y);
+			Cell cell = Utils::convertToCell(x, y, mProjectInfo.cellSize);
 			flightPath.push_back(cell);
 		}
-		flightPath.push_back(cp2.coord);
+		Cell last = Utils::convertToCell(cp2.coord.x, cp2.coord.y, mProjectInfo.cellSize);
+		flightPath.push_back(last);
 	}
 
 	flight.setTimeStep(mProjectInfo.timeStep);

@@ -16,10 +16,6 @@ struct ControlPoint {
 	 */
 	Cell coord;
 	/**
-	 * Flight number
-	 */
-	int flight;
-	/**
 	 * Override operator to compare control points
 	 */
 	inline bool operator< (const ControlPoint& other){ 

@@ -17,7 +17,7 @@ Flight::~Flight(void)
 
 void Flight::addControlPoint( int time, Cell point )
 {
-	ControlPoint cp = { /*.time=*/time, /*.coord=*/point, /*.flight=*/0};
+	ControlPoint cp = { /*.time=*/time, /*.coord=*/point};
 	mControlPoints.push_back(cp);
 	mControlPointsTimes[time] = true;
 

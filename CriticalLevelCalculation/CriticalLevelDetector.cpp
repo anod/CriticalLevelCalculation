@@ -64,7 +64,7 @@ void CriticalLevelDetector::compareCells( ControlPointsMap& cpoints,std::vector<
 				cacheA = a;
 				cacheB = b;
 				cacheReady = true;
-				result = cacheResult;
+				cacheResult = result;
 			}
 
 			if (result) {
