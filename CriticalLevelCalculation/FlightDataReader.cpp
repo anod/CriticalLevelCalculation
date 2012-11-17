@@ -56,7 +56,7 @@ void FlightDataReader::readHeader()
 	*mInputStream >> cellN;
 	*mInputStream >> mTimeStep;
 
-	mSpaceSize = Cell(spaceA / cellM, spaceB / cellN);
+	mSpaceSize = Cell((int)((int)spaceA / (int)cellM), (int)((int)spaceB / (int)cellN));
 	mCellSize = Cell(cellM, cellN);
 }
 

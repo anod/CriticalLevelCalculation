@@ -20,6 +20,7 @@ void MPIWorkerMaster::run()
 	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
 
 	echo("Load data...");
+	reader.open();
 	reader.readHeader();
 
 	// Read flights data
