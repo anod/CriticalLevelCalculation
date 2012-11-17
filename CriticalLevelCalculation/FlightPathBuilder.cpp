@@ -18,9 +18,11 @@ void FlightPathBuilder::build( Flight &flight )
 	std::vector<ControlPoint>::const_iterator it;
 
 	std::vector<ControlPoint> cpoints = flight.getControlPoints();
-	for (it = cpoints.begin(); it != cpoints.end() - 1; it++) {
-		ControlPoint cp1 = *it;
-		ControlPoint cp2 = *(it+1);
+	int size = cpoints.size();
+
+	for (int j = 0; j < size - 1; j++) {
+		ControlPoint cp1 = cpoints[j];
+		ControlPoint cp2 = cpoints[j+1];
 
 		int timeDiff = cp2.time - cp1.time;
 		int xDiff = cp2.coord.x - cp1.coord.x;

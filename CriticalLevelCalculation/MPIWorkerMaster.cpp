@@ -18,7 +18,7 @@ void MPIWorkerMaster::run()
 
 	CriticalDegree degree;
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "c:\\big2.txt");
+	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
 
 	echo("Load data...");
 	reader.open();
@@ -37,9 +37,12 @@ void MPIWorkerMaster::run()
 
 	// Build flight paths
 	echo("Build flights paths...");
+	int flightsCount = flights.size();
 	FlightPathBuilder fpBuilder(projectInfo);
-	Profiler::getInstance().start("Build flight path");
-	for(size_t i=0; i<flights.size(); i++) {
+
+	Profiler::getInstance().start("Build flights path");
+	#pragma omp parallel for schedule(dynamic)
+	for(int i=0; i< flightsCount; i++) {
 		fpBuilder.build(flights[i]);
 	}
 	Profiler::getInstance().finish();
