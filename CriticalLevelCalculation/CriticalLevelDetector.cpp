@@ -42,15 +42,30 @@ void CriticalLevelDetector::compareCells( ControlPointsMap& cpoints,std::vector<
 
 	int total = pointsArray.size();
 
+	bool cacheReady = false;
+	Cell cacheA;
+	Cell cacheB;
+	int cacheResult=0;
+
 	#pragma omp for
 	for(int i=0; i<total; i++) {
 		a = pointsArray[i];
 		for(int j=i+1; j<total; j++) {
 			b =  pointsArray[j];
 
-			InvolvedCellsSeeker seeker(cellSize);
-			list = seeker.seek(a, b);
-			int result = checkCriticalSituation(list);
+			int result = 0;
+			if (cacheReady && a == cacheA && b == cacheB) {
+				result = cacheResult;
+			} else {
+				InvolvedCellsSeeker seeker(cellSize);
+				list = seeker.seek(a, b);
+				result = checkCriticalSituation(list);
+
+				cacheA = a;
+				cacheB = b;
+				cacheReady = true;
+				result = cacheResult;
+			}
 
 			if (result) {
 				addCriticalLevel(cpoints[a], cpoints[b], level);

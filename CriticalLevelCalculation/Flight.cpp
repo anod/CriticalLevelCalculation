@@ -34,5 +34,6 @@ void Flight::addControlPoint( int time, Cell point )
 Cell Flight::getPositionAtTime( int time )
 {
 	int idx = (int)((double)(time - mTimeStart)/(double)mTimeStep);
-	return mFlightPath.at(idx);
+	Cell p = mFlightPath.at(idx);
+	return p;
 }

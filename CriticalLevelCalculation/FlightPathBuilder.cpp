@@ -14,6 +14,7 @@ FlightPathBuilder::~FlightPathBuilder(void)
 void FlightPathBuilder::build( Flight &flight )
 {
 	std::vector<Cell> flightPath;
+
 	std::vector<ControlPoint>::const_iterator it;
 
 	std::vector<ControlPoint> cpoints = flight.getControlPoints();
@@ -22,16 +23,19 @@ void FlightPathBuilder::build( Flight &flight )
 		ControlPoint cp2 = *(it+1);
 
 		int timeDiff = cp2.time - cp1.time;
-		double speedX = (double)((double)(cp2.coord.x - cp1.coord.x) / (double)timeDiff);
-		double speedY = (double)((double)(cp2.coord.y - cp1.coord.y) / (double)timeDiff);
+		int xDiff = cp2.coord.x - cp1.coord.x;
+		int yDiff = cp2.coord.y - cp1.coord.y;
 
-		for (int currentTime = cp1.time; currentTime < cp2.time; currentTime+=mProjectInfo.timeStep) {
-			int timeDiff = currentTime - cp1.time;
-			int x = cp1.coord.x + (int)(speedX * timeDiff);
-			int y = cp1.coord.y + (int)(speedY * timeDiff);
-			Cell cell = Utils::convertToCell(x,y, mProjectInfo.cellSize);
+		double speedX = (double)((double)xDiff / (double)timeDiff);
+		double speedY = (double)((double)yDiff / (double)timeDiff);
+
+		for (int i = 0; i < timeDiff; i+=mProjectInfo.timeStep) {
+			int x = cp1.coord.x + (int)(speedX * i);
+			int y = cp1.coord.y + (int)(speedY * i);
+			Cell cell = Cell(x,y);
 			flightPath.push_back(cell);
 		}
+		flightPath.push_back(cp2.coord);
 	}
 
 	flight.setTimeStep(mProjectInfo.timeStep);
