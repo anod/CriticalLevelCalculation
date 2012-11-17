@@ -74,7 +74,7 @@ std::vector<Flight> FlightDataReader::readFlights()
 			if (mCurrentFlight.getTimeStart() < mTimeStart) {
 				mTimeStart = mCurrentFlight.getTimeStart();
 			}
-			if (mCurrentFlight.getTimeFinish() < mTimeFinish) {
+			if (mCurrentFlight.getTimeFinish() > mTimeFinish) {
 				mTimeFinish = mCurrentFlight.getTimeFinish();
 			}
 		}
