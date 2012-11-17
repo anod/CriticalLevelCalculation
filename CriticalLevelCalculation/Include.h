@@ -30,6 +30,7 @@
  */
 #include "Cell.h"
 #include "Utils.h"
+#include "ControlPoint.h"
 #include "Flight.h"
 #include "ProjectInfo.h"
 

@@ -8,7 +8,7 @@ class FlightPathBuilder
 public:
 	FlightPathBuilder(const ProjectInfo &projectInfo);
 	~FlightPathBuilder(void);
-	std::unordered_map<int,Cell> build(std::unordered_map<int,Cell> controlPoints);
+	void build( Flight &flight );
 private:
 	ProjectInfo mProjectInfo;
 };

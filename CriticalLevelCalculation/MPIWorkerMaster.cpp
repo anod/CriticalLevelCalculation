@@ -16,6 +16,7 @@ void MPIWorkerMaster::run()
 	
 	Profiler::getInstance().setEnabled(true);
 
+	CriticalDegree degree;
 	std::ifstream fileStream;
 	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
 
@@ -24,34 +25,36 @@ void MPIWorkerMaster::run()
 	reader.readHeader();
 
 	// Read flights data
+	echo("Read flights...");
 	Profiler::getInstance().start("Read flights");
 	std::vector<Flight> flights = reader.readFlights();
 	Profiler::getInstance().finish();
 
 	ProjectInfo projectInfo = reader.getProjectInfo();
 
-	// Init available s;aces with header data
-
+	// Init available slaves with project info
 	initSlaves(projectInfo);
 
 	// Build flight paths
+	echo("Build flights paths...");
 	FlightPathBuilder fpBuilder(projectInfo);
+	Profiler::getInstance().start("Build flight path");
 	for(size_t i=0; i<flights.size(); i++) {
-		std::unordered_map<int,Cell> flightPath = fpBuilder.build(flights[i].getControlPoints());
-		flights[i].setFlightPath(flightPath);
+		fpBuilder.build(flights[i]);
 	}
+	Profiler::getInstance().finish();
 
 	// Calculate Critical Degree
-
 	ProjectSpaceBuilder builder(projectInfo, flights);
-	CriticalDegree degree;
 
-	echo("Processing...");
 	//TODO init mSlaveQueue
+	int numOfTasks = (int)((double)(projectInfo.timeFinish - projectInfo.timeStart)/(double)projectInfo.timeStep);
+	echo(MakeString() << "Number of tasks: " << numOfTasks);
+	echo("Processing...");
+	int progress = 0;
+	Profiler::getInstance().start("Process project space");
 	while(builder.nextTime()) {
-		Profiler::getInstance().start("Build project space");
 		ProjectSpace projectSpace = builder.build();
-		Profiler::getInstance().finish();
 
 		// Have free workers - LoadBalancing
 		if (mSlaveQueue.size() > 0) {
@@ -60,11 +63,14 @@ void MPIWorkerMaster::run()
 			executeTask(projectSpace,degree);
 		}
 
-		echo("Collect results");
 		collectSlaveResults(degree);
 
-	//	break;
+		if (progress % 1000 == 0) {
+			echo (MakeString() << " Progress: " << progress);
+		}
+		progress++;
 	}
+	Profiler::getInstance().finish();
 
 	echo("Collect results from still running slaves");
 	while(mSlaveRunningTasks > 0) {
@@ -96,17 +102,13 @@ void MPIWorkerMaster::printResult(CriticalDegree& degree) {
 
 void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
 {
-	Profiler::getInstance().start("Serialize project space");
 	std::vector<int> serialized = projectSpace.serialize();
-	Profiler::getInstance().finish();
 
 	int slaveId = mSlaveQueue.front();
 	mSlaveQueue.pop();
 
 	echo(MakeString() << "Send task to #" << slaveId);
-	Profiler::getInstance().start("Send task to slave");
 	mMpi->sendIntArray(slaveId, serialized);
-	Profiler::getInstance().finish();
 
 	mSlaveRunningTasks++;
 
@@ -114,23 +116,18 @@ void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
 
 void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& degree )
 {
-	echo(MakeString() << "Execute task " << projectSpace.getTime());
+	//echo(MakeString() << "Execute task " << projectSpace.getTime());
 
 	CriticalLevel level1, level2;
 	CriticalLevelDetector detector(projectSpace);
 
-	Profiler::getInstance().start("Detect critical level - parallel");
 	level1 = detector.detectParallel();
-	Profiler::getInstance().finish();
 
-	Profiler::getInstance().start("Detect critical level - serial");
-	level2 = detector.detectSerial();
-	Profiler::getInstance().finish();
+	//Profiler::getInstance().start("Detect critical level - serial");
+	//level2 = detector.detectSerial();
+	//Profiler::getInstance().finish();
 
-	Profiler::getInstance().start("Add level to degree");
 	degree.addCriticalLevel(level1);
-	Profiler::getInstance().finish();
-
 }
 
 void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)

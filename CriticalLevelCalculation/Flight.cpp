@@ -17,7 +17,9 @@ Flight::~Flight(void)
 
 void Flight::addControlPoint( int time, Cell point )
 {
-	mControlPoints[time] = point;
+	ControlPoint cp = { /*.time=*/time, /*.coord=*/point, /*.flight=*/0};
+	mControlPoints.push_back(cp);
+	mControlPointsTimes[time] = true;
 
 	//update start and finish time
 	if (mTimeStart == TIME_INCORRECT) {
@@ -31,5 +33,6 @@ void Flight::addControlPoint( int time, Cell point )
 
 Cell Flight::getPositionAtTime( int time )
 {
-	return mFlightPath.at(time);
+	int idx = (int)((double)(time - mTimeStart)/(double)mTimeStep);
+	return mFlightPath.at(idx);
 }

@@ -8,6 +8,10 @@
  */
 struct ControlPoint {
 	/**
+	 * Control Point time
+	 */
+	int time;
+	/**
 	 * Flight coordinate
 	 */
 	Cell coord;
