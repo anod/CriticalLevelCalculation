@@ -30,6 +30,8 @@
  */
 #include "Cell.h"
 #include "Flight.h"
+#include "ProjectInfo.h"
+
 /**
  * List of flights
  */

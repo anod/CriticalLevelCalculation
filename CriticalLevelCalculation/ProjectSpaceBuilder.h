@@ -3,26 +3,21 @@
 
 #include "Include.h"
 #include "ProjectSpace.h"
-#include "IFlightDataReader.h"
 
 class ProjectSpaceBuilder
 {
 public:
-	ProjectSpaceBuilder(const Cell &spaceSize,const Cell &cellSize, IFlightDataReader* reader);
+	ProjectSpaceBuilder(const ProjectInfo &projectInfo, std::vector<Flight> flights);
 	~ProjectSpaceBuilder(void);
 
 	ProjectSpace build();
 	bool nextTime();
 private:
-	static const int WRONG_TIME_INDEX = -1;
 
-	Cell mSpaceSize;
-	Cell mCellSize;
+	ProjectInfo mProjectInfo;
 
-	std::size_t mCurrentTimeIndex;
-	std::unordered_map<int,bool> mTimesMap;
-	std::vector<int> mTimesCache;
-	IFlightDataReader* mFlightDataReader;
+	int mCurrentTime;
+	std::vector<Flight> mFlights;
 };
 
 #endif // PROJECT_SPACE_BUILDER_H_

@@ -40,24 +40,19 @@ public:
 	 */
 	std::vector<Flight> readFlights();
 	/**
-	 * @return Size of the space
+	 * @return project info
 	 */
-	Cell getSpaceSize() const { return mSpaceSize; }
-	/**
-	 * @return Size of the cell
-	 */
-	Cell getCellSize() const { return mCellSize; }
-	/**
-	 * @return time step in seconds
-	 */
-	int getTimeStep() const { return mTimeStep; }
+	ProjectInfo getProjectInfo() const;
 private:
+	static const int WRONG_TIME = -1;
 	/**
 	 * Header data
 	 */
 	Cell mSpaceSize;
 	Cell mCellSize;
 	int mTimeStep;
+	int mTimeStart;
+	int mTimeFinish;
 
 	/**
 	 * Last read flight

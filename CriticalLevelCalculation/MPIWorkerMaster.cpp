@@ -13,6 +13,7 @@ MPIWorkerMaster::~MPIWorkerMaster(void)
 
 void MPIWorkerMaster::run()
 {
+	
 	Profiler::getInstance().setEnabled(true);
 
 	std::ifstream fileStream;
@@ -21,20 +22,26 @@ void MPIWorkerMaster::run()
 	echo("Load data...");
 	reader.readHeader();
 
-	// Init available s;aces with header data
-	initSlaves(reader.getSpaceSize(), reader.getCellSize());
-
 	// Read flights data
 	Profiler::getInstance().start("Read flights");
 	std::vector<Flight> flights = reader.readFlights();
 	Profiler::getInstance().finish();
 
-	// Build flight paths
+	ProjectInfo projectInfo = reader.getProjectInfo();
 
+	// Init available s;aces with header data
+	initSlaves(projectInfo);
+
+	// Build flight paths
+	FlightPathBuilder fpBuilder(projectInfo);
+	for(size_t i=0; i<flights.size(); i++) {
+		std::unordered_map<int,Cell> flightPath = fpBuilder.build(flights[i].getControlPoints());
+		flights[i].setFlightPath(flightPath);
+	}
 
 	// Calculate Critical Degree
 
-	ProjectSpaceBuilder builder(reader.getSpaceSize(), reader.getCellSize(), &flights);
+	ProjectSpaceBuilder builder(projectInfo, flights);
 	CriticalDegree degree;
 
 	echo("Processing...");
@@ -139,17 +146,13 @@ void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
 	}
 }
 
-void MPIWorkerMaster::initSlaves(const Cell &spaceSize,const Cell &cellSize)
+void MPIWorkerMaster::initSlaves(ProjectInfo &projectInfo )
 {
 	int numtasks = mMpi->getCommSize();
 	echo(MakeString() << "Number of slaves: " << (numtasks - 1));
 	if (numtasks > 1) {
 
-		std::vector<int> initData;
-		initData.push_back(spaceSize.x);
-		initData.push_back(spaceSize.y);
-		initData.push_back(cellSize.x);
-		initData.push_back(cellSize.y);
+		std::vector<int> initData = projectInfo.serialize();
 
 		for (int id=1; id<numtasks; id++) {
 			mMpi->sendIntArray(id, initData);

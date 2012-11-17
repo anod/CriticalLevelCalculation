@@ -71,8 +71,9 @@
     <ClCompile Include="CriticalDegree.cpp" />
     <ClCompile Include="CriticalLevelDetector.cpp" />
     <ClCompile Include="CriticalLevelSerializer.cpp" />
+    <ClCompile Include="Flight.cpp" />
     <ClCompile Include="FlightDataReader.cpp" />
-    <ClCompile Include="FlightDataReaderMemCache.cpp" />
+    <ClCompile Include="FlightPathBuilder.cpp" />
     <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MPIWorker.cpp" />
@@ -80,6 +81,7 @@
     <ClCompile Include="MPIManager.cpp" />
     <ClCompile Include="MPIWorkerSlave.cpp" />
     <ClCompile Include="Profiler.cpp" />
+    <ClCompile Include="ProjectInfo.cpp" />
     <ClCompile Include="ProjectSpace.cpp" />
     <ClCompile Include="ProjectSpaceBuilder.cpp" />
     <ClCompile Include="TestRunner.cpp" />
@@ -89,9 +91,9 @@
     <ClInclude Include="CriticalDegree.h" />
     <ClInclude Include="CriticalLevelDetector.h" />
     <ClInclude Include="CriticalLevelSerializer.h" />
+    <ClInclude Include="Flight.h" />
     <ClInclude Include="FlightDataReader.h" />
-    <ClInclude Include="FlightDataReaderMemCache.h" />
-    <ClInclude Include="IFlightDataReader.h" />
+    <ClInclude Include="FlightPathBuilder.h" />
     <ClInclude Include="MakeString.h" />
     <ClInclude Include="MPIWorker.h" />
     <ClInclude Include="Include.h" />
@@ -103,6 +105,7 @@
     <ClInclude Include="OpenMP.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Profiler.h" />
+    <ClInclude Include="ProjectInfo.h" />
     <ClInclude Include="ProjectSpace.h" />
     <ClInclude Include="ProjectSpaceBuilder.h" />
     <ClInclude Include="RuntimeException.h" />

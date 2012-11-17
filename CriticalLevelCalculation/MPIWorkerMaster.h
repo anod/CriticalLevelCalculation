@@ -6,9 +6,9 @@
 #include "FlightDataReader.h"
 #include "ProjectSpaceBuilder.h"
 #include "CriticalLevelDetector.h"
-#include "FlightDataReaderMemCache.h"
 #include "CriticalDegree.h"
 #include "CriticalLevelSerializer.h"
+#include "FlightPathBuilder.h"
 
 #include "MPIWorker.h"
 
@@ -26,7 +26,7 @@ private:
 	void sendTask( ProjectSpace projectSpace );
 	void executeTask( ProjectSpace projectSpace, CriticalDegree& degree );
 	void collectSlaveResults(CriticalDegree& degree);
-	void initSlaves(const Cell &spaceSize,const Cell &cellSize);
+	void initSlaves(ProjectInfo &projectInfo);
 	void sendSlavesFinishSignal();
 };
 

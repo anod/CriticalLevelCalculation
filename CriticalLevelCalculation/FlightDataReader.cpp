@@ -3,7 +3,7 @@
 
 
 FlightDataReader::FlightDataReader(std::ifstream* stream, std::string fileName)
-	: mInputStream(stream), mFileName(fileName)
+	: mInputStream(stream), mFileName(fileName), mTimeStart(WRONG_TIME), mTimeFinish(WRONG_TIME)
 {
 }
 
@@ -56,7 +56,7 @@ void FlightDataReader::readHeader()
 	*mInputStream >> cellN;
 	*mInputStream >> mTimeStep;
 
-	mSpaceSize = Cell(spaceA,spaceB);
+	mSpaceSize = Cell(spaceA / cellM, spaceB / cellN);
 	mCellSize = Cell(cellM, cellN);
 }
 
@@ -66,6 +66,19 @@ std::vector<Flight> FlightDataReader::readFlights()
 
 	while(readNextFlight()) {
 		flights.push_back(mCurrentFlight);
+		// Update times
+		if (mTimeStart == WRONG_TIME) {
+			mTimeStart = mCurrentFlight.getTimeStart();
+			mTimeFinish = mCurrentFlight.getTimeFinish();
+		} else {
+			if (mCurrentFlight.getTimeStart() < mTimeStart) {
+				mTimeStart = mCurrentFlight.getTimeStart();
+			}
+			if (mCurrentFlight.getTimeFinish() < mTimeFinish) {
+				mTimeFinish = mCurrentFlight.getTimeFinish();
+			}
+		}
+
 	}
 
 	return flights;
@@ -89,4 +102,17 @@ bool FlightDataReader::readNextFlight()
 		mCurrentFlight.addControlPoint(time, Cell(x,y));
 	}
 	return true;
+}
+
+ProjectInfo FlightDataReader::getProjectInfo() const
+{
+	ProjectInfo info;
+
+	info.spaceSize = mSpaceSize;
+	info.cellSize = mCellSize;
+	info.timeStep = mTimeStep;
+	info.timeStart = mTimeStart;
+	info.timeFinish = mTimeFinish;
+
+	return info;
 }
