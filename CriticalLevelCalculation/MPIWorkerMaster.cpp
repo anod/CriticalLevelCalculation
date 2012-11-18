@@ -34,6 +34,7 @@ void MPIWorkerMaster::run()
 
 	// Init available slaves with project info
 	initSlaves(projectInfo);
+	echo(MakeString() << "Max number of threads: " << omp_get_max_threads());
 
 	// Build flight paths
 	echo("Build flights paths...");
@@ -68,7 +69,7 @@ void MPIWorkerMaster::run()
 
 		collectSlaveResults(degree);
 
-		if (progress % 1000 == 0) {
+		if (progress % 10000 == 0) {
 			echo (MakeString() << " Progress: " << progress);
 		}
 		progress++;
