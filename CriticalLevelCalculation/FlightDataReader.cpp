@@ -56,8 +56,11 @@ void FlightDataReader::readHeader()
 	*mInputStream >> cellN;
 	*mInputStream >> mTimeStep;
 
-	mSpaceSize = Cell(Utils::coordToCell(spaceA,cellM), Utils::coordToCell(spaceB,cellN));
-	mCellSize = Cell(cellM, cellN);
+	int cellWidth = (int)ceil(((double)spaceA / (double)cellM));
+	int cellHeight = (int)ceil(((double)spaceB / (double)cellN));
+
+	mSpaceSize = Cell(cellM, cellN);
+	mCellSize = Cell(cellWidth, cellHeight);
 }
 
 std::vector<Flight> FlightDataReader::readFlights()
