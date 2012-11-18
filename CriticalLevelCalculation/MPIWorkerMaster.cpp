@@ -18,7 +18,7 @@ void MPIWorkerMaster::run()
 
 	CriticalDegree degree;
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "c:\\big2.txt");
+	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
 
 	echo("Load data...");
 	reader.open();
@@ -31,6 +31,7 @@ void MPIWorkerMaster::run()
 	Profiler::getInstance().finish();
 
  	ProjectInfo projectInfo = reader.getProjectInfo();
+	echo(MakeString() << "Project info: " << projectInfo.dump().str());
 
 	// Init available slaves with project info
 	initSlaves(projectInfo);
@@ -143,7 +144,6 @@ void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
 	}
 	while (mMpi->hasIntArrayResult()) {
 		std::vector<int> data = mMpi->getIntArray();
-		echo(MakeString() << "Data received, size: " << data.size());
 		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
 		degree.addCriticalLevel(level);
 		mSlaveQueue.push(mMpi->getLastResponseSource());
@@ -151,12 +151,11 @@ void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
 	}
 }
 
-void MPIWorkerMaster::initSlaves(ProjectInfo &projectInfo )
+void MPIWorkerMaster::initSlaves(ProjectInfo projectInfo)
 {
 	int numtasks = mMpi->getCommSize();
 	echo(MakeString() << "Number of slaves: " << (numtasks - 1));
 	if (numtasks > 1) {
-
 		std::vector<int> initData = projectInfo.serialize();
 
 		for (int id=1; id<numtasks; id++) {

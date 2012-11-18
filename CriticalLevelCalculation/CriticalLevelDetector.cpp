@@ -46,7 +46,6 @@ void CriticalLevelDetector::compareCells( ControlPointsMap& cpoints,std::vector<
 	Cell cacheA;
 	Cell cacheB;
 	int cacheResult=0;
-
 	#pragma omp for
 	for(int i=0; i<total; i++) {
 		a = pointsArray[i];
@@ -73,6 +72,7 @@ void CriticalLevelDetector::compareCells( ControlPointsMap& cpoints,std::vector<
 			}
 		}
 	}
+
 }
 
 

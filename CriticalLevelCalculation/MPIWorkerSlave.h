@@ -16,8 +16,7 @@ public:
 	void run();
 
 private:
-	Cell mSpaceSize;
-	Cell mCellSize;
+	ProjectInfo mProjectInfo;
 	void receiveInitData();
 	bool checkExitCode( std::vector<int> spaceData );
 	CriticalLevel executeTask( ProjectSpace& projectSpace );

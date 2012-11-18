@@ -26,7 +26,7 @@ private:
 	void sendTask( ProjectSpace projectSpace );
 	void executeTask( ProjectSpace projectSpace, CriticalDegree& degree );
 	void collectSlaveResults(CriticalDegree& degree);
-	void initSlaves(ProjectInfo &projectInfo);
+	void initSlaves(ProjectInfo projectInfo);
 	void sendSlavesFinishSignal();
 };
 

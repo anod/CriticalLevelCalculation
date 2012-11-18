@@ -63,16 +63,13 @@ bool MPIManager::hasIntArrayResult() {
 	if (mRequestSent) {
 		MPI_Test(&mRequest, &flag, &status);
 		mResponseSource = status.MPI_SOURCE;
-		std::cout << "[Request sent] MPI_Test flag: " << flag << ", source: " << mResponseSource << ", Array size: " << mResponseArrSize << std::endl;
 		return (flag == 1);
 	}
-	std::cout << "MPI_Irecv" << std::endl;
 
 	MPI_Irecv(&mResponseArrSize, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &mRequest);
 	MPI_Test(&mRequest, &flag, &status);
 	mRequestSent = true;
 	mResponseSource = status.MPI_SOURCE;
-	std::cout << "[Initial request] MPI_Test flag: " << flag << ", source: " << mResponseSource << ", Array size: " << mResponseArrSize << std::endl;
 	return (flag == 1);
 }
 

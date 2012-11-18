@@ -38,6 +38,10 @@ public:
 	 * Deserialize object data from array
 	 */
 	void deserialize(std::vector<int> data);
+	/**
+	 * @return Dump current cell for debugging
+	 */
+	std::stringstream dump();
 };
 
 #endif //PROJECT_INFO_H
