@@ -70,8 +70,9 @@ void MPIWorkerMaster::run()
 
 		collectSlaveResults(degree);
 
-		if (progress % 10000 == 0) {
+		if (progress % 10 == 0) {
 			echo (MakeString() << " Progress: " << progress);
+			break;
 		}
 		progress++;
 	}
@@ -119,6 +120,8 @@ void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
 	mSlaveQueue.pop();
 
 	echo(MakeString() << "Send task to #" << slaveId);
+
+	echo(MakeString() << "Project Space: " << projectSpace.dump().str());
 	mMpi->sendIntArray(slaveId, serialized);
 
 	mSlaveRunningTasks++;
@@ -168,7 +171,7 @@ void MPIWorkerMaster::initSlaves(ProjectInfo projectInfo)
 void MPIWorkerMaster::sendSlavesFinishSignal()
 {
 	int numtasks = mMpi->getCommSize();
-	std::vector<int> exitData(1);
+	std::vector<int> exitData;
 	exitData.push_back(EXIT_CODE);
 	for (int id=1; id<numtasks; id++) {
 		mMpi->sendIntArray(id, exitData);

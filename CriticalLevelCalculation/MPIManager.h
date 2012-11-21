@@ -13,10 +13,6 @@ public:
 	 * Rank of the master
 	 */
 	static const int MASTER_RANK = 0;
-	/**
-	 * Max size of array to be transfered
-	 */
-	static const int MAX_ARR_SIZE = 10000;
 
 	MPIManager(void);
 	~MPIManager(void);
@@ -49,6 +45,7 @@ private:
 	int mResponseArrSize;
 	int mResponseSource;
 	char mProcessorName[MPI_MAX_PROCESSOR_NAME];
+	void echo( std::string message );
 };
 
 #endif //MPI_MANAGER_H_

@@ -21,8 +21,8 @@ std::stringstream ProjectSpace::dump()
 {
 	FlightList::iterator it1;
 	std::stringstream ss;
-	ss << "Time: " << mTime << "\n";
-	ss << "Control Points: ";
+	ss << mTime;
+	ss << " { ";
 	
 	std::unordered_map<Cell, std::vector<int>>::iterator it;
 	bool first = true;
@@ -39,7 +39,7 @@ std::stringstream ProjectSpace::dump()
 		ss << "(" << p.x << "," << p.y << ")]";
 		first = false;
 	}
-	ss << "\n";
+	ss << " } ";
 	return ss;
 }
 

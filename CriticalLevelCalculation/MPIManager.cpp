@@ -34,12 +34,15 @@ std::vector<int> MPIManager::recvIntArray() {
 	int arrSize;
 	MPI_Recv(&arrSize, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
 
-	int arr[MAX_ARR_SIZE];
-	MPI_Recv(&arr, arrSize, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD, &status);
+	int* arr = new int[arrSize];
+	echo(MakeString() << "[recvIntArray] MPI_Recv array, size: " << arrSize << ", source: " << mResponseSource);
+	MPI_Recv(arr, arrSize, MPI_INT, status.MPI_SOURCE, 0, MPI_COMM_WORLD, &status);
 
-	std::vector<int> result(arrSize);
+	std::vector<int> result;
 	result.assign(arr, arr + arrSize);
-	
+
+	free(arr);
+
 	return result;
 }
 
@@ -48,6 +51,7 @@ void MPIManager::sendIntArray( int dest, std::vector<int> arr )
 	int size = (int)arr.size();
 
 	//Send array size
+	echo(MakeString() << "[sendIntArray] size: " << size);
 	MPI_Send(&size,1,MPI_INT,dest,0, MPI_COMM_WORLD);
 	if (size > 0) {
 		int* a = &arr[0];
@@ -80,9 +84,8 @@ int MPIManager::getLastResponseSource()
 
 std::vector<int> MPIManager::getIntArray()
 {
-	int arr[MAX_ARR_SIZE];
 	MPI_Status status;
-	std::vector<int> result(mResponseArrSize);
+	std::vector<int> result;
 	result.reserve(mResponseArrSize);
 
 	mRequestSent = false;
@@ -90,7 +93,19 @@ std::vector<int> MPIManager::getIntArray()
 		return result;
 	}
 
-	MPI_Recv(&arr, mResponseArrSize, MPI_INT, mResponseSource, 0, MPI_COMM_WORLD, &status);
+	int* arr = new int[mResponseArrSize];
+
+	echo(MakeString() << "[getIntArray] MPI_Recv array, size: " << mResponseArrSize << ", source: " << mResponseSource);
+	MPI_Recv(arr, mResponseArrSize, MPI_INT, mResponseSource, 0, MPI_COMM_WORLD, &status);
 	result.assign(arr, arr + mResponseArrSize);
+
+	free(arr);
+
 	return result;
+}
+
+void MPIManager::echo( std::string message )
+{
+	std::cout << "[" << mCommRank << "] " << message << std::endl;
+	std::cout.flush();
 }
