@@ -70,7 +70,7 @@ void MPIWorkerMaster::run()
 
 		collectSlaveResults(degree);
 
-		if (progress % 10 == 0) {
+		if (progress % 10000 == 0) {
 			echo (MakeString() << " Progress: " << progress);
 			break;
 		}

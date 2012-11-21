@@ -12,11 +12,8 @@ MPIWorkerSlave::~MPIWorkerSlave(void)
 
 void MPIWorkerSlave::run()
 {
-	
 	receiveInitData();
 	echo("Slave initialized: " + mProjectInfo.dump().str());
-
-	ProjectSpace projectSpace(mProjectInfo.spaceSize, mProjectInfo.cellSize);
 
 	while(true) {
 		std::vector<int> spaceData = mMpi->recvIntArray();
@@ -24,7 +21,9 @@ void MPIWorkerSlave::run()
 			echo("Exit code received.");
 			break;
 		}
+		ProjectSpace projectSpace(mProjectInfo.spaceSize, mProjectInfo.cellSize);
 		projectSpace.deserialize(spaceData);
+
 		CriticalLevel level = executeTask(projectSpace);
 		sendResult(level);
 	}
@@ -45,10 +44,11 @@ bool MPIWorkerSlave::checkExitCode( std::vector<int> spaceData )
 CriticalLevel MPIWorkerSlave::executeTask( ProjectSpace& projectSpace )
 {
 	echo(MakeString() << "Execute task " << projectSpace.getTime());
+	echo(projectSpace.dump().str());
 	CriticalLevel level;
 	CriticalLevelDetector detector(projectSpace);
-	Profiler::getInstance().start("Detect critical level - serial");
-	level = detector.detectSerial();
+	Profiler::getInstance().start("Detect critical level - parallel");
+	level = detector.detectParallel();
 	Profiler::getInstance().finish();
 	return level;
 }
@@ -56,6 +56,5 @@ CriticalLevel MPIWorkerSlave::executeTask( ProjectSpace& projectSpace )
 void MPIWorkerSlave::sendResult( CriticalLevel& level )
 {
 	std::vector<int> serialized = CriticalLevelSerializer::serialize(level);
-	std::vector<int>::iterator it;
 	mMpi->sendIntArray(MPIManager::MASTER_RANK, serialized);
 }

@@ -52,7 +52,7 @@ std::vector<int> ProjectSpace::serialize()
 	FlightList::iterator it1;
 	std::unordered_map<Cell, std::vector<int>>::iterator it;
 	std::vector<int> arr;
-	arr.reserve(mPointsArray.size() * 4);
+	//arr.reserve(mPointsArray.size() * 4);
 	arr.push_back(mTime);
 	for ( it=mControlPoints.begin() ; it != mControlPoints.end(); it++ ) {
 		Cell p = (*it).first;
@@ -73,7 +73,7 @@ void ProjectSpace::deserialize( std::vector<int> data )
 	int size = data.size();
 	mTime = data[0];
 	int i = 1;
-	mPointsArray.reserve(size);
+	//mPointsArray.reserve(size);
 	while( i < size ) {
 		int x = data[i];
 		int y = data[i+1];
