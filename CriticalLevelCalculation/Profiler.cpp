@@ -1,8 +1,14 @@
+/*
+ * Profiler.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "Profiler.h"
 
 
 Profiler::Profiler(void)
-	: mRunning(false), mEnabled(false)
+	: mRunning(false), mEnabled(false), mClockBegin(0)
 {
 }
 

@@ -1,3 +1,9 @@
+/*
+ * InvolvedCellsSeeker.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "InvolvedCellsSeeker.h"
 
 InvolvedCellsSeeker::InvolvedCellsSeeker(const Cell spaceSize,const Cell cellSize)

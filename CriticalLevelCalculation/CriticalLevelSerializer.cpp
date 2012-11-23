@@ -1,10 +1,8 @@
-//
-//  CriticalLevelSerializer.cpp
-//  CriticalLevelCalculation
-//
-//  Created by Alex Gavrishev
-//
-//
+/*
+ * CriticalLevelSerializer.cpp
+ *
+ *      Author: Alex
+ */
 
 #include "CriticalLevelSerializer.h"
 

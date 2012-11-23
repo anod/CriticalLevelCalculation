@@ -1,3 +1,9 @@
+/*
+ * MakeString.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef MAKE_STRING_H_
 #define MAKE_STRING_H_
 

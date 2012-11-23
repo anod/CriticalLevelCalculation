@@ -1,3 +1,9 @@
+/*
+ * MPIWorkerFactory.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef MPI_WORKER_FACTORY_H_
 #define MPI_WORKER_FACTORY_H_
 
@@ -5,8 +11,16 @@
 #include "MPIWorkerMaster.h"
 #include "MPIWorkerSlave.h"
 
+/**
+ * Creates MPIWoker instance based on assigned MPI rank
+ */
 class MPIWorkerFactory {
 public:
+	/**
+	 *
+	 * @param mpi
+	 * @return worker
+	 */
 	static MPIWorker* create(MPIManager* mpi);
 
 };

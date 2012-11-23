@@ -1,3 +1,9 @@
+/*
+ * CriticalDegree.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "CriticalDegree.h"
 
 

@@ -1,7 +1,14 @@
+/*
+ * CriticalDegree.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef CRITICAL_DEGREE_H_
 #define CRITICAL_DEGREE_H_
 
 #include "Include.h"
+
 
 /**
  * The sum of all [Critical Levels](@ref CriticalLevel) of the object during its flight
@@ -27,9 +34,21 @@ public:
 
 	int getTotalCount(int flight) { return mTotalCounter[flight]; };
 private:
+	/**
+	 * Total Critical Level
+	 */
 	CriticalLevel mTotalLevel;
+	/**
+	 * Flight number with maximum CriticalLevel
+	 */
 	int mMaxCriticalLevelFlight;
+	/**
+	 *
+	 */
 	int mMaxCriticalLevel;
+	/**
+	 * Counter of number of hidden objects per flight
+	 */
 	std::unordered_map<int,int> mTotalCounter;
 };
 

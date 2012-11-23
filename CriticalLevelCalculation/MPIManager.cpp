@@ -1,3 +1,8 @@
+/*
+ * MPIManager.cpp
+ *
+ *      Author: Alex
+ */
 #include "MPIManager.h"
 
 

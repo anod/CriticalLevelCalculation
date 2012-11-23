@@ -1,3 +1,9 @@
+/*
+ * ProjectSpaceBuilder.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "ProjectSpaceBuilder.h"
 
 
@@ -27,7 +33,7 @@ ProjectSpace ProjectSpaceBuilder::build()
 		if (mCurrentTime >= mFlights[i].getTimeStart() && mCurrentTime <= mFlights[i].getTimeFinish()) {
 			int flight = mFlights[i].getFlightNum();
 			Cell p = mFlights[i].getPositionAtTime(mCurrentTime);
- 			space.addControlPoint(flight, p);
+ 			space.addFlight(flight, p);
 		}
 	}
 

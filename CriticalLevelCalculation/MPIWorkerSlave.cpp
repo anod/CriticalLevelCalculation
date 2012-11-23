@@ -1,7 +1,13 @@
+/*
+ * MPIWorkerSlave.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "MPIWorkerSlave.h"
 
 MPIWorkerSlave::MPIWorkerSlave(MPIManager* mpi)
-	: MPIWorker(mpi)
+	: MPIWorker(mpi), mProgress(1)
 {
 }
 
@@ -15,6 +21,8 @@ void MPIWorkerSlave::run()
 	receiveInitData();
 	echo("Slave initialized: " + mProjectInfo.dump().str());
 
+	ProjectSpace projectSpace(mProjectInfo.spaceSize, mProjectInfo.cellSize);
+
 	mProgress = 1;
 	while(true) {
 		std::vector<int> spaceData = mMpi->recvIntArray();
@@ -22,10 +30,11 @@ void MPIWorkerSlave::run()
 			echo("Exit code received.");
 			break;
 		}
-		ProjectSpace projectSpace(mProjectInfo.spaceSize, mProjectInfo.cellSize);
-		projectSpace.deserialize(spaceData);
 
+		projectSpace.deserialize(spaceData);
+		echo(MakeString() << projectSpace.dump().str());
 		CriticalLevel level = executeTask(projectSpace);
+
 		sendResult(level);
 		if (mProgress % 10000 == 0) {
 			echo (MakeString() << " Progress: " << mProgress);
@@ -44,7 +53,6 @@ bool MPIWorkerSlave::checkExitCode( std::vector<int> spaceData )
 {
 	return (spaceData.size() == 1 && spaceData[0] == EXIT_CODE);
 }
-
 
 void MPIWorkerSlave::sendResult( CriticalLevel& level )
 {

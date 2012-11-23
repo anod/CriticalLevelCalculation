@@ -1,9 +1,15 @@
+/*
+ * FlighDataReadert.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "FlightDataReader.h"
 #include "RuntimeException.h"
 
 
 FlightDataReader::FlightDataReader(std::ifstream* stream, std::string fileName)
-	: mInputStream(stream), mFileName(fileName), mTimeStart(WRONG_TIME), mTimeFinish(WRONG_TIME)
+	: mInputStream(stream), mFileName(fileName), mTimeStart(WRONG_TIME), mTimeFinish(WRONG_TIME), mTimeStep(1)
 {
 }
 

@@ -1,8 +1,17 @@
+/*
+ * RuntimeException.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef RUNTIME_EXCEPTION_H_
 #define RUNTIME_EXCEPTION_H_
 
 #include <string>
 
+/**
+ * Exception to be thrown in runtime with custom message
+ */
 struct RuntimeException : public std::exception
 {
 	std::string s;

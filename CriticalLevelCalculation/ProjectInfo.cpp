@@ -1,10 +1,16 @@
+/*
+ * ProjectInfo.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "ProjectInfo.h"
 
 
 ProjectInfo::ProjectInfo(void)
+	: timeStart(0), timeFinish(0), timeStep(1)
 {
 }
-
 
 ProjectInfo::~ProjectInfo(void)
 {
@@ -25,7 +31,6 @@ std::vector<int> ProjectInfo::serialize()
 
 void ProjectInfo::deserialize( std::vector<int> data )
 {
-
 	spaceSize.x = data[0];
 	spaceSize.y = data[1];
 	cellSize.x = data[2];
@@ -41,6 +46,5 @@ std::stringstream ProjectInfo::dump() {
 	ss << "Size: " << cellSize.dump().str() << ", ";
 	ss << "Step: " << timeStep << " sec, ";
 	ss << "Time: " << timeStart << " - " << timeFinish << " ";
-
 	return ss;
 };

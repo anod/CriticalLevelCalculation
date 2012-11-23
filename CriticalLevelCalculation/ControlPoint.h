@@ -1,3 +1,9 @@
+/*
+ * ControlPoint.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef CONTROL_POINT_H_
 #define CONTROL_POINT_H_
 

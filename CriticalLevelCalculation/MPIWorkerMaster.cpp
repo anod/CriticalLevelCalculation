@@ -1,3 +1,9 @@
+/*
+ * MPIWorkerMaster.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "MPIWorkerMaster.h"
 
 
@@ -44,7 +50,7 @@ void MPIWorkerMaster::run()
 	// Calculate Critical Degree
 	ProjectSpaceBuilder builder(projectInfo, flights);
 
-	// Caclulate total number of project spacess to be processed
+	// Calculate total number of project spaces to be processed
 	int numOfTasks = calcNumberOfTasks(projectInfo);
 
 	echo(MakeString() << "Max number of threads: " << omp_get_max_threads());		
@@ -87,6 +93,8 @@ void MPIWorkerMaster::buildFlightsPathsParallel(ProjectInfo &projectInfo, std::v
 	FlightPathBuilder fpBuilder(projectInfo);
 
 	Profiler::getInstance().start("Build flights paths - parallel");
+	// Calculate Flight Path on multiple cores
+	// Uses static schedule by default
 	#pragma omp parallel for
 	for(int i=0; i< flightsCount; i++) {
 		fpBuilder.build(flights[i]);

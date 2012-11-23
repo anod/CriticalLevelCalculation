@@ -1,12 +1,19 @@
+/*
+ * Flight.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "Flight.h"
 
 
 Flight::Flight(int flightNum)
- : mFlightNum(flightNum), mTimeStart(TIME_INCORRECT), mTimeFinish(TIME_INCORRECT)
+ : mFlightNum(flightNum), mTimeStart(TIME_INCORRECT), mTimeFinish(TIME_INCORRECT), mTimeStep(1)
 {
 }
 
 Flight::Flight(void)
+ : mFlightNum(0), mTimeStart(TIME_INCORRECT), mTimeFinish(TIME_INCORRECT), mTimeStep(1)
 {
 }
 
@@ -32,6 +39,7 @@ void Flight::addControlPoint( int time, Cell point )
 
 Cell Flight::getPositionAtTime( int time )
 {
+	//calculate index of the cell in flight path vector
 	int idx = (int)((double)(time - mTimeStart)/(double)mTimeStep);
 	Cell p = mFlightPath.at(idx);
 	return p;

@@ -1,10 +1,14 @@
-#include "Utils.h"
+/*
+ * Utils.cpp
+ *
+ *      Author: Alex
+ */
 
+#include "Utils.h"
 
 Utils::Utils(void)
 {
 }
-
 
 Utils::~Utils(void)
 {

@@ -1,3 +1,9 @@
+/*
+ * CriticalLevelSerializer.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef CRITICAL_LEVEL_SERIALIZER_H_
 #define CRITICAL_LEVEL_SERIALIZER_H_
 
@@ -20,7 +26,7 @@ public:
 	 */
 	static CriticalLevel deserialize(std::vector<int> data);
 	/**
-	 * @return Dumped level 
+	 * @return Dumped level representation
 	 */
 	static std::stringstream CriticalLevelSerializer::dump(CriticalLevel& level);
 };

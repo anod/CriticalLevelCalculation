@@ -1,3 +1,9 @@
+/*
+ * ProjectSpace.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "ProjectSpace.h"
 
 ProjectSpace::ProjectSpace(const Cell &spaceSize,const Cell &cellSize)
@@ -9,10 +15,10 @@ ProjectSpace::~ProjectSpace(void)
 {
 }
 
-void ProjectSpace::addControlPoint( int flight, Cell point )
+void ProjectSpace::addFlight( int flight, Cell point )
 {
-	mControlPoints[point].push_back(flight);
-	if (mControlPoints[point].size() == 1) {
+	mFlightsPoints[point].push_back(flight);
+	if (mFlightsPoints[point].size() == 1) {
 		mPointsArray.push_back(point);
 	}
 }
@@ -26,7 +32,7 @@ std::stringstream ProjectSpace::dump()
 	
 	std::unordered_map<Cell, std::vector<int>>::iterator it;
 	bool first = true;
-	for ( it=mControlPoints.begin() ; it != mControlPoints.end(); it++ ) {
+	for ( it=mFlightsPoints.begin() ; it != mFlightsPoints.end(); it++ ) {
 		Cell p = (*it).first;
 		FlightList flights((*it).second);
 		if (!first) {
@@ -43,10 +49,12 @@ std::stringstream ProjectSpace::dump()
 	return ss;
 }
 
-//
-// Format:
-//   { time, cellX, cellY, flightsNum, flight0..flightsNum ... }
-//
+/**
+ * Format:
+ *   { time, cellX, cellY, flightsNum, flight0..flightsNum ... }
+ *
+ * @return
+ */
 std::vector<int> ProjectSpace::serialize()
 {
 	FlightList::iterator it1;
@@ -54,7 +62,7 @@ std::vector<int> ProjectSpace::serialize()
 	std::vector<int> arr;
 	//arr.reserve(mPointsArray.size() * 4);
 	arr.push_back(mTime);
-	for ( it=mControlPoints.begin() ; it != mControlPoints.end(); it++ ) {
+	for ( it=mFlightsPoints.begin() ; it != mFlightsPoints.end(); it++ ) {
 		Cell p = (*it).first;
 		arr.push_back(p.x);
 		arr.push_back(p.y);
@@ -72,6 +80,9 @@ void ProjectSpace::deserialize( std::vector<int> data )
 {
 	int size = data.size();
 	mTime = data[0];
+	mFlightsPoints.clear();
+	mPointsArray.clear();
+
 	int i = 1;
 	//mPointsArray.reserve(size);
 	while( i < size ) {
@@ -81,10 +92,8 @@ void ProjectSpace::deserialize( std::vector<int> data )
 		int flightsNum = data[i+2];
 		i+=3;
 		for(int j = 0; j<flightsNum; j++) {
-			addControlPoint(data[i+j],p);
+			addFlight(data[i+j],p);
 		}
 		i+=flightsNum;
 	}
 }
-
-

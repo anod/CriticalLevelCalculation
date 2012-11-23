@@ -1,3 +1,9 @@
+/*
+ * MPIManager.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "MPIWorker.h"
 
 MPIWorker::MPIWorker(MPIManager* mpi)
@@ -12,15 +18,11 @@ void MPIWorker::echo( std::string message )
 	std::cout.flush();
 }
 
-
 CriticalLevel MPIWorker::executeTask( ProjectSpace& projectSpace )
 {
-	//echo(MakeString() << "Execute task " << projectSpace.getTime());
-	//echo(projectSpace.dump().str());
 	CriticalLevel level;
 	CriticalLevelDetector detector(projectSpace);
-	//Profiler::getInstance().start("Detect critical level - parallel");
 	level = detector.detectParallel();
-	//Profiler::getInstance().finish();
+	// level = detector.detctSerial();
 	return level;
 }

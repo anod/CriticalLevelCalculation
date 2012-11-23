@@ -1,3 +1,9 @@
+/*
+ * MPIWorkerMaster.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef MPI_WORKER_MASTER_H_
 #define MPI_WORKER_MASTER_H_
 
@@ -12,12 +18,21 @@
 
 #include "MPIWorker.h"
 
+/**
+ * Master MPI Worker
+ */
 class MPIWorkerMaster : public MPIWorker
 {
 public:
+	/**
+	 * @param mpi
+	 */
 	MPIWorkerMaster(MPIManager* mpi);
 	~MPIWorkerMaster(void);
 
+	/**
+	 * Run master job
+	 */
 	void run();
 private:
 	/**
@@ -29,13 +44,41 @@ private:
 	std::vector<int> mSlaveTasksCount;
 	int mSlaveRunningTasks;
 
-	void printResult(CriticalDegree &degree);
-	void sendTask( ProjectSpace projectSpace );
-	void collectSlaveResults(CriticalDegree &degree);
+	/**
+	 * Initialize slaves with ProjectInfo
+	 * @param projectInfo
+	 */
 	void initSlaves(ProjectInfo projectInfo);
-	void sendSlavesFinishSignal();
-	int calcNumberOfTasks(ProjectInfo &projectInfo);
+	/**
+	 * Build flight path
+	 * @param projectInfo
+	 * @param flights
+	 */
 	void buildFlightsPathsParallel(ProjectInfo &projectInfo, std::vector<Flight> &flights);
+	/**
+	 * @param projectInfo
+	 * @return total number of project spaces that needs to be calculated
+	 */
+	int calcNumberOfTasks(ProjectInfo &projectInfo);
+	/**
+	 * Send task to slave
+	 * @param projectSpace
+	 */
+	void sendTask( ProjectSpace projectSpace );
+	/**
+	 * Collect results from slaves
+	 * @param degree
+	 */
+	void collectSlaveResults(CriticalDegree &degree);
+	/**
+	 * Send slaves finish message
+	 */
+	void sendSlavesFinishSignal();
+	/**
+	 * Print final result
+	 * @param degree
+	 */
+	void printResult(CriticalDegree &degree);
 };
 
 #endif //MPI_WORKER_MASTER_H_

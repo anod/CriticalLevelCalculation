@@ -1,3 +1,9 @@
+/*
+ * InvolvedCellsSeeker.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef INVOLVED_CELLS_SEEKER_H_
 #define INVOLVED_CELLS_SEEKER_H_
 
@@ -32,7 +38,7 @@ private:
 	 */
 	void line(int x1,int y1,int x2,int y2, std::vector<Cell>& result);
 	/**
-	 * Checks if found corner of the cell
+	 * Checks if (cellX,cellY) at the corner of the cell
 	 */
 	bool isCorner(double cellX, double cellY, int exactCellX, int exactCellY);
 };

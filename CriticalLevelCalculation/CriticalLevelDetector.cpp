@@ -1,3 +1,8 @@
+/*
+ * CriticalLevelDetector.cpp
+ *
+ *      Author: Alex
+ */
 #include "CriticalLevelDetector.h"
 
 CriticalLevelDetector::CriticalLevelDetector(const ProjectSpace& projectSpace)
@@ -15,7 +20,7 @@ CriticalLevel CriticalLevelDetector::detectParallel()
 	CriticalLevel level;
 	InvolvedCellsSeeker seeker(mProjectSpace.getSpaceSize(), mProjectSpace.getCellSize());
 	std::vector<Cell> pointsArray = mProjectSpace.getPointsArray();
-	ControlPointsMap cpoints = mProjectSpace.getControlPoints();
+	FlightsPointsMap cpoints = mProjectSpace.getFlightsPoints();
 #pragma omp parallel
 {
 	compareCells(cpoints, pointsArray, seeker, level);
@@ -28,52 +33,62 @@ CriticalLevel CriticalLevelDetector::detectSerial()
 	CriticalLevel level;
 	InvolvedCellsSeeker seeker(mProjectSpace.getSpaceSize(), mProjectSpace.getCellSize());
 	std::vector<Cell> pointsArray = mProjectSpace.getPointsArray();
-	ControlPointsMap cpoints = mProjectSpace.getControlPoints();
+	FlightsPointsMap cpoints = mProjectSpace.getFlightsPoints();
 
 	compareCells(cpoints, pointsArray, seeker, level);
 	return level;
 }
 
-
-void CriticalLevelDetector::compareCells( ControlPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level )
+/**
+ * Function is running in multiple threads when in parallel mode
+ * @param cpoints
+ * @param pointsArray
+ * @param seeker
+ * @param level
+ */
+void CriticalLevelDetector::compareCells( FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level )
 {
 	Cell a,b;
 	std::vector<Cell> list;
 
 	int total = pointsArray.size();
 
-	bool cacheReady = false;
-	Cell cacheA;
-	Cell cacheB;
-	int cacheResult=0;
-	#pragma omp for
+	CLCache cache;
+	cache.isInitialized = false;
+
+	//Split cell occupied by flights cells
+	//between multiple CPU cores
+	//dynamic schedule for load balancing
+	#pragma omp for schedule(dynamic)
 	for(int i=0; i<total; i++) {
 		a = pointsArray[i];
 		for(int j=i+1; j<total; j++) {
 			b =  pointsArray[j];
 
 			int result = 0;
-			if (cacheReady && a == cacheA && b == cacheB) {
-				result = cacheResult;
+			if (cache.isInitialized && a == cache.a && b == cache.b) {
+				result = cache.result;
 			} else {
+				// find list of the cells on the line between two cells
 				list = seeker.seek(a, b);
+				// check if one of the cells contain a flight
 				result = checkCriticalSituation(list);
 
-				cacheA = a;
-				cacheB = b;
-				cacheReady = true;
-				cacheResult = result;
+				cache.a = a;
+				cache.b = b;
+				cache.isInitialized = true;
+				cache.result = result;
 			}
 
 			if (result) {
 				addCriticalLevel(cpoints[a], cpoints[b], level);
 				addCriticalLevel(cpoints[b], cpoints[a], level);
 			}
+
 		}
 	}
 
 }
-
 
 void CriticalLevelDetector::addCriticalLevel(FlightList source, FlightList invisible, CriticalLevel& level) {
 	FlightList::const_iterator it1,it2;
@@ -81,6 +96,7 @@ void CriticalLevelDetector::addCriticalLevel(FlightList source, FlightList invis
 		int flight = (*it1);
 		for( it2 = invisible.begin(); it2 != invisible.end(); it2++) {
 			int invFlight = (*it2);
+			//avoid memory corruption
 			#pragma omp critical
 			level[flight].push_back(invFlight);
 		}
@@ -89,8 +105,8 @@ void CriticalLevelDetector::addCriticalLevel(FlightList source, FlightList invis
 
 bool CriticalLevelDetector::checkCriticalSituation(std::vector<Cell> list) {
 	std::vector<Cell>::iterator it3;
-	ControlPointsMap cpoints = mProjectSpace.getControlPoints();
-	ControlPointsMap::const_iterator found;
+	FlightsPointsMap cpoints = mProjectSpace.getFlightsPoints();
+	FlightsPointsMap::const_iterator found;
 
 	FlightList::const_iterator fit;
 

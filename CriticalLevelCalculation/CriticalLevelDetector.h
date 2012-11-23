@@ -1,3 +1,9 @@
+/*
+ * CriticalLevelDetector.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef CRITICAL_LEVEL_DETECTOR_H_
 #define CRITICAL_LEVEL_DETECTOR_H_
 
@@ -5,12 +11,16 @@
 #include "ProjectSpace.h"
 #include "InvolvedCellsSeeker.h"
 
+
 /**
  * Utility to detect [Critical Level](@ref CriticalLevel) in [Project Space](@ref ProjectSpace) 
  */
 class CriticalLevelDetector
 {
 public:
+	/**
+	 * @param projectSpace
+	 */
 	CriticalLevelDetector(const ProjectSpace& projectSpace);
 	~CriticalLevelDetector(void);
 	/**
@@ -34,12 +44,24 @@ private:
 	 * Adds for all flights in source list of invisible flights
 	 * @param source - list of flights in critical situation
 	 * @param invisible - list of flights that not see the source
+	 * @param level - level to be updated
 	 */
 	void addCriticalLevel(FlightList source, FlightList invisible, CriticalLevel& level);
 	/**
 	 * Detect critical level
+	 * The function running in parallel on multiple CPU cores
 	 */
-	void compareCells(ControlPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level);
+	void compareCells(FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level);
+};
+
+/**
+ * Helper struct to hold last calculation result
+ */
+struct CLCache {
+	bool isInitialized;
+	Cell a;
+	Cell b;
+	int result;
 };
 
 #endif //CRITICAL_LEVEL_DETECTOR_H_

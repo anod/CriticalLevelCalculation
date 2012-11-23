@@ -1,3 +1,9 @@
+/*
+ * main.cpp
+ *
+ *      Author: Alex
+ */
+
 #include "Include.h"
 
 #include "MPIManager.h"
@@ -8,7 +14,8 @@ int main(int argc, char *argv[])
 	MPIManager mpimanager;
 	mpimanager.init(argc,argv);
 	MPIWorker* worker = MPIWorkerFactory::create(&mpimanager);
-   try {
+
+	try {
 		worker->run();
 	} catch(std::exception& caught){
 		std::cout<<" [Exception] "<<caught.what()<<std::endl;
@@ -16,6 +23,5 @@ int main(int argc, char *argv[])
 
 	mpimanager.finalize();
 
-	//system("pause");
 	return(0);
 }

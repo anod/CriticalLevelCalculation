@@ -1,3 +1,9 @@
+/*
+ * Include.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef INCLUDE_H_
 #define INCLUDE_H_
 
@@ -41,7 +47,7 @@ typedef std::vector<int> FlightList;
 /**
  * List of flights in specific cell on ProjectSpace
  */
-typedef std::unordered_map<Cell, FlightList> ControlPointsMap;
+typedef std::unordered_map<Cell, FlightList> FlightsPointsMap;
 /**
  * Critical Level (CL) of the object at the specific moment:
  * the number of objects that do not see this object at the given moment. 

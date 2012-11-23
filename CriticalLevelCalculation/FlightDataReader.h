@@ -1,3 +1,9 @@
+/*
+ * FlightDataReader.h
+ *
+ *      Author: Alex
+ */
+
 #ifndef FLIGHT_DATA_READER_H_
 #define FLIGHT_DATA_READER_H_
 

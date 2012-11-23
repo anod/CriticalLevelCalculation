@@ -1,3 +1,8 @@
+/*
+ * FlightPathBuilder.cpp
+ *
+ *      Author: Alex
+ */
 #include "FlightPathBuilder.h"
 
 
@@ -34,6 +39,7 @@ void FlightPathBuilder::calcFlightLeg(ControlPoint& cp1, ControlPoint& cp2, std:
 		int xDiff = cp2.coord.x - cp1.coord.x;
 		int yDiff = cp2.coord.y - cp1.coord.y;
 
+		// speed is constant between to control points
 		double speedX = (double)((double)xDiff / (double)timeDiff);
 		double speedY = (double)((double)yDiff / (double)timeDiff);
 
