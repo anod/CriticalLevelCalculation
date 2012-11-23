@@ -27,7 +27,7 @@ void MPIWorkerSlave::run()
 
 		CriticalLevel level = executeTask(projectSpace);
 		sendResult(level);
-		if (mProgress % 1000 == 0) {
+		if (mProgress % 10000 == 0) {
 			echo (MakeString() << " Progress: " << mProgress);
 		}
 		mProgress++;

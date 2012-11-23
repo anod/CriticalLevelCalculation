@@ -45,7 +45,28 @@ CriticalLevel CriticalLevelSerializer::deserialize(std::vector<int> data) {
 			}
 			size--;
 		}
-		i++;
 	}
 	return level;
+}
+
+std::stringstream CriticalLevelSerializer::dump(CriticalLevel& level) {
+	CriticalLevel::const_iterator it;
+	FlightList::const_iterator it1;
+	std::stringstream ss;
+
+	for(it=level.begin(); it!=level.end(); it++) {
+		int currentFlight = it->first;
+		ss << "[" << currentFlight << " (";
+		FlightList list = it->second;
+		for( it1 = list.begin(); it1 != list.end(); it1++) {
+			if (it1 != list.begin()) {
+				ss << ", ";
+			}
+			int invFlight = (*it1);
+			ss << invFlight;
+		}
+		ss << ")] ";
+	}
+
+	return ss;
 }

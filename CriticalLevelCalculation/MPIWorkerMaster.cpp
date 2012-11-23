@@ -134,8 +134,10 @@ void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
 	}
 	while (mMpi->hasIntArrayResult()) {
 		std::vector<int> data = mMpi->getIntArray();
+
 		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
 		degree.addCriticalLevel(level);
+
 		mSlaveQueue.push(mMpi->getLastResponseSource());
 		mSlaveRunningTasks--;
 	}

@@ -19,6 +19,10 @@ public:
 	 * @return deserialize data vector into CriticalLevel
 	 */
 	static CriticalLevel deserialize(std::vector<int> data);
+	/**
+	 * @return Dumped level 
+	 */
+	static std::stringstream CriticalLevelSerializer::dump(CriticalLevel& level);
 };
 
 #endif // CRITICAL_LEVEL_SERIALIZER_H_
