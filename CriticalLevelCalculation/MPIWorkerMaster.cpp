@@ -18,14 +18,16 @@ void MPIWorkerMaster::run()
 
 	CriticalDegree degree;
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "c:\\basic2.txt");
+	//FlightDataReader reader(&fileStream, "c:\\basic1.txt");
+	//FlightDataReader reader(&fileStream, "c:\\basic2.txt");
+	//FlightDataReader reader(&fileStream, "c:\\big1.txt");
+	FlightDataReader reader(&fileStream, "c:\\big2.txt");
 
-	echo("Load data...");
+	echo(MakeString() << "Load data... (" << reader.getFileName() << ")");
 	reader.open();
 	reader.readHeader();
 
 	// Read flights data
-	echo("Read flights...");
 	Profiler::getInstance().start("Read flights");
 	std::vector<Flight> flights = reader.readFlights();
 	Profiler::getInstance().finish();
@@ -35,32 +37,26 @@ void MPIWorkerMaster::run()
 
 	// Init available slaves with project info (mSlaveQueue)
 	initSlaves(projectInfo);
-	echo(MakeString() << "Max number of threads: " << omp_get_max_threads());
 
 	// Build flight paths
-	echo("Build flights paths...");
-	int flightsCount = flights.size();
-	FlightPathBuilder fpBuilder(projectInfo);
-
-	Profiler::getInstance().start("Build flights path");
-	#pragma omp parallel for schedule(dynamic)
-	for(int i=0; i< flightsCount; i++) {
-		fpBuilder.build(flights[i]);
-	}
-	Profiler::getInstance().finish();
+	buildFlightsPathsParallel(projectInfo, flights);
 
 	// Calculate Critical Degree
 	ProjectSpaceBuilder builder(projectInfo, flights);
 
-	int numOfTasks = (int)((double)(projectInfo.timeFinish - projectInfo.timeStart)/(double)projectInfo.timeStep);
-	echo(MakeString() << "Number of tasks: " << numOfTasks);
+	// Caclulate total number of project spacess to be processed
+	int numOfTasks = calcNumberOfTasks(projectInfo);
+
+	echo(MakeString() << "Max number of threads: " << omp_get_max_threads());		
+	echo(MakeString() << "Total number of tasks: " << numOfTasks);
 	echo("Processing...");
+
 	int progress = 1;
-	Profiler::getInstance().start("Process project space");
+	Profiler::getInstance().start("Process project spaces");
 	while(builder.nextTime()) {
 		ProjectSpace projectSpace = builder.build();
 
-		// Have free workers - LoadBalancing
+		// LB - Have free workers send more tasks
 		if (mSlaveQueue.size() > 0) {
 			sendTask(projectSpace);
 		} else { 
@@ -70,20 +66,89 @@ void MPIWorkerMaster::run()
 
 		collectSlaveResults(degree);
 
-		if (progress % 1000 == 0) {
+		if (progress % 10000 == 0) {
 			echo (MakeString() << " Progress: " << progress);
 		}
 		progress++;
 	}
 	Profiler::getInstance().finish();
 
-	echo("Collect results from still running slaves");
+	echo("Collect results from still running slaves.");
 	while(mSlaveRunningTasks > 0) {
 		collectSlaveResults(degree);
 	}
 	sendSlavesFinishSignal();
 	
 	printResult(degree);
+}
+
+void MPIWorkerMaster::buildFlightsPathsParallel(ProjectInfo &projectInfo, std::vector<Flight> &flights) {
+	int flightsCount = flights.size();
+	FlightPathBuilder fpBuilder(projectInfo);
+
+	Profiler::getInstance().start("Build flights paths - parallel");
+	#pragma omp parallel for
+	for(int i=0; i< flightsCount; i++) {
+		fpBuilder.build(flights[i]);
+	}
+	Profiler::getInstance().finish();
+}
+
+int MPIWorkerMaster::calcNumberOfTasks(ProjectInfo &projectInfo) {
+	return (int)((double)(projectInfo.timeFinish - projectInfo.timeStart)/(double)projectInfo.timeStep);
+}
+
+void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
+{
+	std::vector<int> serialized = projectSpace.serialize();
+
+	int slaveId = mSlaveQueue.front();
+	mSlaveQueue.pop();
+
+	mMpi->sendIntArray(slaveId, serialized);
+
+	mSlaveRunningTasks++;
+
+}
+
+void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
+{
+	if (mMpi->getCommSize() == 1) {
+		return;
+	}
+	while (mMpi->hasIntArrayResult()) {
+		std::vector<int> data = mMpi->getIntArray();
+
+		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
+		degree.addCriticalLevel(level);
+
+		mSlaveQueue.push(mMpi->getLastResponseSource());
+		mSlaveRunningTasks--;
+	}
+}
+
+void MPIWorkerMaster::initSlaves(ProjectInfo projectInfo)
+{
+	int numworkers = mMpi->getCommSize();
+	echo(MakeString() << "Number of slaves: " << (numworkers - 1));
+	if (numworkers > 1) {
+		std::vector<int> initData = projectInfo.serialize();
+
+		for (int id=1; id<numworkers; id++) {
+			mMpi->sendIntArray(id, initData);
+			mSlaveQueue.push(id);
+		}
+	}
+}
+
+void MPIWorkerMaster::sendSlavesFinishSignal()
+{
+	int numtasks = mMpi->getCommSize();
+	std::vector<int> exitData;
+	exitData.push_back(EXIT_CODE);
+	for (int id=1; id<numtasks; id++) {
+		mMpi->sendIntArray(id, exitData);
+	}
 }
 
 void MPIWorkerMaster::printResult(CriticalDegree& degree) {
@@ -109,60 +174,4 @@ void MPIWorkerMaster::printResult(CriticalDegree& degree) {
 
 	result << Profiler::getInstance().dump().str();
 	echo(result.str());
-}
-
-void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
-{
-	std::vector<int> serialized = projectSpace.serialize();
-
-	int slaveId = mSlaveQueue.front();
-	mSlaveQueue.pop();
-
-//	echo(MakeString() << "Send task to #" << slaveId);
-
-//	echo(MakeString() << "Project Space: " << projectSpace.dump().str());
-	mMpi->sendIntArray(slaveId, serialized);
-
-	mSlaveRunningTasks++;
-
-}
-
-void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)
-{
-	if (mMpi->getCommSize() == 1) {
-		return;
-	}
-	while (mMpi->hasIntArrayResult()) {
-		std::vector<int> data = mMpi->getIntArray();
-
-		CriticalLevel level = CriticalLevelSerializer::deserialize(data);
-		degree.addCriticalLevel(level);
-
-		mSlaveQueue.push(mMpi->getLastResponseSource());
-		mSlaveRunningTasks--;
-	}
-}
-
-void MPIWorkerMaster::initSlaves(ProjectInfo projectInfo)
-{
-	int numtasks = mMpi->getCommSize();
-	echo(MakeString() << "Number of slaves: " << (numtasks - 1));
-	if (numtasks > 1) {
-		std::vector<int> initData = projectInfo.serialize();
-
-		for (int id=1; id<numtasks; id++) {
-			mMpi->sendIntArray(id, initData);
-			mSlaveQueue.push(id);
-		}
-	}
-}
-
-void MPIWorkerMaster::sendSlavesFinishSignal()
-{
-	int numtasks = mMpi->getCommSize();
-	std::vector<int> exitData;
-	exitData.push_back(EXIT_CODE);
-	for (int id=1; id<numtasks; id++) {
-		mMpi->sendIntArray(id, exitData);
-	}
 }

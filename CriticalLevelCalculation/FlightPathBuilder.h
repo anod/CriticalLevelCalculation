@@ -11,6 +11,8 @@ public:
 	void build( Flight &flight );
 private:
 	ProjectInfo mProjectInfo;
+	void calcFlightLeg(ControlPoint& cp1, ControlPoint& cp2, std::vector<Cell>& flightPath);
+
 };
 
 #endif

@@ -1,7 +1,7 @@
 #include "InvolvedCellsSeeker.h"
 
-InvolvedCellsSeeker::InvolvedCellsSeeker( Cell cellSize )
-	: mCellSize(cellSize)
+InvolvedCellsSeeker::InvolvedCellsSeeker(const Cell spaceSize,const Cell cellSize)
+	: mCellSize(cellSize), mSpaceSize(spaceSize)
 {
 	mHalfCellSize = Cell( (int)(cellSize.x / 2), (int)(cellSize.y / 2) );
 }
@@ -30,7 +30,9 @@ std::vector<Cell> InvolvedCellsSeeker::seek( Cell a, Cell b )
 }
 
 void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& result) {
-	int newCellX,newCellY = 0;
+	int newCellX,newCellY, curX, curY;
+	double newCellAccX,newCellAccY;
+	Cell lastCell, stopCell;
 
 	bool steep = abs(y2 - y1) > abs(x2 - x1);
 	if (steep) {
@@ -42,11 +44,11 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 		std::swap(y1, y2);
 	}
 	if (steep) {
-		mLastCell = Utils::convertToCell(y1, x1, mCellSize);
-		mStopCell = Utils::convertToCell(y2, x2, mCellSize);
+		lastCell = Utils::convertToCell(y1, x1, mCellSize);
+		stopCell = Utils::convertToCell(y2, x2, mCellSize);
 	} else {
-		mLastCell = Utils::convertToCell(x1, y1, mCellSize);
-		mStopCell = Utils::convertToCell(x2, y2, mCellSize); 
+		lastCell = Utils::convertToCell(x1, y1, mCellSize);
+		stopCell = Utils::convertToCell(x2, y2, mCellSize); 
 	}
 
 	int deltax = x2 - x1;
@@ -59,16 +61,39 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 
 	for (int x = x1; x <= x2; x=x+xstep) {
 		if (steep) {
-			newCellX = Utils::coordToCell(y,mCellSize.x);
-			newCellY = Utils::coordToCell(x,mCellSize.y);
+			curX = y;
+			curY = x;
 		} else {
-			newCellX = Utils::coordToCell(x,mCellSize.x);
-			newCellY = Utils::coordToCell(y,mCellSize.y);
+			curX = x;
+			curY = y;
 		}
-		if (mStopCell.x == newCellX && mStopCell.y == newCellY) {
+
+		newCellX = Utils::coordToCell(curX,mCellSize.x);
+		newCellY = Utils::coordToCell(curY,mCellSize.y);
+
+		if (stopCell.x == newCellX && stopCell.y == newCellY) {
 			return;
 		}
-		addResult(newCellX,newCellY,result);
+		addResult(newCellX,newCellY,result, lastCell);
+
+		//detect corners
+		newCellAccX = Utils::coordToCellAccurate(curX,mCellSize.x);
+		newCellAccY = Utils::coordToCellAccurate(curY,mCellSize.y);
+		if (isCorner(newCellAccX, newCellAccX, newCellX, newCellY)) {
+			if (newCellX - 1 > 0) {
+				addResult(newCellX - 1,newCellY,result, lastCell);
+			}
+			if ((unsigned int)(newCellX + 1) <= mSpaceSize.x) {
+				addResult(newCellX + 1,newCellY,result, lastCell);
+			}
+			if (newCellY - 1 > 0) {
+				addResult(newCellX,newCellY - 1,result, lastCell);
+			}
+			if ((unsigned int)(newCellY + 1) <= mSpaceSize.y) {
+				addResult(newCellX,newCellY - 1,result, lastCell);
+			}
+		}
+
 
 		error = error - deltay;
 		if (error < 0) {
@@ -78,10 +103,17 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 	}
 }
 
-void InvolvedCellsSeeker::addResult(int cellX, int cellY, std::vector<Cell>& result) {
-	if (mLastCell.x == -1 || cellX != mLastCell.x || cellY != mLastCell.y) {
+bool InvolvedCellsSeeker::isCorner(double cellX, double cellY, int exactCellX, int exactCellY) {
+	if (abs(exactCellX - cellX) < 0.00001 && abs(exactCellY - cellY) < 0.00001) {
+		return true;
+	}
+	return false;
+}
+
+void InvolvedCellsSeeker::addResult(int cellX, int cellY, std::vector<Cell>& result, Cell& lastCell) {
+	if (lastCell.x == -1 || cellX != lastCell.x || cellY != lastCell.y) {
 		Cell p = Cell(cellX, cellY);
-		mLastCell = p;
+		lastCell = p;
 		result.push_back(p);
 	}
 }

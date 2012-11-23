@@ -15,5 +15,9 @@ Cell Utils::convertToCell(int x, int y, Cell cellSize) {
 }
 
 int Utils::coordToCell(int coord, int size) {
-	return (int)ceil(((double)coord / (double)size));
+	return (int)ceil(coordToCellAccurate(coord, size));
+}
+
+double Utils::coordToCellAccurate(int coord, int size) {
+	return ((double)coord / (double)size);
 }

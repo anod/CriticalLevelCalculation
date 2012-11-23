@@ -32,7 +32,6 @@ void MPIWorkerSlave::run()
 		}
 		mProgress++;
 	}
-	echo(Profiler::getInstance().dump().str());
 }
 
 void MPIWorkerSlave::receiveInitData()

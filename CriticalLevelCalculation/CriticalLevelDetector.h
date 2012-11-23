@@ -39,7 +39,7 @@ private:
 	/**
 	 * Detect critical level
 	 */
-	void compareCells(ControlPointsMap& cpoints,std::vector<Cell> pointsArray,Cell& cellSize, CriticalLevel& level);
+	void compareCells(ControlPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level);
 };
 
 #endif //CRITICAL_LEVEL_DETECTOR_H_

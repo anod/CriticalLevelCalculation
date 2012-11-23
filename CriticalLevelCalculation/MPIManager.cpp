@@ -29,6 +29,17 @@ void MPIManager::finalize()
 	MPI_Finalize();
 }
 
+void MPIManager::sendInt( int dest, int value) {
+	MPI_Send(&value,1,MPI_INT,dest,0, MPI_COMM_WORLD);
+}
+
+int MPIManager::recvInt() {
+	MPI_Status status;
+	int value;
+	MPI_Recv(&value, 1, MPI_INT, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+	return value;
+}
+
 std::vector<int> MPIManager::recvIntArray() {
 	MPI_Status status;
 	int arrSize;

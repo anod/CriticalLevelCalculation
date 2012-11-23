@@ -16,6 +16,10 @@ public:
 	 * Convert coordinate into cell
 	 */
 	static int Utils::coordToCell(int coord, int size);
+	/**
+	 * Convert coordinate into cell
+	 */
+	static double Utils::coordToCellAccurate(int coord, int size);
 };
 
 #endif //UTILS_H_

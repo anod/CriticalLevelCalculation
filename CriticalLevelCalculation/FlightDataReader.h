@@ -43,6 +43,10 @@ public:
 	 * @return project info
 	 */
 	ProjectInfo getProjectInfo() const;
+	/**
+	 * @return current filename
+	 */
+	std::string getFileName() { return mFileName; };
 private:
 	static const int WRONG_TIME = -1;
 	/**

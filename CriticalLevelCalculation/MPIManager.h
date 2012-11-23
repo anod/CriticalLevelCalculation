@@ -32,6 +32,9 @@ public:
 	 * Rank of the current worker
 	 */
 	int getCommRank() const { return mCommRank; }
+
+	void sendInt( int dest, int value);
+	int recvInt();
 	void sendIntArray(int dest, std::vector<int> arr);
 	std::vector<int> recvIntArray();
 	bool hasIntArrayResult();
