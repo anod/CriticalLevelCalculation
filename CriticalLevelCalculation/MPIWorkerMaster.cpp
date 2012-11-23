@@ -18,7 +18,7 @@ void MPIWorkerMaster::run()
 
 	CriticalDegree degree;
 	std::ifstream fileStream;
-	FlightDataReader reader(&fileStream, "c:\\basic1.txt");
+	FlightDataReader reader(&fileStream, "c:\\basic2.txt");
 
 	echo("Load data...");
 	reader.open();
