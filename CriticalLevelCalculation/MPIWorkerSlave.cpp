@@ -15,6 +15,7 @@ void MPIWorkerSlave::run()
 	receiveInitData();
 	echo("Slave initialized: " + mProjectInfo.dump().str());
 
+	mProgress = 1;
 	while(true) {
 		std::vector<int> spaceData = mMpi->recvIntArray();
 		if (checkExitCode(spaceData)) {
@@ -26,6 +27,10 @@ void MPIWorkerSlave::run()
 
 		CriticalLevel level = executeTask(projectSpace);
 		sendResult(level);
+		if (mProgress % 1000 == 0) {
+			echo (MakeString() << " Progress: " << mProgress);
+		}
+		mProgress++;
 	}
 	echo(Profiler::getInstance().dump().str());
 }
@@ -41,17 +46,6 @@ bool MPIWorkerSlave::checkExitCode( std::vector<int> spaceData )
 	return (spaceData.size() == 1 && spaceData[0] == EXIT_CODE);
 }
 
-CriticalLevel MPIWorkerSlave::executeTask( ProjectSpace& projectSpace )
-{
-	echo(MakeString() << "Execute task " << projectSpace.getTime());
-	echo(projectSpace.dump().str());
-	CriticalLevel level;
-	CriticalLevelDetector detector(projectSpace);
-	Profiler::getInstance().start("Detect critical level - parallel");
-	level = detector.detectParallel();
-	Profiler::getInstance().finish();
-	return level;
-}
 
 void MPIWorkerSlave::sendResult( CriticalLevel& level )
 {

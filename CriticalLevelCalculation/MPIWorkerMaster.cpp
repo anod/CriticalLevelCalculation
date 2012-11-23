@@ -33,7 +33,7 @@ void MPIWorkerMaster::run()
  	ProjectInfo projectInfo = reader.getProjectInfo();
 	echo(MakeString() << "Project info: " << projectInfo.dump().str());
 
-	// Init available slaves with project info
+	// Init available slaves with project info (mSlaveQueue)
 	initSlaves(projectInfo);
 	echo(MakeString() << "Max number of threads: " << omp_get_max_threads());
 
@@ -52,7 +52,6 @@ void MPIWorkerMaster::run()
 	// Calculate Critical Degree
 	ProjectSpaceBuilder builder(projectInfo, flights);
 
-	//TODO init mSlaveQueue
 	int numOfTasks = (int)((double)(projectInfo.timeFinish - projectInfo.timeStart)/(double)projectInfo.timeStep);
 	echo(MakeString() << "Number of tasks: " << numOfTasks);
 	echo("Processing...");
@@ -64,15 +63,15 @@ void MPIWorkerMaster::run()
 		// Have free workers - LoadBalancing
 		if (mSlaveQueue.size() > 0) {
 			sendTask(projectSpace);
-		} else {
-			executeTask(projectSpace,degree);
+		} else { 
+			CriticalLevel level = executeTask(projectSpace);
+			degree.addCriticalLevel(level);
 		}
 
 		collectSlaveResults(degree);
 
-		if (progress % 10000 == 0) {
+		if (progress % 1000 == 0) {
 			echo (MakeString() << " Progress: " << progress);
-			break;
 		}
 		progress++;
 	}
@@ -119,25 +118,13 @@ void MPIWorkerMaster::sendTask( ProjectSpace projectSpace )
 	int slaveId = mSlaveQueue.front();
 	mSlaveQueue.pop();
 
-	echo(MakeString() << "Send task to #" << slaveId);
+//	echo(MakeString() << "Send task to #" << slaveId);
 
-	echo(MakeString() << "Project Space: " << projectSpace.dump().str());
+//	echo(MakeString() << "Project Space: " << projectSpace.dump().str());
 	mMpi->sendIntArray(slaveId, serialized);
 
 	mSlaveRunningTasks++;
 
-}
-
-void MPIWorkerMaster::executeTask( ProjectSpace projectSpace, CriticalDegree& degree )
-{
-	CriticalLevel level1;
-	CriticalLevelDetector detector(projectSpace);
-
-	level1 = detector.detectParallel();
-
-//	level1 = detector.detectSerial();
-
-	degree.addCriticalLevel(level1);
 }
 
 void MPIWorkerMaster::collectSlaveResults(CriticalDegree& degree)

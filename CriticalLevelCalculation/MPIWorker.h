@@ -3,6 +3,9 @@
 
 #include "Include.h"
 #include "MPIManager.h"
+#include "ProjectSpace.h"
+#include "CriticalLevelDetector.h"
+#include "CriticalLevelSerializer.h"
 
 class MPIWorker
 {
@@ -14,6 +17,7 @@ protected:
 	static const int EXIT_CODE = -1;
 	MPIManager* mMpi;
 	void echo(std::string message);
+	CriticalLevel executeTask( ProjectSpace& projectSpace );
 };
 
 #endif //I_MPI_WORKER_H_

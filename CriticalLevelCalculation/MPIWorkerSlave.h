@@ -3,9 +3,6 @@
 
 #include "Include.h"
 #include "MPIWorker.h"
-#include "ProjectSpace.h"
-#include "CriticalLevelDetector.h"
-#include "CriticalLevelSerializer.h"
 
 class MPIWorkerSlave : public MPIWorker
 {
@@ -17,9 +14,9 @@ public:
 
 private:
 	ProjectInfo mProjectInfo;
+	int mProgress;
 	void receiveInitData();
 	bool checkExitCode( std::vector<int> spaceData );
-	CriticalLevel executeTask( ProjectSpace& projectSpace );
 	void sendResult( CriticalLevel& level );
 };
 
