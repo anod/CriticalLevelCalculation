@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +91,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MPIWorker Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_m_p_i_worker_8h_source.html">MPIWorker.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MPIWorker:</div>
 <div class="dyncontent">
@@ -104,31 +106,187 @@ Inheritance diagram for MPIWorker:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa856cbfa949b838e53253693efe92f88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa856cbfa949b838e53253693efe92f88"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MPIWorker</b> (<a class="el" href="class_m_p_i_manager.html">MPIManager</a> *mpi)</td></tr>
+<tr class="memitem:aa856cbfa949b838e53253693efe92f88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_p_i_worker.html#aa856cbfa949b838e53253693efe92f88">MPIWorker</a> (<a class="el" href="class_m_p_i_manager.html">MPIManager</a> *mpi)</td></tr>
 <tr class="separator:aa856cbfa949b838e53253693efe92f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd7fc45f0b0b61f3dc447a9dbaef3fc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd7fc45f0b0b61f3dc447a9dbaef3fc5"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()=0</td></tr>
+<tr class="memitem:acd7fc45f0b0b61f3dc447a9dbaef3fc5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_p_i_worker.html#acd7fc45f0b0b61f3dc447a9dbaef3fc5">run</a> ()=0</td></tr>
 <tr class="separator:acd7fc45f0b0b61f3dc447a9dbaef3fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a2ce63ac6be0a0bfbca6693e0d5fae4fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ce63ac6be0a0bfbca6693e0d5fae4fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>echo</b> (std::string message)</td></tr>
+<tr class="memitem:a2ce63ac6be0a0bfbca6693e0d5fae4fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_p_i_worker.html#a2ce63ac6be0a0bfbca6693e0d5fae4fd">echo</a> (std::string message)</td></tr>
 <tr class="separator:a2ce63ac6be0a0bfbca6693e0d5fae4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6e19c16bb02bff90b00301bdf35eb2"><td class="memItemLeft" align="right" valign="top">CriticalLevel&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_p_i_worker.html#aef6e19c16bb02bff90b00301bdf35eb2">executeTask</a> (<a class="el" href="class_project_space.html">ProjectSpace</a> &amp;projectSpace)</td></tr>
+<tr class="separator:aef6e19c16bb02bff90b00301bdf35eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a7e48e5eb44c19b85c93bfc4ba39eb0e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e48e5eb44c19b85c93bfc4ba39eb0e8"></a>
-<a class="el" href="class_m_p_i_manager.html">MPIManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mMpi</b></td></tr>
+<tr class="memitem:a7e48e5eb44c19b85c93bfc4ba39eb0e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_p_i_manager.html">MPIManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_p_i_worker.html#a7e48e5eb44c19b85c93bfc4ba39eb0e8">mMpi</a></td></tr>
 <tr class="separator:a7e48e5eb44c19b85c93bfc4ba39eb0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
-<tr class="memitem:a3ac5e1a7b6dc267303e7aae048e6f50c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ac5e1a7b6dc267303e7aae048e6f50c"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>EXIT_CODE</b> = -1</td></tr>
+<tr class="memitem:a3ac5e1a7b6dc267303e7aae048e6f50c"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_p_i_worker.html#a3ac5e1a7b6dc267303e7aae048e6f50c">EXIT_CODE</a> = -1</td></tr>
 <tr class="separator:a3ac5e1a7b6dc267303e7aae048e6f50c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Abstract MPI Worker class </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aa856cbfa949b838e53253693efe92f88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MPIWorker::MPIWorker </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_p_i_manager.html">MPIManager</a> *&#160;</td>
+          <td class="paramname"><em>mpi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create ne instance of MPI worker </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mpi</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a2ce63ac6be0a0bfbca6693e0d5fae4fd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MPIWorker::echo </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Output message into stdout </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aef6e19c16bb02bff90b00301bdf35eb2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CriticalLevel MPIWorker::executeTask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_project_space.html">ProjectSpace</a> &amp;&#160;</td>
+          <td class="paramname"><em>projectSpace</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Executes project space calculation task </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">projectSpace</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acd7fc45f0b0b61f3dc447a9dbaef3fc5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void MPIWorker::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Executes current worker job </p>
+
+<p>Implemented in <a class="el" href="class_m_p_i_worker_master.html#adcf4e4dbcebf37977038f4cd03ff0c07">MPIWorkerMaster</a>, and <a class="el" href="class_m_p_i_worker_slave.html#a8d999502160f3254ba91682dcce2211d">MPIWorkerSlave</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3ac5e1a7b6dc267303e7aae048e6f50c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int MPIWorker::EXIT_CODE = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Code indicates that worker need to finish its job </p>
+
+</div>
+</div>
+<a class="anchor" id="a7e48e5eb44c19b85c93bfc4ba39eb0e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_p_i_manager.html">MPIManager</a>* MPIWorker::mMpi</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>MPI Manager instance </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_m_p_i_worker_8h_source.html">MPIWorker.h</a></li>
 <li>MPIWorker.cpp</li>
@@ -136,7 +294,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>EXIT_CODE
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:37 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:09 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,22 +89,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This is the complete list of members for <a class="el" href="class_flight_data_reader.html">FlightDataReader</a>, including all inherited members.</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>FlightDataReader</b>(void) (defined in <a class="el" href="class_flight_data_reader.html">FlightDataReader</a>)</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>FlightDataReader</b>(std::ifstream *stream, std::string fileName) (defined in <a class="el" href="class_flight_data_reader.html">FlightDataReader</a>)</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#aa52a9e8364269bc7b4b1622cd3a5de00">getCellSize</a>() const </td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#aa65e35cdecf995ae1d500c86bf742ab5">getCurrentControlPoint</a>() const </td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#ac93b197d69bf5b6c75ecef5b02dd74e9">getCurrentFlightNumber</a>() const </td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#a323ff020d3b02edf0ce53f0c8c23e2ca">getCurrentTime</a>() const </td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#a34e80e13398848953367e615e05cbf68">getSpaceSize</a>() const </td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#a5b8b117163057cdb3295f884b23d8f6e">open</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#a8f3638e10f2631d35fcad30ccc606065">readHeader</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#a76021f313f27224219dd98aaa5e3483f">readNextControlPoint</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#a193490093ef09a557bf2b0eb393c1b72">rewind</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~FlightDataReader</b>(void) (defined in <a class="el" href="class_flight_data_reader.html">FlightDataReader</a>)</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~IFlightDataReader</b>() (defined in <a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a>)</td><td class="entry"><a class="el" href="class_i_flight_data_reader.html">IFlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#a78293f6d94db70ea882f7d8813572cac">FlightDataReader</a>(std::string fileName)</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#af13d8d73d071188d606ecfa3e7c37970">getFileName</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#ad390fd4f08665f7a4e94631b1cad75ad">getProjectInfo</a>() const </td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#a5b8b117163057cdb3295f884b23d8f6e">open</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#af6a628e4425d91fee85dae152097e717">readFlights</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_flight_data_reader.html#a8f3638e10f2631d35fcad30ccc606065">readHeader</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_flight_data_reader.html#a193490093ef09a557bf2b0eb393c1b72">rewind</a>()</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~FlightDataReader</b>(void) (defined in <a class="el" href="class_flight_data_reader.html">FlightDataReader</a>)</td><td class="entry"><a class="el" href="class_flight_data_reader.html">FlightDataReader</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:09 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

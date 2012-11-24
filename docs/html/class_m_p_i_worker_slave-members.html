@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,18 +88,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>echo</b>(std::string message) (defined in <a class="el" href="class_m_p_i_worker.html">MPIWorker</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>EXIT_CODE</b> (defined in <a class="el" href="class_m_p_i_worker.html">MPIWorker</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>mMpi</b> (defined in <a class="el" href="class_m_p_i_worker.html">MPIWorker</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>MPIWorker</b>(MPIManager *mpi) (defined in <a class="el" href="class_m_p_i_worker.html">MPIWorker</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>MPIWorkerSlave</b>(MPIManager *mpi) (defined in <a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>run</b>() (defined in <a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~MPIWorker</b>(void) (defined in <a class="el" href="class_m_p_i_worker.html">MPIWorker</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~MPIWorkerSlave</b>(void) (defined in <a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_m_p_i_worker.html#a2ce63ac6be0a0bfbca6693e0d5fae4fd">echo</a>(std::string message)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_m_p_i_worker.html#aef6e19c16bb02bff90b00301bdf35eb2">executeTask</a>(ProjectSpace &amp;projectSpace)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_m_p_i_worker.html#a3ac5e1a7b6dc267303e7aae048e6f50c">EXIT_CODE</a></td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">static</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_m_p_i_worker.html#a7e48e5eb44c19b85c93bfc4ba39eb0e8">mMpi</a></td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_m_p_i_worker.html#aa856cbfa949b838e53253693efe92f88">MPIWorker</a>(MPIManager *mpi)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html#a45258621c986b188976efd6df43cd1e0">MPIWorkerSlave</a>(MPIManager *mpi)</td><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html#a8d999502160f3254ba91682dcce2211d">run</a>()</td><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~MPIWorker</b>(void) (defined in <a class="el" href="class_m_p_i_worker.html">MPIWorker</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker.html">MPIWorker</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~MPIWorkerSlave</b>(void) (defined in <a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a>)</td><td class="entry"><a class="el" href="class_m_p_i_worker_slave.html">MPIWorkerSlave</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:37 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:09 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

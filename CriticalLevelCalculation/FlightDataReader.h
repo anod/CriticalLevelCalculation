@@ -27,7 +27,10 @@ class FlightDataReader
 {
 public:
 	FlightDataReader(void);
-	FlightDataReader(std::ifstream* stream, std::string fileName);
+	/**
+	 * @param fileName file name to read from
+	 */
+	FlightDataReader(std::string fileName);
 	~FlightDataReader(void);
 	/**
 	 * Open a file
@@ -76,7 +79,7 @@ private:
 	/**
 	 * Input stream to read from
 	 */
-	std::ifstream* mInputStream;
+	std::ifstream mInputStream;
 	/**
 	 * Convert time string into integer - number of seconds
 	 * @return number of seconds

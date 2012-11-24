@@ -13,6 +13,9 @@
 #include "CriticalLevelDetector.h"
 #include "CriticalLevelSerializer.h"
 
+/**
+ * Abstract MPI Worker class
+ */
 class MPIWorker
 {
 public:

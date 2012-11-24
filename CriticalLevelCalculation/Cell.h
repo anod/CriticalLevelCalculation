@@ -13,8 +13,20 @@
 class Cell
 {
 public:
-	unsigned int x, y;
+	/**
+	 * x value
+	 */
+	unsigned int x;
+	/**
+	 * y value
+	 */
+	unsigned int y;
 	Cell() : x(0), y(0) {};
+	/**
+	 * Create cell with predefined x and y
+	 * @param x
+	 * @param y
+	 */
 	Cell(unsigned int x,unsigned int y) : x(x), y(y) {};
 	/**
 	 * Override compare operator
@@ -50,13 +62,17 @@ public:
 	}
 };
 
-/**
- * Override hash function of the Cell object @see std::unordered_map
- */
 namespace std {
 	template <>
+	/**
+	 * Override hash function of the Cell object @see std::unordered_map
+	 */
 	class hash<Cell>{
 	public :
+		/**
+		 * @param cell
+		 * @return unique hash of the cell
+		 */
 		size_t operator()(const Cell &cell ) const{
 			//return hash<int>()(x.i) ^ hash<int>()(x.j) ^ hash<int>()(x.k);
 			return cell.hash();

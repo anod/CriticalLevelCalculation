@@ -13,7 +13,7 @@
 
 
 /**
- * Utility to detect [Critical Level](@ref CriticalLevel) in [Project Space](@ref ProjectSpace) 
+ * Utility to detect CriticalLevel in [Project Space](@ref ProjectSpace)
  */
 class CriticalLevelDetector
 {
@@ -58,9 +58,21 @@ private:
  * Helper struct to hold last calculation result
  */
 struct CLCache {
+	/**
+	 * flag indicates if cache was initialized for the first time
+	 */
 	bool isInitialized;
+	/**
+	 * first cell
+	 */
 	Cell a;
+	/**
+	 * second cell
+	 */
 	Cell b;
+	/**
+	 * comparison result
+	 */
 	int result;
 };
 

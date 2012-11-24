@@ -1,12 +1,23 @@
 var searchData=
 [
-  ['getcellsize',['getCellSize',['../class_flight_data_reader.html#aa52a9e8364269bc7b4b1622cd3a5de00',1,'FlightDataReader::getCellSize()'],['../class_flight_data_reader_mem_cache.html#a09b8e885c95840ba2fb6a7e3850e4654',1,'FlightDataReaderMemCache::getCellSize()'],['../class_i_flight_data_reader.html#ae8b3739c2866b998f009f198550afe8a',1,'IFlightDataReader::getCellSize()']]],
+  ['getcellsize',['getCellSize',['../class_project_space.html#ac582255123c0b56e3b5772dad75767f6',1,'ProjectSpace']]],
   ['getcommrank',['getCommRank',['../class_m_p_i_manager.html#a690c8622e3e70e19d638f4c29825b832',1,'MPIManager']]],
   ['getcommsize',['getCommSize',['../class_m_p_i_manager.html#af3c2b7a62a957900f77cf03a292769a1',1,'MPIManager']]],
-  ['getcurrentcontrolpoint',['getCurrentControlPoint',['../class_flight_data_reader.html#aa65e35cdecf995ae1d500c86bf742ab5',1,'FlightDataReader::getCurrentControlPoint()'],['../class_flight_data_reader_mem_cache.html#ab3637a2690987b3c0b2cedf41bd9fe52',1,'FlightDataReaderMemCache::getCurrentControlPoint()'],['../class_i_flight_data_reader.html#a87b5bcf431c9d7da231909d94aed2e37',1,'IFlightDataReader::getCurrentControlPoint()']]],
-  ['getcurrentflightnumber',['getCurrentFlightNumber',['../class_flight_data_reader.html#ac93b197d69bf5b6c75ecef5b02dd74e9',1,'FlightDataReader::getCurrentFlightNumber()'],['../class_flight_data_reader_mem_cache.html#a79bebf5040f4f0c24336544e4f35d085',1,'FlightDataReaderMemCache::getCurrentFlightNumber()'],['../class_i_flight_data_reader.html#a78b91e3a2bac8fee5239f0aa1a580fd8',1,'IFlightDataReader::getCurrentFlightNumber()']]],
-  ['getcurrenttime',['getCurrentTime',['../class_flight_data_reader.html#a323ff020d3b02edf0ce53f0c8c23e2ca',1,'FlightDataReader::getCurrentTime()'],['../class_flight_data_reader_mem_cache.html#ab0f90da15be4badde4d41221b005962e',1,'FlightDataReaderMemCache::getCurrentTime()'],['../class_i_flight_data_reader.html#ad46da473dbabb9bdd19ecc96aa836bf7',1,'IFlightDataReader::getCurrentTime()']]],
+  ['getcontrolpoints',['getControlPoints',['../class_flight.html#a93a13ec73fbd059fbf8129d6cbe5d526',1,'Flight']]],
+  ['getfilename',['getFileName',['../class_flight_data_reader.html#af13d8d73d071188d606ecfa3e7c37970',1,'FlightDataReader']]],
   ['getflightlist',['getFlightList',['../class_critical_degree.html#a9f837be47b2dcc6c3efcf0c5c090c375',1,'CriticalDegree']]],
+  ['getflightnum',['getFlightNum',['../class_flight.html#ac2da588539c0584d08ae7c08ab33e769',1,'Flight']]],
+  ['getflightspoints',['getFlightsPoints',['../class_project_space.html#a61572b653f9bb995eb469cbe854dd7d4',1,'ProjectSpace']]],
+  ['getinstance',['getInstance',['../class_profiler.html#ad4853668716b16208caed022155a2c76',1,'Profiler']]],
+  ['getintarray',['getIntArray',['../class_m_p_i_manager.html#a5e7a7aca499481ca4f4919a035e880dd',1,'MPIManager']]],
+  ['getlastresponsesource',['getLastResponseSource',['../class_m_p_i_manager.html#ad65ba37225d2d32b2348a7610558f980',1,'MPIManager']]],
   ['getmaxcriticallevelflight',['getMaxCriticalLevelFlight',['../class_critical_degree.html#ae630fb97fbfb27ec12c45a345bde1401',1,'CriticalDegree']]],
-  ['getspacesize',['getSpaceSize',['../class_flight_data_reader.html#a34e80e13398848953367e615e05cbf68',1,'FlightDataReader::getSpaceSize()'],['../class_flight_data_reader_mem_cache.html#a4582f2da4a197b0201bc70a7d0e5939a',1,'FlightDataReaderMemCache::getSpaceSize()'],['../class_i_flight_data_reader.html#aebe2018aa29a08606c24740996cc8005',1,'IFlightDataReader::getSpaceSize()']]]
+  ['getpointsarray',['getPointsArray',['../class_project_space.html#a9bf6f2557762ce10b1f0da370e6f7c20',1,'ProjectSpace']]],
+  ['getpositionattime',['getPositionAtTime',['../class_flight.html#a70f8bdd8564703782bd656f5f174a2a3',1,'Flight']]],
+  ['getprojectinfo',['getProjectInfo',['../class_flight_data_reader.html#ad390fd4f08665f7a4e94631b1cad75ad',1,'FlightDataReader']]],
+  ['getspacesize',['getSpaceSize',['../class_project_space.html#ac2a4a764b95e23e146bf44eb5619ed49',1,'ProjectSpace']]],
+  ['gettime',['getTime',['../class_project_space.html#a6dab5138f93b5ce0337f90c76fdc0411',1,'ProjectSpace']]],
+  ['gettimefinish',['getTimeFinish',['../class_flight.html#a825ae0861be309ea9059bcd7cee47d62',1,'Flight']]],
+  ['gettimestart',['getTimeStart',['../class_flight.html#a0721a3b278f0a92f2fb13bc0b8e4783e',1,'Flight']]],
+  ['gettotalcount',['getTotalCount',['../class_critical_degree.html#a9e18a7f63d1626fa87f9cffbb6deb40e',1,'CriticalDegree']]]
 ];

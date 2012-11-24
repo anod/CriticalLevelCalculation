@@ -8,9 +8,10 @@
 #include "RuntimeException.h"
 
 
-FlightDataReader::FlightDataReader(std::ifstream* stream, std::string fileName)
-	: mInputStream(stream), mFileName(fileName), mTimeStart(WRONG_TIME), mTimeFinish(WRONG_TIME), mTimeStep(1)
+FlightDataReader::FlightDataReader(std::string fileName)
+	: mFileName(fileName), mTimeStart(WRONG_TIME), mTimeFinish(WRONG_TIME), mTimeStep(1)
 {
+
 }
 
 FlightDataReader::~FlightDataReader(void)
@@ -19,8 +20,8 @@ FlightDataReader::~FlightDataReader(void)
 
 void FlightDataReader::open()
 {
-	mInputStream->open(mFileName);
-	if (!mInputStream->is_open()) {
+	mInputStream.open(mFileName);
+	if (!mInputStream.is_open()) {
 		throw RuntimeException("Cannot open file: " + mFileName);
 	}
 
@@ -31,15 +32,15 @@ int FlightDataReader::timeStringToSeconds()
 	int hour,minute,seconds = 0;
 	std::string current;
 	// extract data
-	std::getline(*mInputStream,current,':');
+	std::getline(mInputStream,current,':');
 	if (!(std::stringstream(current) >> hour)) {
 		throw RuntimeException("Cannot convert hour: " + current);
 	}
-	std::getline(*mInputStream,current,':');
+	std::getline(mInputStream,current,':');
 	if (!(std::stringstream(current) >> minute)) {
 		throw RuntimeException("Cannot convert minute: "+minute);
 	}
-	if (!(*mInputStream >> seconds)) {
+	if (!(mInputStream >> seconds)) {
 		throw RuntimeException("Cannot convert seconds: "+seconds);
 	}
 
@@ -48,19 +49,19 @@ int FlightDataReader::timeStringToSeconds()
 
 void FlightDataReader::rewind()
 {
-	mInputStream->clear();
-	mInputStream->seekg(0, std::ios::beg);
+	mInputStream.clear();
+	mInputStream.seekg(0, std::ios::beg);
 }
 
 void FlightDataReader::readHeader()
 {
 	int spaceA, spaceB, cellM, cellN;
 
-	*mInputStream >> spaceA;
-	*mInputStream >> spaceB;
-	*mInputStream >> cellM;
-	*mInputStream >> cellN;
-	*mInputStream >> mTimeStep;
+	mInputStream >> spaceA;
+	mInputStream >> spaceB;
+	mInputStream >> cellM;
+	mInputStream >> cellN;
+	mInputStream >> mTimeStep;
 
 	int cellWidth = (int)ceil(((double)spaceA / (double)cellM));
 	int cellHeight = (int)ceil(((double)spaceB / (double)cellN));
@@ -96,17 +97,17 @@ std::vector<Flight> FlightDataReader::readFlights()
 bool FlightDataReader::readNextFlight()
 {
 	int flightNum, numberOfControlPoints, x,y, time;
-	if (!(*mInputStream >> flightNum)) {
+	if (!(mInputStream >> flightNum)) {
 		return false;
 	}
-	if (!(*mInputStream >> numberOfControlPoints)) {
+	if (!(mInputStream >> numberOfControlPoints)) {
 		throw RuntimeException("Cannot read number of control points");
 	}
 
 	mCurrentFlight = Flight(flightNum);
 	for (int i = 0; i< numberOfControlPoints; i++) {
-		*mInputStream >> x;
-		*mInputStream >> y;
+		mInputStream >> x;
+		mInputStream >> y;
 		time = timeStringToSeconds();
 		Cell p =  Cell(x,y);
 		mCurrentFlight.addControlPoint(time, p);

@@ -16,7 +16,8 @@ class InvolvedCellsSeeker
 {
 public:
 	/**
-	 * @param cellSize - size of one cell
+	 * @param spaceSize size in cells of ProjectSpace
+	 * @param cellSize size in meters of one cell
 	 */
 	InvolvedCellsSeeker(const Cell spaceSize,const Cell cellSize);
 	~InvolvedCellsSeeker(void);

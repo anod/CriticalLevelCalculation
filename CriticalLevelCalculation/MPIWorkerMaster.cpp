@@ -23,11 +23,10 @@ void MPIWorkerMaster::run()
 	Profiler::getInstance().setEnabled(true);
 
 	CriticalDegree degree;
-	std::ifstream fileStream;
-	//FlightDataReader reader(&fileStream, "c:\\basic1.txt");
-	//FlightDataReader reader(&fileStream, "c:\\basic2.txt");
-	//FlightDataReader reader(&fileStream, "c:\\big1.txt");
-	FlightDataReader reader(&fileStream, "c:\\big2.txt");
+	//FlightDataReader reader("c:\\basic1.txt");
+	//FlightDataReader reader("c:\\basic2.txt");
+	//FlightDataReader reader("c:\\big1.txt");
+	FlightDataReader reader("c:\\big2.txt");
 
 	echo(MakeString() << "Load data... (" << reader.getFileName() << ")");
 	reader.open();

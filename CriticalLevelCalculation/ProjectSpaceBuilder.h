@@ -11,11 +11,16 @@
 #include "ProjectSpace.h"
 
 /**
- * Builds project space from FlightPAth
+ * Builds project space from Flight Path
  */
 class ProjectSpaceBuilder
 {
 public:
+	/**
+	 *
+	 * @param projectInfo project info
+	 * @param flights list of flights with Flights Paths
+	 */
 	ProjectSpaceBuilder(const ProjectInfo &projectInfo, std::vector<Flight> flights);
 	~ProjectSpaceBuilder(void);
 

@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,13 +99,13 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a396ef85136b65df895d917554cace229"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_control_point.html#a396ef85136b65df895d917554cace229">time</a></td></tr>
+<tr class="separator:a396ef85136b65df895d917554cace229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35874082ca913309c233c3c356b3bf37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cell.html">Cell</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_control_point.html#a35874082ca913309c233c3c356b3bf37">coord</a></td></tr>
 <tr class="separator:a35874082ca913309c233c3c356b3bf37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90d4cb3e497491b004639bebb092c0b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_control_point.html#a90d4cb3e497491b004639bebb092c0b2">flight</a></td></tr>
-<tr class="separator:a90d4cb3e497491b004639bebb092c0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Certain point in the Project Space with attached timestamp. It is used for the Flight Path definition. The timestamp defines the moment when this Control Point has to be passed. </p>
+<div class="textblock"><p>Certain point in the Project Space with attached timestamp. It is used for the <a class="el" href="class_flight.html">Flight</a> Path definition. The timestamp defines the moment when this Control Point has to be passed. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aa7602372f4416b423b11330e79f63b44"></a>
 <div class="memitem">
@@ -142,20 +142,20 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flight coordinate </p>
+<p><a class="el" href="class_flight.html">Flight</a> coordinate </p>
 
 </div>
 </div>
-<a class="anchor" id="a90d4cb3e497491b004639bebb092c0b2"></a>
+<a class="anchor" id="a396ef85136b65df895d917554cace229"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ControlPoint::flight</td>
+          <td class="memname">int ControlPoint::time</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flight number </p>
+<p>Control Point time </p>
 
 </div>
 </div>
@@ -165,7 +165,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:08 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -76,6 +76,9 @@ public:
 	 * @return dat
 	 */
 	std::vector<int> getIntArray();
+	/**
+	 * @return id of the last non blocking response
+	 */
 	int getLastResponseSource();
 private:
 	int mCommRank;

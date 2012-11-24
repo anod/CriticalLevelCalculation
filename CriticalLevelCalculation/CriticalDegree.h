@@ -11,7 +11,7 @@
 
 
 /**
- * The sum of all [Critical Levels](@ref CriticalLevel) of the object during its flight
+ * The sum of all CriticalLevel of the object during its flight
  * (calculated for the given sets of moments: Tstart, Tstart+dT, Tstart+2dT  ... TEnd )
  */
 class CriticalDegree
@@ -31,7 +31,10 @@ public:
 	 * @return total list of other that in critical situation with the specific flight
 	 */
 	FlightList getFlightList(int flight) { return mTotalLevel[flight]; };
-
+	/**
+	 * @param flight
+	 * @return number of times flight was hidden
+	 */
 	int getTotalCount(int flight) { return mTotalCounter[flight]; };
 private:
 	/**

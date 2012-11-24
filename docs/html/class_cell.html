@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,8 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4ccfb0a9923271daba6000afa1a33ee9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ccfb0a9923271daba6000afa1a33ee9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Cell</b> (unsigned int x, unsigned int y)</td></tr>
+<tr class="memitem:a4ccfb0a9923271daba6000afa1a33ee9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#a4ccfb0a9923271daba6000afa1a33ee9">Cell</a> (unsigned int <a class="el" href="class_cell.html#af4448f92d8d40c044b08256bbf56f88a">x</a>, unsigned int <a class="el" href="class_cell.html#a9133b0b95550d27ece4eaff09d802835">y</a>)</td></tr>
 <tr class="separator:a4ccfb0a9923271daba6000afa1a33ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a511aaadeb784e932508d85370c49d084"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#a511aaadeb784e932508d85370c49d084">operator==</a> (const <a class="el" href="class_cell.html">Cell</a> &amp;other) const </td></tr>
 <tr class="separator:a511aaadeb784e932508d85370c49d084"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,16 +109,57 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:af4448f92d8d40c044b08256bbf56f88a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4448f92d8d40c044b08256bbf56f88a"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
+<tr class="memitem:af4448f92d8d40c044b08256bbf56f88a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#af4448f92d8d40c044b08256bbf56f88a">x</a></td></tr>
 <tr class="separator:af4448f92d8d40c044b08256bbf56f88a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9133b0b95550d27ece4eaff09d802835"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9133b0b95550d27ece4eaff09d802835"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
+<tr class="memitem:a9133b0b95550d27ece4eaff09d802835"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cell.html#a9133b0b95550d27ece4eaff09d802835">y</a></td></tr>
 <tr class="separator:a9133b0b95550d27ece4eaff09d802835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class describes cell in Project Space </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a4ccfb0a9923271daba6000afa1a33ee9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Cell::Cell </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Create cell with predefined x and y </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aa83ef04b8b2b7cee947cf0d67ffb114b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -244,13 +284,40 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></t
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af4448f92d8d40c044b08256bbf56f88a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Cell::x</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>x value </p>
+
+</div>
+</div>
+<a class="anchor" id="a9133b0b95550d27ece4eaff09d802835"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Cell::y</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>y value </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="_cell_8h_source.html">Cell.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:08 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

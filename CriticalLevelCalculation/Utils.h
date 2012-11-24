@@ -9,6 +9,9 @@
 
 #include "Include.h"
 
+/**
+ * Collection of utilities
+ */
 class Utils
 {
 public:

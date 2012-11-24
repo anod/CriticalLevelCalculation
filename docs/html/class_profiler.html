@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,28 +89,139 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Profiler Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_profiler_8h_source.html">Profiler.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a83127ffcc4032f791c4442c01c0c5356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83127ffcc4032f791c4442c01c0c5356"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> (const char *name)</td></tr>
+<tr class="memitem:a83127ffcc4032f791c4442c01c0c5356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_profiler.html#a83127ffcc4032f791c4442c01c0c5356">start</a> (const char *name)</td></tr>
 <tr class="separator:a83127ffcc4032f791c4442c01c0c5356"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63a1f23de3829a5d5d139f6087d6a30a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63a1f23de3829a5d5d139f6087d6a30a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>finish</b> ()</td></tr>
+<tr class="memitem:a63a1f23de3829a5d5d139f6087d6a30a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_profiler.html#a63a1f23de3829a5d5d139f6087d6a30a">finish</a> ()</td></tr>
 <tr class="separator:a63a1f23de3829a5d5d139f6087d6a30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a686e41ea946f9d01ba808c2de6701980"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a686e41ea946f9d01ba808c2de6701980"></a>
-std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><b>dump</b> ()</td></tr>
+<tr class="memitem:a686e41ea946f9d01ba808c2de6701980"><td class="memItemLeft" align="right" valign="top">std::stringstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_profiler.html#a686e41ea946f9d01ba808c2de6701980">dump</a> ()</td></tr>
 <tr class="separator:a686e41ea946f9d01ba808c2de6701980"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38742c35cffd6f73b501cad7f79f370e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38742c35cffd6f73b501cad7f79f370e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setEnabled</b> (bool enabled)</td></tr>
+<tr class="memitem:a38742c35cffd6f73b501cad7f79f370e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_profiler.html#a38742c35cffd6f73b501cad7f79f370e">setEnabled</a> (bool enabled)</td></tr>
 <tr class="separator:a38742c35cffd6f73b501cad7f79f370e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad4853668716b16208caed022155a2c76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4853668716b16208caed022155a2c76"></a>
-static <a class="el" href="class_profiler.html">Profiler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getInstance</b> ()</td></tr>
+<tr class="memitem:ad4853668716b16208caed022155a2c76"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_profiler.html">Profiler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_profiler.html#ad4853668716b16208caed022155a2c76">getInstance</a> ()</td></tr>
 <tr class="separator:ad4853668716b16208caed022155a2c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class to profile execution time of several parts of the application Singleton </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a686e41ea946f9d01ba808c2de6701980"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::stringstream Profiler::dump </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>collected information </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a63a1f23de3829a5d5d139f6087d6a30a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Profiler::finish </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finish previously started profiling </p>
+
+</div>
+</div>
+<a class="anchor" id="ad4853668716b16208caed022155a2c76"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_profiler.html">Profiler</a>&amp; Profiler::getInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Singleton </p>
+<dl class="section return"><dt>Returns</dt><dd>instance of <a class="el" href="class_profiler.html">Profiler</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a38742c35cffd6f73b501cad7f79f370e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Profiler::setEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Switch for profiler </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a83127ffcc4032f791c4442c01c0c5356"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Profiler::start </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start profile part of the code </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="_profiler_8h_source.html">Profiler.h</a></li>
 <li>Profiler.cpp</li>
@@ -118,7 +229,7 @@ static <a class="el" href="class_profiler.html">Profiler</a> &amp;&#160;</td><td
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:37 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:09 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

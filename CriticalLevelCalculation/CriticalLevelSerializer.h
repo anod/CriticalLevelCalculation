@@ -10,7 +10,7 @@
 #include "Include.h"
 
 /**
- * Utility to serialize/deserialize [Critical Level](@ref CriticalLevel)
+ * Utility to serialize/deserialize CriticalLevel
  * Format: 
  *    { size, srcFlight, invFlight1 ... invFlightN, .., }  
  *

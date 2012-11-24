@@ -23,6 +23,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Critical Level Calculation
    </div>
+   <div id="projectbrief">Effective parallel program to find an object with the maximum Critical Degree and display id of all other object that did not see it during the Flight.</div>
   </td>
  </tr>
  </tbody>
@@ -36,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,50 +82,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">FlightDataReader.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FLIGHT_DATA_READER_H_</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FLIGHT_DATA_READER_H_</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Include.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;IFlightDataReader.h&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * FlightDataReader.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *      Author: Alex</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_flight_data_reader.html">FlightDataReader</a> : <span class="keyword">public</span> <a class="code" href="class_i_flight_data_reader.html">IFlightDataReader</a></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_flight_data_reader.html">FlightDataReader</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_flight_data_reader.html">FlightDataReader</a>(std::ifstream* stream, std::string fileName);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ~<a class="code" href="class_flight_data_reader.html">FlightDataReader</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_flight_data_reader.html#a5b8b117163057cdb3295f884b23d8f6e">open</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_flight_data_reader.html#a193490093ef09a557bf2b0eb393c1b72">rewind</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_flight_data_reader.html#a8f3638e10f2631d35fcad30ccc606065">readHeader</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_flight_data_reader.html#a76021f313f27224219dd98aaa5e3483f">readNextControlPoint</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html#ac93b197d69bf5b6c75ecef5b02dd74e9">   47</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_flight_data_reader.html#ac93b197d69bf5b6c75ecef5b02dd74e9">getCurrentFlightNumber</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mCurrentFlightNumber; }</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html#aa65e35cdecf995ae1d500c86bf742ab5">   51</a></span>&#160;    <a class="code" href="class_cell.html">Cell</a> <a class="code" href="class_flight_data_reader.html#aa65e35cdecf995ae1d500c86bf742ab5">getCurrentControlPoint</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mCurrentControlPoint; }</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html#a323ff020d3b02edf0ce53f0c8c23e2ca">   55</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_flight_data_reader.html#a323ff020d3b02edf0ce53f0c8c23e2ca">getCurrentTime</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mCurrentTime; }</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html#a34e80e13398848953367e615e05cbf68">   59</a></span>&#160;    <a class="code" href="class_cell.html">Cell</a> <a class="code" href="class_flight_data_reader.html#a34e80e13398848953367e615e05cbf68">getSpaceSize</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mSpaceSize; }</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html#aa52a9e8364269bc7b4b1622cd3a5de00">   63</a></span>&#160;    <a class="code" href="class_cell.html">Cell</a> <a class="code" href="class_flight_data_reader.html#aa52a9e8364269bc7b4b1622cd3a5de00">getCellSize</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mCellSize; }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> BUFFER_SIZE = 16184;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">char</span> mBuffer[BUFFER_SIZE];</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="class_cell.html">Cell</a> mSpaceSize;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="class_cell.html">Cell</a> mCellSize;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> mNumberOfControlPoints;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> mCurrentFlightNumber;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="class_cell.html">Cell</a> mCurrentControlPoint;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">int</span> mCurrentTime;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef FLIGHT_DATA_READER_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FLIGHT_DATA_READER_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Include.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_flight_data_reader.html">FlightDataReader</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_flight_data_reader.html">FlightDataReader</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_flight_data_reader.html">FlightDataReader</a>(std::string fileName);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ~<a class="code" href="class_flight_data_reader.html">FlightDataReader</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_flight_data_reader.html#a5b8b117163057cdb3295f884b23d8f6e">open</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_flight_data_reader.html#a193490093ef09a557bf2b0eb393c1b72">rewind</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_flight_data_reader.html#a8f3638e10f2631d35fcad30ccc606065">readHeader</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;Flight&gt; <a class="code" href="class_flight_data_reader.html#af6a628e4425d91fee85dae152097e717">readFlights</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_project_info.html">ProjectInfo</a> <a class="code" href="class_flight_data_reader.html#ad390fd4f08665f7a4e94631b1cad75ad">getProjectInfo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="class_flight_data_reader.html#af13d8d73d071188d606ecfa3e7c37970">   58</a></span>&#160;    std::string <a class="code" href="class_flight_data_reader.html#af13d8d73d071188d606ecfa3e7c37970">getFileName</a>() { <span class="keywordflow">return</span> mFileName; };</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> WRONG_TIME = -1;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="class_cell.html">Cell</a> mSpaceSize;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="class_cell.html">Cell</a> mCellSize;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">int</span> mTimeStep;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">int</span> mTimeStart;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> mTimeFinish;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_flight.html">Flight</a> mCurrentFlight;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::string mFileName;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::ifstream* mInputStream;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::string mTmpStr;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span> timeStringToSeconds();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> readNextControlPointUncached();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::ifstream mInputStream;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">int</span> timeStringToSeconds();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> readNextControlPointUncached();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> readNextFlight();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif // FLIGHT_DATA_READER_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 11 2012 21:01:36 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2012 10:28:08 for Critical Level Calculation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

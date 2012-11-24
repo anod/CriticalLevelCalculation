@@ -15,9 +15,20 @@
 class MakeString
 {
 public:
+	/**
+	 * stream to append the string
+	 */
 	std::stringstream stream;
+	/**
+	 * return current string
+	 */
 	operator std::string() const { return stream.str(); }
 
+	/**
+	 * appends VAR to stream
+	 * @param VAR
+	 * @return
+	 */
 	template<class T>
 	MakeString& operator<<(T const& VAR) { stream << VAR; return *this; }
 };
