@@ -53,9 +53,6 @@ void CriticalLevelDetector::compareCells( FlightsPointsMap& cpoints,std::vector<
 
 	int total = pointsArray.size();
 
-	CLCache cache;
-	cache.isInitialized = false;
-
 	//Split cell occupied by flights cells
 	//between multiple CPU cores
 	//dynamic schedule for load balancing
@@ -66,19 +63,10 @@ void CriticalLevelDetector::compareCells( FlightsPointsMap& cpoints,std::vector<
 			b =  pointsArray[j];
 
 			int result = 0;
-			if (cache.isInitialized && a == cache.a && b == cache.b) {
-				result = cache.result;
-			} else {
-				// find list of the cells on the line between two cells
-				list = seeker.seek(a, b);
-				// check if one of the cells contain a flight
-				result = checkCriticalSituation(list);
-
-				cache.a = a;
-				cache.b = b;
-				cache.isInitialized = true;
-				cache.result = result;
-			}
+			// find list of the cells on the line between two cells
+			list = seeker.seek(a, b);
+			// check if one of the cells contain a flight
+			result = checkCriticalSituation(list);
 
 			if (result) {
 				addCriticalLevel(cpoints[a], cpoints[b], level);

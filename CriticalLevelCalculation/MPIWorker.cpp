@@ -23,6 +23,6 @@ CriticalLevel MPIWorker::executeTask( ProjectSpace& projectSpace )
 	CriticalLevel level;
 	CriticalLevelDetector detector(projectSpace);
 	level = detector.detectParallel();
-	// level = detector.detctSerial();
+	//level = detector.detectSerial();
 	return level;
 }

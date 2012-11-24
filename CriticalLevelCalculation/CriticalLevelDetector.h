@@ -54,26 +54,5 @@ private:
 	void compareCells(FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level);
 };
 
-/**
- * Helper struct to hold last calculation result
- */
-struct CLCache {
-	/**
-	 * flag indicates if cache was initialized for the first time
-	 */
-	bool isInitialized;
-	/**
-	 * first cell
-	 */
-	Cell a;
-	/**
-	 * second cell
-	 */
-	Cell b;
-	/**
-	 * comparison result
-	 */
-	int result;
-};
 
 #endif //CRITICAL_LEVEL_DETECTOR_H_
