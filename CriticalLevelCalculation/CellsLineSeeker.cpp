@@ -1,23 +1,23 @@
 /*
- * InvolvedCellsSeeker.cpp
+ * CellsLineSeeker.cpp
  *
  *      Author: Alex
  */
 
-#include "InvolvedCellsSeeker.h"
+#include "CellsLineSeeker.h"
 
-InvolvedCellsSeeker::InvolvedCellsSeeker(const Cell spaceSize,const Cell cellSize)
+CellsLineSeeker::CellsLineSeeker(const Cell spaceSize,const Cell cellSize)
 	: mCellSize(cellSize), mSpaceSize(spaceSize)
 {
 	mHalfCellSize = Cell( (int)(cellSize.x / 2), (int)(cellSize.y / 2) );
 }
 
 
-InvolvedCellsSeeker::~InvolvedCellsSeeker(void)
+CellsLineSeeker::~CellsLineSeeker(void)
 {
 }
 
-std::vector<Cell> InvolvedCellsSeeker::seek( Cell a, Cell b )
+std::vector<Cell> CellsLineSeeker::seek( Cell a, Cell b )
 {
 	int x1,y1,x2,y2 = 0;
 	std::vector<Cell> result;
@@ -35,7 +35,7 @@ std::vector<Cell> InvolvedCellsSeeker::seek( Cell a, Cell b )
 	return result;
 }
 
-void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& result) {
+void CellsLineSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& result) {
 	int newCellX,newCellY, curX, curY;
 	double newCellAccX,newCellAccY;
 	Cell lastCell, stopCell;
@@ -109,14 +109,14 @@ void InvolvedCellsSeeker::line(int x1,int y1,int x2,int y2, std::vector<Cell>& r
 	}
 }
 
-bool InvolvedCellsSeeker::isCorner(double cellX, double cellY, int exactCellX, int exactCellY) {
+bool CellsLineSeeker::isCorner(double cellX, double cellY, int exactCellX, int exactCellY) {
 	if (abs(exactCellX - cellX) < 0.00001 && abs(exactCellY - cellY) < 0.00001) {
 		return true;
 	}
 	return false;
 }
 
-void InvolvedCellsSeeker::addResult(int cellX, int cellY, std::vector<Cell>& result, Cell& lastCell) {
+void CellsLineSeeker::addResult(int cellX, int cellY, std::vector<Cell>& result, Cell& lastCell) {
 	if (lastCell.x == -1 || cellX != lastCell.x || cellY != lastCell.y) {
 		Cell p = Cell(cellX, cellY);
 		lastCell = p;

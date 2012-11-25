@@ -68,13 +68,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CellsLineSeeker.cpp" />
     <ClCompile Include="CriticalDegree.cpp" />
     <ClCompile Include="CriticalLevelDetector.cpp" />
     <ClCompile Include="CriticalLevelSerializer.cpp" />
     <ClCompile Include="Flight.cpp" />
     <ClCompile Include="FlightDataReader.cpp" />
     <ClCompile Include="FlightPathBuilder.cpp" />
-    <ClCompile Include="InvolvedCellsSeeker.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MPIWorker.cpp" />
     <ClCompile Include="MPIWorkerMaster.cpp" />
@@ -87,6 +87,7 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CellsLineSeeker.h" />
     <ClInclude Include="ControlPoint.h" />
     <ClInclude Include="CriticalDegree.h" />
     <ClInclude Include="CriticalLevelDetector.h" />
@@ -97,7 +98,6 @@
     <ClInclude Include="MakeString.h" />
     <ClInclude Include="MPIWorker.h" />
     <ClInclude Include="Include.h" />
-    <ClInclude Include="InvolvedCellsSeeker.h" />
     <ClInclude Include="MPIWorkerFactory.h" />
     <ClInclude Include="MPIWorkerMaster.h" />
     <ClInclude Include="MPIManager.h" />

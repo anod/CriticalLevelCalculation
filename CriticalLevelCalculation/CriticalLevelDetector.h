@@ -9,7 +9,7 @@
 
 #include "Include.h"
 #include "ProjectSpace.h"
-#include "InvolvedCellsSeeker.h"
+#include "CellsLineSeeker.h"
 
 
 /**
@@ -51,7 +51,7 @@ private:
 	 * Detect critical level
 	 * The function running in parallel on multiple CPU cores
 	 */
-	void compareCells(FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level);
+	void compareCells(FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,CellsLineSeeker& seeker, CriticalLevel& level);
 };
 
 

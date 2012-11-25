@@ -31,32 +31,31 @@ void MPIWorkerMaster::run()
 	reader.open();
 	reader.readHeader();
 
-	// Read flights data
-	Profiler::getInstance().start("Read flights");
+	Profiler::getInstance().start("1. Read flights data");
+	// 1. Read flights data
 	std::vector<Flight> flights = reader.readFlights();
 	Profiler::getInstance().finish();
 
  	ProjectInfo projectInfo = reader.getProjectInfo();
 	echo(MakeString() << "Project info: " << projectInfo.dump().str());
 
-	// Init available slaves with project info (mSlaveQueue)
+	//Init available slaves (if any) with project info (mSlaveQueue)
 	initSlaves(projectInfo);
 
-	// Build flight paths
+	// 2. Build flight paths
+	// OpenMP splitted by number of flights ()
 	buildFlightsPathsParallel(projectInfo, flights);
-
-	// Calculate Critical Degree
-	ProjectSpaceBuilder builder(projectInfo, flights);
 
 	// Calculate total number of project spaces to be processed
 	int numOfTasks = calcNumberOfTasks(projectInfo);
-
 	echo(MakeString() << "Max number of threads: " << omp_get_max_threads());		
 	echo(MakeString() << "Total number of tasks: " << numOfTasks);
 	echo("Processing...");
 
 	int progress = 1;
 	Profiler::getInstance().start("Process project spaces");
+	ProjectSpaceBuilder builder(projectInfo, flights);
+	// 3. Calculate Critical Degree
 	while(builder.nextTime()) {
 		ProjectSpace projectSpace = builder.build();
 

@@ -1,5 +1,5 @@
 /*
- * InvolvedCellsSeeker.h
+ * CellsLineSeeker.h
  *
  *      Author: Alex
  */
@@ -12,15 +12,15 @@
  * Utility to search cells between two other cells on direct line
  * Use [Bresenham's line algorithm](http://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm)
  */
-class InvolvedCellsSeeker
+class CellsLineSeeker
 {
 public:
 	/**
 	 * @param spaceSize size in cells of ProjectSpace
 	 * @param cellSize size in meters of one cell
 	 */
-	InvolvedCellsSeeker(const Cell spaceSize,const Cell cellSize);
-	~InvolvedCellsSeeker(void);
+	CellsLineSeeker(const Cell spaceSize,const Cell cellSize);
+	~CellsLineSeeker(void);
 	/**
 	 * @return vector of cells between a and b
 	 */

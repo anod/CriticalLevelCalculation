@@ -18,7 +18,7 @@ CriticalLevelDetector::~CriticalLevelDetector(void)
 CriticalLevel CriticalLevelDetector::detectParallel()
 {
 	CriticalLevel level;
-	InvolvedCellsSeeker seeker(mProjectSpace.getSpaceSize(), mProjectSpace.getCellSize());
+	CellsLineSeeker seeker(mProjectSpace.getSpaceSize(), mProjectSpace.getCellSize());
 	std::vector<Cell> pointsArray = mProjectSpace.getPointsArray();
 	FlightsPointsMap cpoints = mProjectSpace.getFlightsPoints();
 #pragma omp parallel
@@ -31,7 +31,7 @@ CriticalLevel CriticalLevelDetector::detectParallel()
 CriticalLevel CriticalLevelDetector::detectSerial()
 {
 	CriticalLevel level;
-	InvolvedCellsSeeker seeker(mProjectSpace.getSpaceSize(), mProjectSpace.getCellSize());
+	CellsLineSeeker seeker(mProjectSpace.getSpaceSize(), mProjectSpace.getCellSize());
 	std::vector<Cell> pointsArray = mProjectSpace.getPointsArray();
 	FlightsPointsMap cpoints = mProjectSpace.getFlightsPoints();
 
@@ -46,7 +46,7 @@ CriticalLevel CriticalLevelDetector::detectSerial()
  * @param seeker
  * @param level
  */
-void CriticalLevelDetector::compareCells( FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,InvolvedCellsSeeker& seeker, CriticalLevel& level )
+void CriticalLevelDetector::compareCells( FlightsPointsMap& cpoints,std::vector<Cell> pointsArray,CellsLineSeeker& seeker, CriticalLevel& level )
 {
 	Cell a,b;
 	std::vector<Cell> list;
