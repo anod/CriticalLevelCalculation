@@ -32,7 +32,6 @@ void MPIWorkerSlave::run()
 		}
 
 		projectSpace.deserialize(spaceData);
-		echo(MakeString() << projectSpace.dump().str());
 		CriticalLevel level = executeTask(projectSpace);
 
 		sendResult(level);
