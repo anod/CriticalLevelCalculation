@@ -5,7 +5,7 @@ This is study project for course "Parallel Computations" @ Afeka College of Engi
 The project goal is to detect plane that most hidden from other planes during its flight.
 The detection should be efficient and use parallel technologies such OpenMP and MPI.
 
-Full requirements: [][1]
+Full requirements: [Requirements.pdf][1]
 
 ## Implementation Highlights
 
